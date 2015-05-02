@@ -22,16 +22,6 @@
 		E79712522A056A1092823D80 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D6CA00764892776D69DF964 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		968181EC1AF2B34900E2403B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 968181C71AF2B34900E2403B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 968181CE1AF2B34900E2403B;
-			remoteInfo = treble;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		17375318C2A915686C03C795 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8D6CA00764892776D69DF964 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,7 +38,6 @@
 		968181E01AF2B34900E2403B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		968181E21AF2B34900E2403B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		968181E51AF2B34900E2403B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		968181EB1AF2B34900E2403B /* trebleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = trebleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		968181FB1AF2B7AD00E2403B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		968181FE1AF2BC0200E2403B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		968182141AF2DEBC00E2403B /* TRBLCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBLCoordinator.h; sourceTree = "<group>"; };
@@ -65,13 +54,6 @@
 			files = (
 				968181FC1AF2B7AD00E2403B /* MapKit.framework in Frameworks */,
 				E79712522A056A1092823D80 /* Pods.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		968181E81AF2B34900E2403B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				968181CF1AF2B34900E2403B /* treble.app */,
-				968181EB1AF2B34900E2403B /* trebleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,24 +151,6 @@
 			productReference = 968181CF1AF2B34900E2403B /* treble.app */;
 			productType = "com.apple.product-type.application";
 		};
-		968181EA1AF2B34900E2403B /* trebleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 968181F81AF2B34900E2403B /* Build configuration list for PBXNativeTarget "trebleTests" */;
-			buildPhases = (
-				968181E71AF2B34900E2403B /* Sources */,
-				968181E81AF2B34900E2403B /* Frameworks */,
-				968181E91AF2B34900E2403B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				968181ED1AF2B34900E2403B /* PBXTargetDependency */,
-			);
-			name = trebleTests;
-			productName = trebleTests;
-			productReference = 968181EB1AF2B34900E2403B /* trebleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -201,10 +164,6 @@
 					968181CE1AF2B34900E2403B = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = MT3LAJ3HH6;
-					};
-					968181EA1AF2B34900E2403B = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 968181CE1AF2B34900E2403B;
 					};
 				};
 			};
@@ -222,7 +181,6 @@
 			projectRoot = "";
 			targets = (
 				968181CE1AF2B34900E2403B /* treble */,
-				968181EA1AF2B34900E2403B /* trebleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -237,13 +195,6 @@
 				9625934B1AF3D2EA002A9DDC /* Additions in Resources */,
 				968181E61AF2B34900E2403B /* LaunchScreen.xib in Resources */,
 				968181E31AF2B34900E2403B /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		968181E91AF2B34900E2403B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,22 +262,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		968181E71AF2B34900E2403B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		968181ED1AF2B34900E2403B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 968181CE1AF2B34900E2403B /* treble */;
-			targetProxy = 968181EC1AF2B34900E2403B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		968181DF1AF2B34900E2403B /* Main.storyboard */ = {
@@ -384,7 +320,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -422,7 +358,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -456,40 +392,6 @@
 			};
 			name = Release;
 		};
-		968181F91AF2B34900E2403B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = trebleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/treble.app/treble";
-			};
-			name = Debug;
-		};
-		968181FA1AF2B34900E2403B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = trebleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/treble.app/treble";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -507,15 +409,6 @@
 			buildConfigurations = (
 				968181F61AF2B34900E2403B /* Debug */,
 				968181F71AF2B34900E2403B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		968181F81AF2B34900E2403B /* Build configuration list for PBXNativeTarget "trebleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				968181F91AF2B34900E2403B /* Debug */,
-				968181FA1AF2B34900E2403B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
