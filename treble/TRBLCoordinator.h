@@ -11,6 +11,8 @@
 
 @interface TRBLCoordinator : NSObject
 
+@property (nonatomic) NSString *mapboxAPIKey;
+
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
 @property (nonatomic) float currentZoom;
 @property (nonatomic) MKCoordinateRegion region;

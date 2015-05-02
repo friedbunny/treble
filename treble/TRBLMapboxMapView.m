@@ -27,6 +27,7 @@ static NSString *const kStyleVersion = @"7";
     
     self.coordinator = [TRBLCoordinator sharedCoordinator];
     
+    self.mapView.accessToken = self.coordinator.mapboxAPIKey;
     self.mapView.showsUserLocation = YES;
     
     self.currentStyle = [[self styles] firstObject];

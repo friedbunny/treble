@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 
+#import "TRBLCoordinator.h"
 #import <GoogleMaps/GMSServices.h>
 
 @interface AppDelegate ()
@@ -20,9 +21,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    
+    NSDictionary *apiKeys = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"APIKeys" ofType:@"plist"]];
+    
+    // Mapbox API key
+    NSString *mapboxAPIKey = [apiKeys objectForKey:@"Mapbox API Key"];
+    NSAssert(mapboxAPIKey, @"REQUIRED: Mapbox API key must be set in APIKeys.plist");
+    [[TRBLCoordinator sharedCoordinator] setMapboxAPIKey:mapboxAPIKey];
+    
     // Google Maps iOS SDK key
-    NSString *googleAPIKey = [[NSProcessInfo processInfo] environment][@"GOOGLE_API_KEY"];
-    NSAssert(googleAPIKey, @"REQUIRED: Google Maps iOS API key must be set as an environment variable");
+    NSString *googleAPIKey = [apiKeys objectForKey:@"Google Maps iOS API Key"];
+    NSAssert(googleAPIKey, @"REQUIRED: Google Maps iOS API key must be set in APIKeys.plist");
     [GMSServices provideAPIKey:googleAPIKey];
     
     return YES;
