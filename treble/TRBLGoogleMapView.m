@@ -34,11 +34,10 @@
 {
     [super viewDidAppear:animated];
     
-    TRBLCoordinator *c = [TRBLCoordinator sharedCoordinator];
-    NSLog(@"GOOG appear: %f, %f (z%f)", c.currentLocation.latitude, c.currentLocation.longitude, c.currentZoom);
+    [self.mapView setRegion:self.coordinator.region animated:NO];
     
-    [self.mapView moveCamera:[GMSCameraUpdate setTarget:self.coordinator.currentLocation
-                                                   zoom:self.coordinator.currentZoom]];
+    //[self.mapView moveCamera:[GMSCameraUpdate setTarget:self.coordinator.currentLocation
+    //                                               zoom:self.coordinator.currentZoom]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -48,9 +47,6 @@
     self.coordinator.currentLocation = self.mapView.camera.target;
     self.coordinator.currentZoom = self.mapView.camera.zoom;
     self.coordinator.region = self.mapView.region;
-    
-    TRBLCoordinator *c = [TRBLCoordinator sharedCoordinator];
-    NSLog(@"GOOG disappear: %f, %f (z%f)", c.currentLocation.latitude, c.currentLocation.longitude, c.currentZoom);
 }
 
 @end

@@ -50,12 +50,10 @@ static NSString *const kStyleVersion = @"7";
 {
     [super viewDidAppear:animated];
 
-    self.mapView.centerCoordinate = self.coordinator.currentLocation;
+    self.mapView.centerCoordinate = self.coordinator.region.center;
     self.mapView.zoomLevel = self.coordinator.currentZoom;
 
     //[self.mapView zoomToSouthWestCoordinate:<#(CLLocationCoordinate2D)#> northEastCoordinate:<#(CLLocationCoordinate2D)#> animated:NO];
-    
-    NSLog(@"MB appear: %f, %f (z%f)", self.coordinator.currentLocation.latitude, self.coordinator.currentLocation.longitude, self.coordinator.currentZoom);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -77,8 +75,6 @@ static NSString *const kStyleVersion = @"7";
                                            toCoordinateFromView:self];*/
     
     //self.coordinator.region = MKCoordinateRegionMakeWithDistance(self.mapView.centerCoordinate, <#CLLocationDistance latitudinalMeters#>, <#CLLocationDistance longitudinalMeters#>);
-    
-    NSLog(@"MB disappear: %f, %f (z%f)", self.coordinator.currentLocation.latitude, self.coordinator.currentLocation.longitude, self.coordinator.currentZoom);
 }
 
 #pragma mark - Gestures -

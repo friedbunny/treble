@@ -32,14 +32,7 @@
 {
     [super viewDidAppear:animated];
     
-    if (CLLocationCoordinate2DIsValid(self.coordinator.region.center))
-        self.mapView.region = self.coordinator.region;
-    
-    else if (CLLocationCoordinate2DIsValid(self.coordinator.currentLocation))
-        self.mapView.centerCoordinate = self.coordinator.currentLocation;
-    
-    TRBLCoordinator *c = [TRBLCoordinator sharedCoordinator];
-    NSLog(@"APPLE appear: %f, %f (z%f)", c.currentLocation.latitude, c.currentLocation.longitude, c.currentZoom);
+    self.mapView.region = self.coordinator.region;
     
     /*MKCoordinateRegion region;
     region.center = [[TRBLCoordinator sharedCoordinator] currentLocation];
@@ -54,10 +47,7 @@
     [super viewWillDisappear:animated];
 
     self.coordinator.currentLocation = self.mapView.centerCoordinate;
-    //self.coordinator.currentZoom = 5.f;
-    
-    TRBLCoordinator *c = [TRBLCoordinator sharedCoordinator];
-    NSLog(@"APPLE disappear: %f, %f (z%f)", c.currentLocation.latitude, c.currentLocation.longitude, c.currentZoom);
+    self.coordinator.region = self.mapView.region;
 }
 
 /*- (NSUInteger)zoomLevel {
