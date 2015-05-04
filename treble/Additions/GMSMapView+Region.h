@@ -1,5 +1,5 @@
 //
-//  GMSMapViewExtensions.h
+//  GMSMapView+Region.h
 //  http://stackoverflow.com/a/23808369/2094275
 //
 
@@ -7,7 +7,7 @@
 #import <MapKit/MapKit.h>
 #import <GoogleMaps/GoogleMaps.h>
 
-@interface GMSMapView (GMSMapViewExtensions)
+@interface GMSMapView (Region)
 
 - (MKCoordinateRegion)region;
 - (MKMapRect)visibleMapRect;

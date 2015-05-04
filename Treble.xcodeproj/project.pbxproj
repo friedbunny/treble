@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9625934B1AF3D2EA002A9DDC /* Additions in Resources */ = {isa = PBXBuildFile; fileRef = 9625934A1AF3D2EA002A9DDC /* Additions */; };
 		962593501AF541FE002A9DDC /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9625934F1AF541FE002A9DDC /* APIKeys.plist */; };
 		968181D51AF2B34900E2403B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181D41AF2B34900E2403B /* main.m */; };
 		968181D81AF2B34900E2403B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181D71AF2B34900E2403B /* AppDelegate.m */; };
@@ -20,13 +19,13 @@
 		968181FF1AF2BC0200E2403B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 968181FE1AF2BC0200E2403B /* Settings.bundle */; };
 		968182161AF2DEBC00E2403B /* TRBLCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 968182151AF2DEBC00E2403B /* TRBLCoordinator.m */; };
 		968182191AF2E20A00E2403B /* TRBLGoogleMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 968182181AF2E20A00E2403B /* TRBLGoogleMapView.m */; };
+		96E5ECF21AF74239008350F9 /* GMSMapView+Region.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E5ECF11AF74239008350F9 /* GMSMapView+Region.m */; };
 		E79712522A056A1092823D80 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D6CA00764892776D69DF964 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		17375318C2A915686C03C795 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8D6CA00764892776D69DF964 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9625934A1AF3D2EA002A9DDC /* Additions */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Additions; sourceTree = "<group>"; };
 		9625934F1AF541FE002A9DDC /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		968181CF1AF2B34900E2403B /* treble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = treble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		968181D31AF2B34900E2403B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,6 +45,8 @@
 		968182151AF2DEBC00E2403B /* TRBLCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLCoordinator.m; sourceTree = "<group>"; };
 		968182171AF2E20A00E2403B /* TRBLGoogleMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBLGoogleMapView.h; sourceTree = "<group>"; };
 		968182181AF2E20A00E2403B /* TRBLGoogleMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLGoogleMapView.m; sourceTree = "<group>"; };
+		96E5ECF01AF74239008350F9 /* GMSMapView+Region.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GMSMapView+Region.h"; path = "Additions/GMSMapView+Region.h"; sourceTree = "<group>"; };
+		96E5ECF11AF74239008350F9 /* GMSMapView+Region.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GMSMapView+Region.m"; path = "Additions/GMSMapView+Region.m"; sourceTree = "<group>"; };
 		B116BA8F324DD84E8CA1E8CC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,7 +102,7 @@
 		968181D11AF2B34900E2403B /* treble */ = {
 			isa = PBXGroup;
 			children = (
-				9625934A1AF3D2EA002A9DDC /* Additions */,
+				96E5ECF31AF743BA008350F9 /* Additions */,
 				968181D61AF2B34900E2403B /* AppDelegate.h */,
 				968181D71AF2B34900E2403B /* AppDelegate.m */,
 				968182141AF2DEBC00E2403B /* TRBLCoordinator.h */,
@@ -129,6 +130,15 @@
 				9625934F1AF541FE002A9DDC /* APIKeys.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		96E5ECF31AF743BA008350F9 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				96E5ECF01AF74239008350F9 /* GMSMapView+Region.h */,
+				96E5ECF11AF74239008350F9 /* GMSMapView+Region.m */,
+			);
+			name = Additions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,7 +205,6 @@
 			files = (
 				968181FF1AF2BC0200E2403B /* Settings.bundle in Resources */,
 				968181E11AF2B34900E2403B /* Main.storyboard in Resources */,
-				9625934B1AF3D2EA002A9DDC /* Additions in Resources */,
 				962593501AF541FE002A9DDC /* APIKeys.plist in Resources */,
 				968181E61AF2B34900E2403B /* LaunchScreen.xib in Resources */,
 				968181E31AF2B34900E2403B /* Images.xcassets in Resources */,
@@ -259,6 +268,7 @@
 			files = (
 				968182191AF2E20A00E2403B /* TRBLGoogleMapView.m in Sources */,
 				968181DE1AF2B34900E2403B /* TRBLMapKitMapView.m in Sources */,
+				96E5ECF21AF74239008350F9 /* GMSMapView+Region.m in Sources */,
 				968181D81AF2B34900E2403B /* AppDelegate.m in Sources */,
 				968181DB1AF2B34900E2403B /* TRBLMapboxMapView.m in Sources */,
 				968182161AF2DEBC00E2403B /* TRBLCoordinator.m in Sources */,

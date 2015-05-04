@@ -32,7 +32,10 @@
 {
     [super viewDidAppear:animated];
     
-    if (CLLocationCoordinate2DIsValid(self.coordinator.currentLocation))
+    if (CLLocationCoordinate2DIsValid(self.coordinator.region.center))
+        self.mapView.region = self.coordinator.region;
+    
+    else if (CLLocationCoordinate2DIsValid(self.coordinator.currentLocation))
         self.mapView.centerCoordinate = self.coordinator.currentLocation;
     
     TRBLCoordinator *c = [TRBLCoordinator sharedCoordinator];

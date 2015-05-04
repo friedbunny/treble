@@ -9,7 +9,7 @@
 #import "TRBLGoogleMapView.h"
 #import "TRBLCoordinator.h"
 #import <GoogleMaps/GoogleMaps.h>
-#import "Additions/GMSMapViewExtensions.h"
+#import "GMSMapView+Region.h"
 
 @interface TRBLGoogleMapView ()
 
@@ -47,6 +47,7 @@
     
     self.coordinator.currentLocation = self.mapView.camera.target;
     self.coordinator.currentZoom = self.mapView.camera.zoom;
+    self.coordinator.region = self.mapView.region;
     
     TRBLCoordinator *c = [TRBLCoordinator sharedCoordinator];
     NSLog(@"GOOG disappear: %f, %f (z%f)", c.currentLocation.latitude, c.currentLocation.longitude, c.currentZoom);

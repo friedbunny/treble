@@ -1,11 +1,11 @@
 //
-//  GMSMapViewExtensions.m
+//  GMSMapView+Region.m
 //  http://stackoverflow.com/a/23808369/2094275
 //
 
-#import "GMSMapViewExtensions.h"
+#import "GMSMapView+Region.h"
 
-@implementation GMSMapView (GMSMapViewExtensions)
+@implementation GMSMapView (Region)
 
 - (MKCoordinateRegion)region
 {
@@ -39,12 +39,15 @@
 - (MKMapRect)visibleMapRect
 {
     MKCoordinateRegion region = [self region];
+    
     MKMapPoint a = MKMapPointForCoordinate(CLLocationCoordinate2DMake(
-                                                                      region.center.latitude + region.span.latitudeDelta / 2,
-                                                                      region.center.longitude - region.span.longitudeDelta / 2));
+        region.center.latitude + region.span.latitudeDelta / 2,
+        region.center.longitude - region.span.longitudeDelta / 2));
+    
     MKMapPoint b = MKMapPointForCoordinate(CLLocationCoordinate2DMake(
-                                                                      region.center.latitude - region.span.latitudeDelta / 2,
-                                                                      longitudeDelta / 2));
+        region.center.latitude - region.span.latitudeDelta / 2,
+        region.center.longitude + region.span.longitudeDelta / 2));
+    
     return MKMapRectMake(MIN(a.x, b.x), MIN(a.y, b.y), ABS(a.x - b.x), ABS(a.y - b.y));
 }
 
