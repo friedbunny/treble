@@ -29,6 +29,7 @@ static NSString *const kStyleVersion = @"7";
     
     self.mapView.accessToken = self.coordinator.mapboxAPIKey;
     self.mapView.showsUserLocation = YES;
+    self.mapView.delegate = self;
     
     self.currentStyle = [[self styles] firstObject];
     
@@ -60,9 +61,6 @@ static NSString *const kStyleVersion = @"7";
 {
     [super viewWillDisappear:animated];
 
-    self.coordinator.currentLocation = self.mapView.centerCoordinate;
-    self.coordinator.currentZoom = self.mapView.zoomLevel;
-    
     /*CGPoint userLocationPoint = [self convertCoordinate:self.mapView.userLocation.coordinate toPointToView:self];
     CGFloat pixelRadius = fminf(self.mapView.bounds.size.width, self.mapView.bounds.size.height) / 2;
     
@@ -75,6 +73,12 @@ static NSString *const kStyleVersion = @"7";
                                            toCoordinateFromView:self];*/
     
     //self.coordinator.region = MKCoordinateRegionMakeWithDistance(self.mapView.centerCoordinate, <#CLLocationDistance latitudinalMeters#>, <#CLLocationDistance longitudinalMeters#>);
+}
+
+- (void)mapView:(MGLMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    self.coordinator.currentLocation = self.mapView.centerCoordinate;
+    self.coordinator.currentZoom = self.mapView.zoomLevel;
 }
 
 #pragma mark - Gestures -

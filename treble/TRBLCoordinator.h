@@ -16,6 +16,7 @@
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
 @property (nonatomic) float currentZoom;
 @property (nonatomic) MKCoordinateRegion region;
+@property (nonatomic) CLLocationDirection bearing;
 
 + (TRBLCoordinator *)sharedCoordinator;
 - (instancetype)init;

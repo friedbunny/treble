@@ -10,7 +10,7 @@
 #import "TRBLCoordinator.h"
 #import <MapKit/MapKit.h>
 
-@interface TRBLMapKitMapView ()
+@interface TRBLMapKitMapView () <MKMapViewDelegate>
 
 @property (nonatomic) IBOutlet MKMapView *mapView;
 @property TRBLCoordinator *coordinator;
@@ -26,6 +26,7 @@
     self.coordinator = [TRBLCoordinator sharedCoordinator];
     
     self.mapView.showsUserLocation = YES;
+    self.mapView.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -33,21 +34,19 @@
     [super viewDidAppear:animated];
     
     self.mapView.region = self.coordinator.region;
-    
-    /*MKCoordinateRegion region;
-    region.center = [[TRBLCoordinator sharedCoordinator] currentLocation];
-    region.span.latitudeDelta = 1;
-    region.span.longitudeDelta = 1;
-    region = [self.mapView regionThatFits:region];
-    [self.mapView setRegion:region animated:NO];*/
+    self.mapView.camera.heading = self.coordinator.bearing;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+}
 
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
     self.coordinator.currentLocation = self.mapView.centerCoordinate;
     self.coordinator.region = self.mapView.region;
+    self.coordinator.bearing = self.mapView.camera.heading;
 }
 
 /*- (NSUInteger)zoomLevel {

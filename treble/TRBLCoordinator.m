@@ -29,6 +29,8 @@
     if (self) {
         self.currentLocation = CLLocationCoordinate2DMake(39.8282, -98.5795);
         self.currentZoom = 2.0f;
+        self.region = MKCoordinateRegionMakeWithDistance(self.currentLocation, 5000000, 5000000);
+        self.bearing = 0;
     }
     
     return self;

@@ -10,7 +10,7 @@
 @interface GMSMapView (Region)
 
 - (MKCoordinateRegion)region;
-- (void)setRegion:(MKCoordinateRegion)region animated:(BOOL)animated;
+- (void)setRegion:(MKCoordinateRegion)region bearing:(CLLocationDegrees)bearing animated:(BOOL)animated;
 - (MKMapRect)visibleMapRect;
 
 @end

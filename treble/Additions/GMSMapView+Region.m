@@ -35,15 +35,23 @@
     return MKCoordinateRegionMake(centre, span);
 }
 
-- (void)setRegion:(MKCoordinateRegion)region animated:(BOOL)animated
+- (void)setRegion:(MKCoordinateRegion)region bearing:(CLLocationDegrees)bearing animated:(BOOL)animated
 {
-    // https://bitbucket.org/dlunch/mapchanger/src/beaeb4e5c95df269dd2534ae89cfa757727c2265/GoogleMapView.m?at=master
-
     double min_lat = region.center.latitude - region.span.latitudeDelta / 2;
     double min_lon = region.center.longitude - region.span.longitudeDelta / 2;
+    CLLocationCoordinate2D min = CLLocationCoordinate2DMake(min_lat, min_lon);
+
     double max_lat = region.center.latitude + region.span.latitudeDelta / 2;
     double max_lon = region.center.longitude + region.span.longitudeDelta / 2;
+    CLLocationCoordinate2D max = CLLocationCoordinate2DMake(max_lat, max_lon);
 
+    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:min coordinate:max];
+    GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate fitBounds:bounds withPadding:8.f];
+
+    animated ? [self animateWithCameraUpdate:cameraUpdate] : [self moveCamera:cameraUpdate];
+
+    /*
+    
     //min of height and width of element which contains the map
     float mapdisplay = MIN(self.frame.size.width, self.frame.size.height);
 
@@ -59,8 +67,13 @@
 
     //NSLog(@"setRegion %d %f %f %f %f %f", mapdisplay, min_lat, min_lon, max_lat, max_lon, zoom);
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:region.center.latitude
-                                                            longitude:region.center.longitude zoom:zoom];
+                                                            longitude:region.center.longitude
+                                                                 zoom:zoom
+                                                              bearing:bearing
+                                                         viewingAngle:0];
     animated ? [self animateToCameraPosition:camera] : [self setCamera:camera];
+    
+     */
 }
 
 - (MKMapRect)visibleMapRect
