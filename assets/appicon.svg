@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1024px" height="1024px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>treble appicon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="treble-appicon" sketch:type="MSLayerGroup">
+            <rect id="Shape" fill="#3BB2D0" sketch:type="MSShapeGroup" x="4.8316906e-13" y="8.52651283e-14" width="1024" height="1024"></rect>
+            <path d="M292.920889,386.059378 C241.572978,386.059378 199.805156,344.280178 199.805156,292.932267 C199.805156,241.584356 241.584356,199.805156 292.920889,199.805156 C344.280178,199.805156 386.048,241.584356 386.048,292.932267 C386.048,344.280178 344.2688,386.059378 292.920889,386.059378 L292.920889,386.059378 Z" id="Path" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path d="M512,605.127111 C460.640711,605.127111 418.872889,563.347911 418.872889,512 C418.872889,460.652089 460.652089,418.872889 512,418.872889 C563.347911,418.872889 605.115733,460.652089 605.115733,512 C605.115733,563.347911 563.347911,605.127111 512,605.127111 L512,605.127111 Z" id="Path" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path d="M731.067733,824.206222 C679.708444,824.206222 637.940622,782.427022 637.940622,731.079111 C637.940622,679.7312 679.719822,637.952 731.067733,637.952 C782.427022,637.952 824.194844,679.7312 824.194844,731.079111 C824.194844,782.427022 782.427022,824.206222 731.067733,824.206222 L731.067733,824.206222 Z" id="Path" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>
