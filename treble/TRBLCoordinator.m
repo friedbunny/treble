@@ -27,13 +27,35 @@
     self = [super init];
     
     if (self) {
-        self.currentLocation = CLLocationCoordinate2DMake(39.8282, -98.5795);
-        self.currentZoom = 2.0f;
-        self.region = MKCoordinateRegionMakeWithDistance(self.currentLocation, 5000000, 5000000);
+        self.centerCoordinate = kCLLocationCoordinate2DInvalid;
         self.bearing = 0;
+        self.southWest = CLLocationCoordinate2DMake(37.355402, -125.091839);
+        self.northEast = CLLocationCoordinate2DMake(49.279846, -115.811519);
+        [self setNeedsUpdateFromVendor:TRBLMapVendorNone];
     }
     
     return self;
+}
+
+- (void)setNeedsUpdateFromVendor:(TRBLMapVendor)vendor
+{
+    switch (vendor) {
+        case TRBLMapVendorMapbox:
+            self.needsUpdateMapKit = self.needsUpdateGoogle = YES;
+            break;
+            
+        case TRBLMapVendorMapKit:
+            self.needsUpdateMapbox = self.needsUpdateGoogle = YES;
+            break;
+            
+        case TRBLMapVendorGoogle:
+            self.needsUpdateMapbox = self.needsUpdateMapKit = YES;
+            break;
+        
+        case TRBLMapVendorNone:
+            self.needsUpdateMapbox = self.needsUpdateMapKit = self.needsUpdateGoogle = YES;
+            break;
+    }
 }
 
 @end

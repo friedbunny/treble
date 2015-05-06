@@ -9,16 +9,30 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
+typedef NS_ENUM(NSInteger, TRBLMapVendor) {
+    TRBLMapVendorMapbox,
+    TRBLMapVendorMapKit,
+    TRBLMapVendorGoogle,
+    TRBLMapVendorNone
+};
+
 @interface TRBLCoordinator : NSObject
-
-@property (nonatomic) NSString *mapboxAPIKey;
-
-@property (nonatomic) CLLocationCoordinate2D currentLocation;
-@property (nonatomic) float currentZoom;
-@property (nonatomic) MKCoordinateRegion region;
-@property (nonatomic) CLLocationDirection bearing;
 
 + (TRBLCoordinator *)sharedCoordinator;
 - (instancetype)init;
 
+@property (nonatomic) NSString *mapboxAPIKey;
+
+@property (nonatomic) CLLocationCoordinate2D centerCoordinate;
+@property (nonatomic) CLLocationCoordinate2D northEast;
+@property (nonatomic) CLLocationCoordinate2D southWest;
+@property (nonatomic) CLLocationDirection bearing;
+
+@property (nonatomic) BOOL needsUpdateMapbox;
+@property (nonatomic) BOOL needsUpdateMapKit;
+@property (nonatomic) BOOL needsUpdateGoogle;
+
+- (void)setNeedsUpdateFromVendor:(TRBLMapVendor)vendor;
+
 @end
+

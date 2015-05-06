@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapboxGL/MapboxGL.h>
+#import "MapboxGL.h"
 
 @interface TRBLMapboxMapView : UIViewController
-
 
 @end
 
@@ -19,6 +18,7 @@
 @interface MGLMapView ()
 
 - (void)zoomToSouthWestCoordinate:(CLLocationCoordinate2D)southWestCoordinate northEastCoordinate:(CLLocationCoordinate2D)northEastCoordinate animated:(BOOL)animated;
-- (CGPoint)convertCoordinate:(CLLocationCoordinate2D)coordinate toPointToView:(UIView *)view;
+
+- (void)fitBoundsToSouthWestCoordinate:(CLLocationCoordinate2D)southWestCoordinate northEastCoordinate:(CLLocationCoordinate2D)northEastCoordinate padding:(CGFloat)padding animated:(BOOL)animated;
 
 @end

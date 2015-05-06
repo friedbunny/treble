@@ -14,6 +14,7 @@
 
 @property (nonatomic) IBOutlet MKMapView *mapView;
 @property TRBLCoordinator *coordinator;
+@property (nonatomic) BOOL shouldUpdateCoordinates;
 
 @end
 
@@ -33,20 +34,32 @@
 {
     [super viewDidAppear:animated];
     
-    self.mapView.region = self.coordinator.region;
-    self.mapView.camera.heading = self.coordinator.bearing;
+    if (self.coordinator.needsUpdateMapKit)
+    {
+        //self.mapView.region = self.coordinator.region;
+        self.mapView.camera.heading = self.coordinator.bearing;
+        
+        self.coordinator.needsUpdateMapKit = NO;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    if (self.shouldUpdateCoordinates)
+    {
+        self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
+        self.coordinator.bearing = self.mapView.camera.heading;
+        
+        [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapKit];
+        self.shouldUpdateCoordinates = NO;
+    }
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    self.coordinator.currentLocation = self.mapView.centerCoordinate;
-    self.coordinator.region = self.mapView.region;
-    self.coordinator.bearing = self.mapView.camera.heading;
+    self.shouldUpdateCoordinates = YES;
 }
 
 /*- (NSUInteger)zoomLevel {

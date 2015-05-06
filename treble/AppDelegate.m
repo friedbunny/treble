@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 
-#import "TRBLCoordinator.h"
 #import <GoogleMaps/GMSServices.h>
+#import "MapboxGL.h"
 
 @interface AppDelegate ()
 
@@ -18,8 +18,10 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    // Set global app tint color
+    self.window.tintColor = [UIColor colorWithRed:59.f/255.f green:178.f/255.f blue:208.f/255.f alpha:1.f];
     
     // Read APIKeys.plist, see APIKeys.EXAMPLE.plist for the format
     NSDictionary *apiKeys = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"APIKeys" ofType:@"plist"]];
@@ -27,7 +29,7 @@
     // Mapbox API key
     NSString *mapboxAPIKey = [apiKeys objectForKey:@"Mapbox API Key"];
     NSAssert(mapboxAPIKey, @"REQUIRED: Mapbox API key must be set in APIKeys.plist");
-    [[TRBLCoordinator sharedCoordinator] setMapboxAPIKey:mapboxAPIKey];
+    [MGLAccountManager setAccessToken:mapboxAPIKey];
     
     // Google Maps iOS SDK key
     NSString *googleAPIKey = [apiKeys objectForKey:@"Google Maps iOS API Key"];

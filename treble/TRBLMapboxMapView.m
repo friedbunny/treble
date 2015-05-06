@@ -11,12 +11,13 @@
 
 static NSString *const kStyleVersion = @"7";
 
-@interface TRBLMapboxMapView () <MGLMapViewDelegate, UIGestureRecognizerDelegate>
+@interface TRBLMapboxMapView () <MGLMapViewDelegate>
 
 @property (nonatomic) IBOutlet MGLMapView *mapView;
 @property (nonatomic) UITapGestureRecognizer *tap;
 @property (nonatomic) NSString *currentStyle;
 @property TRBLCoordinator *coordinator;
+@property (nonatomic) BOOL shouldUpdateCoordinates;
 
 @end
 
@@ -27,65 +28,56 @@ static NSString *const kStyleVersion = @"7";
     
     self.coordinator = [TRBLCoordinator sharedCoordinator];
     
-    self.mapView.accessToken = self.coordinator.mapboxAPIKey;
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
     
     self.currentStyle = [[self styles] firstObject];
-    
-    // setup single tap gesture, which requires failure of double tap
-    // currently clobbers double-tap zoom
-    //
-    UITapGestureRecognizer *doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
-    doubleTapGestureRecognizer.numberOfTapsRequired = 2;
-    [self.mapView addGestureRecognizer:doubleTapGestureRecognizer];
-    
-    self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
-    self.tap.delegate = self;
-    self.tap.numberOfTapsRequired = 1;
-    [self.tap requireGestureRecognizerToFail:doubleTapGestureRecognizer];
-    [self.mapView addGestureRecognizer:self.tap];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 
-    self.mapView.centerCoordinate = self.coordinator.region.center;
-    self.mapView.zoomLevel = self.coordinator.currentZoom;
+    NSLog(@"MB appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
+    
+    if (self.coordinator.needsUpdateMapbox)
+    {
+        NSLog(@"MB: Updating start coords");
+        [self.mapView fitBoundsToSouthWestCoordinate:self.coordinator.southWest northEastCoordinate:self.coordinator.northEast padding:0 animated:NO];
+        
+        self.coordinator.needsUpdateMapbox = NO;
+    }
 
-    //[self.mapView zoomToSouthWestCoordinate:<#(CLLocationCoordinate2D)#> northEastCoordinate:<#(CLLocationCoordinate2D)#> animated:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
 
-    /*CGPoint userLocationPoint = [self convertCoordinate:self.mapView.userLocation.coordinate toPointToView:self];
-    CGFloat pixelRadius = fminf(self.mapView.bounds.size.width, self.mapView.bounds.size.height) / 2;
+    if (self.shouldUpdateCoordinates)
+    {
+        self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
+        
+        CLLocationCoordinate2D southWest = [self.mapView convertPoint:CGPointMake(0, self.view.bounds.size.height)
+                                                 toCoordinateFromView:self.mapView];
+        
+        CLLocationCoordinate2D northEast = [self.mapView convertPoint:CGPointMake(self.mapView.bounds.size.width, 0)
+                                                 toCoordinateFromView:self.mapView];
+        
+        self.coordinator.southWest = southWest;
+        self.coordinator.northEast = northEast;
+        
+        [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapbox];
+        self.shouldUpdateCoordinates = NO;
+    }
     
-    CLLocationCoordinate2D actualSouthWest = [self.mapView convertPoint:CGPointMake(userLocationPoint.x - pixelRadius,
-                                                                            userLocationPoint.y - pixelRadius)
-                                           toCoordinateFromView:self];
-    
-    CLLocationCoordinate2D actualNorthEast = [self.mapView convertPoint:CGPointMake(userLocationPoint.x + pixelRadius,
-                                                                            userLocationPoint.y + pixelRadius)
-                                           toCoordinateFromView:self];*/
-    
-    //self.coordinator.region = MKCoordinateRegionMakeWithDistance(self.mapView.centerCoordinate, <#CLLocationDistance latitudinalMeters#>, <#CLLocationDistance longitudinalMeters#>);
+    NSLog(@"MB disappear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
 }
 
 - (void)mapView:(MGLMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    self.coordinator.currentLocation = self.mapView.centerCoordinate;
-    self.coordinator.currentZoom = self.mapView.zoomLevel;
-}
-
-#pragma mark - Gestures -
-
-- (void)handleTapGesture:(id)sender
-{
-    [self cycleStyles];
+    NSLog(@"MB: regionDidChangeAnimated");
+    self.shouldUpdateCoordinates = YES;
 }
 
 - (NSArray *)styles
@@ -125,45 +117,6 @@ static NSString *const kStyleVersion = @"7";
                               kStyleVersion]];
     
     self.currentStyle = styleName;
-}
-
-- (void)locateUser
-{
-    if (self.mapView.userTrackingMode == MGLUserTrackingModeNone)
-    {
-        self.mapView.userTrackingMode = MGLUserTrackingModeFollow;
-    }
-    else if (self.mapView.userTrackingMode == MGLUserTrackingModeFollow)
-    {
-        self.mapView.userTrackingMode = MGLUserTrackingModeFollowWithHeading;
-    }
-    else
-    {
-        self.mapView.userTrackingMode = MGLUserTrackingModeNone;
-    }
-}
-
-- (void)mapView:(MGLMapView *)mapView didChangeUserTrackingMode:(MGLUserTrackingMode)mode animated:(BOOL)animated
-{
-    UIImage *newButtonImage;
-    
-    switch (mode) {
-        case MGLUserTrackingModeNone:
-            newButtonImage = [UIImage imageNamed:@"TrackingLocationOffMask.png"];
-            break;
-            
-        case MGLUserTrackingModeFollow:
-            newButtonImage = [UIImage imageNamed:@"TrackingLocationMask.png"];
-            break;
-            
-        case MGLUserTrackingModeFollowWithHeading:
-            newButtonImage = [UIImage imageNamed:@"TrackingHeadingMask.png"];
-            break;
-    }
-    
-    [UIView animateWithDuration:0.25 animations:^{
-        self.navigationItem.rightBarButtonItem.image = newButtonImage;
-    }];
 }
 
 @end
