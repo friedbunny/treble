@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MapboxGL.h"
+#import <MapboxGL/MapboxGL.h>
 
 @interface TRBLMapboxMapView : UIViewController
 

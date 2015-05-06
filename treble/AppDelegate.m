@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import <GoogleMaps/GMSServices.h>
-#import "MapboxGL.h"
+#import <MapboxGL/MapboxGL.h>
 
 @interface AppDelegate ()
 

@@ -20,12 +20,13 @@
 		968182161AF2DEBC00E2403B /* TRBLCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 968182151AF2DEBC00E2403B /* TRBLCoordinator.m */; };
 		968182191AF2E20A00E2403B /* TRBLGoogleMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 968182181AF2E20A00E2403B /* TRBLGoogleMapView.m */; };
 		96E5ECF21AF74239008350F9 /* GMSMapView+Region.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E5ECF11AF74239008350F9 /* GMSMapView+Region.m */; };
-		E79712522A056A1092823D80 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D6CA00764892776D69DF964 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		96E5ECF61AF833B2008350F9 /* MKMapView+Bounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E5ECF51AF833B2008350F9 /* MKMapView+Bounds.m */; };
+		BD80ACFAA4DFBC0C4B24A1DA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D6DC48BF10E7E26FA89EB7 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		17375318C2A915686C03C795 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		8D6CA00764892776D69DF964 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65D6DC48BF10E7E26FA89EB7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9625934F1AF541FE002A9DDC /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		968181CF1AF2B34900E2403B /* treble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = treble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		968181D31AF2B34900E2403B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +48,8 @@
 		968182181AF2E20A00E2403B /* TRBLGoogleMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLGoogleMapView.m; sourceTree = "<group>"; };
 		96E5ECF01AF74239008350F9 /* GMSMapView+Region.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GMSMapView+Region.h"; path = "Additions/GMSMapView+Region.h"; sourceTree = "<group>"; };
 		96E5ECF11AF74239008350F9 /* GMSMapView+Region.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GMSMapView+Region.m"; path = "Additions/GMSMapView+Region.m"; sourceTree = "<group>"; };
+		96E5ECF41AF833B2008350F9 /* MKMapView+Bounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKMapView+Bounds.h"; path = "Additions/MKMapView+Bounds.h"; sourceTree = "<group>"; };
+		96E5ECF51AF833B2008350F9 /* MKMapView+Bounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKMapView+Bounds.m"; path = "Additions/MKMapView+Bounds.m"; sourceTree = "<group>"; };
 		B116BA8F324DD84E8CA1E8CC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,7 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				968181FC1AF2B7AD00E2403B /* MapKit.framework in Frameworks */,
-				E79712522A056A1092823D80 /* Pods.framework in Frameworks */,
+				BD80ACFAA4DFBC0C4B24A1DA /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				968181FB1AF2B7AD00E2403B /* MapKit.framework */,
-				8D6CA00764892776D69DF964 /* Pods.framework */,
+				65D6DC48BF10E7E26FA89EB7 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -137,6 +140,8 @@
 			children = (
 				96E5ECF01AF74239008350F9 /* GMSMapView+Region.h */,
 				96E5ECF11AF74239008350F9 /* GMSMapView+Region.m */,
+				96E5ECF41AF833B2008350F9 /* MKMapView+Bounds.h */,
+				96E5ECF51AF833B2008350F9 /* MKMapView+Bounds.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -152,8 +157,8 @@
 				968181CB1AF2B34900E2403B /* Sources */,
 				968181CC1AF2B34900E2403B /* Frameworks */,
 				968181CD1AF2B34900E2403B /* Resources */,
-				CFA0740576F669F9F2B82E59 /* Embed Pods Frameworks */,
 				82719E9592AF1F70B9EF57FF /* Copy Pods Resources */,
+				3246FCF5D38FF69625D8E9EF /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -229,6 +234,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		3246FCF5D38FF69625D8E9EF /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		82719E9592AF1F70B9EF57FF /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,21 +264,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CFA0740576F669F9F2B82E59 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -270,6 +275,7 @@
 				968181DE1AF2B34900E2403B /* TRBLMapKitMapView.m in Sources */,
 				96E5ECF21AF74239008350F9 /* GMSMapView+Region.m in Sources */,
 				968181D81AF2B34900E2403B /* AppDelegate.m in Sources */,
+				96E5ECF61AF833B2008350F9 /* MKMapView+Bounds.m in Sources */,
 				968181DB1AF2B34900E2403B /* TRBLMapboxMapView.m in Sources */,
 				968182161AF2DEBC00E2403B /* TRBLCoordinator.m in Sources */,
 				968181D51AF2B34900E2403B /* main.m in Sources */,
@@ -389,7 +395,12 @@
 				INFOPLIST_FILE = treble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mapbox-gl-ios",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -402,7 +413,12 @@
 				INFOPLIST_FILE = treble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mapbox-gl-ios",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
