@@ -14,10 +14,11 @@ Treble is still extremely rough and development continues apace. If you want to 
 1. Add your [Mapbox access token](https://www.mapbox.com/developers/api/#access-tokens) and [Google API key](https://developers.google.com/maps/documentation/ios/start#the_google_maps_api_key) to `APIKeys.plist`
 1. Open `Treble.xcworkspace` in Xcode and build it for your device or simulator
 
-## Known problems
+## Known issues
 
 * Apple MapKit does not sync zoom with Mapbox or Google ([Issue #2](https://github.com/friedbunny/treble/issues/2))
 * Bearing/heading does not sync
+* Uses a [custom fork of Mapbox GL](https://github.com/friedbunny/mapbox-gl-native/tree/treble) that closely tracks `master`
 
 ## Contributing
 
