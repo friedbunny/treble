@@ -29,6 +29,7 @@ static NSString *const kStyleVersion = @"7";
     self.coordinator = [TRBLCoordinator sharedCoordinator];
     
     self.mapView.showsUserLocation = YES;
+    self.mapView.userTrackingMode = MGLUserTrackingModeFollow;
     self.mapView.delegate = self;
     
     self.currentStyle = [[self styles] firstObject];
@@ -38,12 +39,14 @@ static NSString *const kStyleVersion = @"7";
 {
     [super viewDidAppear:animated];
 
-    NSLog(@"MB appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
+    //NSLog(@"MB appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
     if (self.coordinator.needsUpdateMapbox)
     {
         NSLog(@"MB: Updating start coords");
         [self.mapView fitBoundsToSouthWestCoordinate:self.coordinator.southWest northEastCoordinate:self.coordinator.northEast padding:0 animated:NO];
+        
+        //self.mapView.direction = self.coordinator.bearing;
         
         self.coordinator.needsUpdateMapbox = NO;
     }
@@ -71,12 +74,11 @@ static NSString *const kStyleVersion = @"7";
         self.shouldUpdateCoordinates = NO;
     }
     
-    NSLog(@"MB disappear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
+    //NSLog(@"MB disappear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
 }
 
 - (void)mapView:(MGLMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    NSLog(@"MB: regionDidChangeAnimated");
     self.shouldUpdateCoordinates = YES;
 }
 

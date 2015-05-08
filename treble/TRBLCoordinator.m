@@ -29,9 +29,9 @@
     if (self) {
         self.centerCoordinate = kCLLocationCoordinate2DInvalid;
         self.bearing = 0;
-        self.southWest = CLLocationCoordinate2DMake(37.355402, -125.091839);
-        self.northEast = CLLocationCoordinate2DMake(49.279846, -115.811519);
-        [self setNeedsUpdateFromVendor:TRBLMapVendorNone];
+        self.southWest = CLLocationCoordinate2DMake(22.310389, -127.551460);
+        self.northEast = CLLocationCoordinate2DMake(49.384358, -66.885444);
+        [self setNeedsUpdateFromVendor:TRBLMapVendorMapbox];
     }
     
     return self;

@@ -37,6 +37,7 @@
     if (self.coordinator.needsUpdateMapKit)
     {
         //self.mapView.region = self.coordinator.region;
+        self.mapView.centerCoordinate = self.coordinator.centerCoordinate;
         self.mapView.camera.heading = self.coordinator.bearing;
         
         self.coordinator.needsUpdateMapKit = NO;
