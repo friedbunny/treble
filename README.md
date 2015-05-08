@@ -14,7 +14,7 @@ Treble is still extremely rough and development continues apace. If you want to 
 
 ## Known problems
 
-* Apple MapKit does not sync zoom with Mapbox or Google
+* Apple MapKit does not sync zoom with Mapbox or Google ([Issue #2](https://github.com/friedbunny/treble/issues/2))
 * Bearing/heading does not sync
 
 ## Contributing
