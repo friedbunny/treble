@@ -10,10 +10,10 @@
 #import <MapKit/MapKit.h>
 
 typedef NS_ENUM(NSInteger, TRBLMapVendor) {
+    TRBLMapVendorNone = 0,
     TRBLMapVendorMapbox,
     TRBLMapVendorMapKit,
     TRBLMapVendorGoogle,
-    TRBLMapVendorNone
 };
 
 @interface TRBLCoordinator : NSObject

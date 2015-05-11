@@ -14,7 +14,6 @@ static NSString *const kStyleVersion = @"7";
 @interface TRBLMapboxMapView () <MGLMapViewDelegate>
 
 @property (nonatomic) IBOutlet MGLMapView *mapView;
-@property (nonatomic) UITapGestureRecognizer *tap;
 @property (nonatomic) NSString *currentStyle;
 @property TRBLCoordinator *coordinator;
 @property (nonatomic) BOOL shouldUpdateCoordinates;
