@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E17e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
@@ -24,7 +24,7 @@
                             <outlet property="delegate" destination="9pv-A4-QxB" id="Q4C-Aw-zH8"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mapbox" image="second" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Mapbox" image="Mapbox (Tab Bar)" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="mapView" destination="tsR-hK-woN" id="dea-9n-OXY"/>
                     </connections>
@@ -41,7 +41,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </mapView>
-                    <tabBarItem key="tabBarItem" title="Apple" image="first" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Apple" image="Apple (Tab Bar)" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="mapView" destination="v5Q-Wq-PNq" id="ru0-p3-NlB"/>
                     </connections>
@@ -63,7 +63,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Google" id="qZn-5x-Fe9"/>
+                    <tabBarItem key="tabBarItem" title="Google" image="Google (Tab Bar)" id="qZn-5x-Fe9"/>
                     <connections>
                         <outlet property="mapView" destination="3aw-50-mJA" id="xh4-WV-4UK"/>
                     </connections>
@@ -94,7 +94,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="Apple (Tab Bar)" width="25" height="25"/>
+        <image name="Google (Tab Bar)" width="25" height="25"/>
+        <image name="Mapbox (Tab Bar)" width="25" height="25"/>
     </resources>
 </document>
