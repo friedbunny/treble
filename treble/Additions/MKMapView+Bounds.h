@@ -10,4 +10,9 @@
 
 @interface MKMapView (Bounds)
 
+- (void)fitBoundsToSouthWestCoordinate:(CLLocationCoordinate2D)southWestCoordinate northEastCoordinate:(CLLocationCoordinate2D)northEastCoordinate;
+
+- (CLLocationCoordinate2D)southWestCoordinate;
+- (CLLocationCoordinate2D)northEastCoordinate;
+
 @end

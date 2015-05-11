@@ -8,7 +8,9 @@
 
 #import "TRBLMapKitMapView.h"
 #import "TRBLCoordinator.h"
+
 #import <MapKit/MapKit.h>
+#import "Additions/MKMapView+Bounds.h"
 
 @interface TRBLMapKitMapView () <MKMapViewDelegate>
 
@@ -34,10 +36,13 @@
 {
     [super viewDidAppear:animated];
     
+    //NSLog(@"APPL appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
+    
     if (self.coordinator.needsUpdateMapKit)
     {
-        //self.mapView.region = self.coordinator.region;
-        self.mapView.centerCoordinate = self.coordinator.centerCoordinate;
+        NSLog(@"APPL: Updating start coords");
+        [self.mapView fitBoundsToSouthWestCoordinate:self.coordinator.southWest northEastCoordinate:self.coordinator.northEast];
+
         self.mapView.camera.heading = self.coordinator.bearing;
         
         self.coordinator.needsUpdateMapKit = NO;
@@ -50,21 +55,21 @@
     
     if (self.shouldUpdateCoordinates)
     {
+        self.coordinator.southWest = self.mapView.southWestCoordinate;
+        self.coordinator.northEast = self.mapView.northEastCoordinate;
         self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
         self.coordinator.bearing = self.mapView.camera.heading;
         
         [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapKit];
         self.shouldUpdateCoordinates = NO;
     }
+    
+    //NSLog(@"APPL disappear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
     self.shouldUpdateCoordinates = YES;
 }
-
-/*- (NSUInteger)zoomLevel {
-    return log2(360 * ((self.frame.size.width/256) / self.region.span.longitudeDelta)) + 1;
-}*/
 
 @end
