@@ -36,6 +36,10 @@
     NSAssert(googleAPIKey, @"REQUIRED: Google Maps iOS API key must be set in APIKeys.plist");
     [GMSServices provideAPIKey:googleAPIKey];
     
+    // Set initial tab to Mapbox (second, center)
+    UITabBarController *tabBar = (UITabBarController *)self.window.rootViewController;
+    tabBar.selectedIndex = 1;
+    
     return YES;
 }
 
