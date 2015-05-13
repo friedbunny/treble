@@ -16,8 +16,8 @@ Treble is still extremely rough and development continues apace. If you want to 
 
 ## Known issues
 
-* Apple MapKit does not sync zoom with Mapbox or Google ([Issue #2](https://github.com/friedbunny/treble/issues/2))
 * Bearing/heading does not sync
+* Controls are minimal/missing
 * Uses a [custom fork of Mapbox GL](https://github.com/friedbunny/mapbox-gl-native/tree/treble) that closely tracks `master`
   * Run `pod update` frequently as releases are happening rather often (daily) right now
 
