@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Set global app tint color
+    // Set global app tint color to Mapbox turquoise
     self.window.tintColor = [UIColor colorWithRed:59.f/255.f green:178.f/255.f blue:208.f/255.f alpha:1.f];
     
     // Read APIKeys.plist, see APIKeys.EXAMPLE.plist for the format

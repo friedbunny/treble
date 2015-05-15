@@ -14,7 +14,6 @@
 
 - (void)fitBoundsToSouthWestCoordinate:(CLLocationCoordinate2D)southWestCoordinate northEastCoordinate:(CLLocationCoordinate2D)northEastCoordinate
 {
-
     CLLocationDegrees latitudeDelta = northEastCoordinate.latitude - southWestCoordinate.latitude;
     
     CLLocationCoordinate2D centre;
