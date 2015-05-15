@@ -11,6 +11,8 @@
 #import <GoogleMaps/GMSServices.h>
 #import <MapboxGL/MapboxGL.h>
 
+#import "Additions/UITabBarController+Swipe.h"
+
 @interface AppDelegate ()
 
 @end
@@ -20,10 +22,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Set global app tint color to Mapbox turquoise
+    // set global app tint color to Mapbox turquoise
     self.window.tintColor = [UIColor colorWithRed:59.f/255.f green:178.f/255.f blue:208.f/255.f alpha:1.f];
     
-    // Read APIKeys.plist, see APIKeys.EXAMPLE.plist for the format
+    // API key initialization
+    //
+    // read APIKeys.plist, see APIKeys.EXAMPLE.plist for the format
     NSDictionary *apiKeys = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"APIKeys" ofType:@"plist"]];
     
     // Mapbox API key
@@ -36,9 +40,14 @@
     NSAssert(googleAPIKey, @"REQUIRED: Google Maps iOS API key must be set in APIKeys.plist");
     [GMSServices provideAPIKey:googleAPIKey];
     
-    // Set initial tab to Mapbox (second, center)
-    UITabBarController *tabBar = (UITabBarController *)self.window.rootViewController;
-    tabBar.selectedIndex = 1;
+    // tab bar customization
+    //
+    // set initial tab to Mapbox (second, center)
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    tabBarController.selectedIndex = 1;
+
+    // setup swipe transitions for tab bar
+    [tabBarController setupSwipeGestureRecognizersAllowCyclingThroughTabs:YES];
     
     return YES;
 }

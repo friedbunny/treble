@@ -19,6 +19,7 @@
 		968181FF1AF2BC0200E2403B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 968181FE1AF2BC0200E2403B /* Settings.bundle */; };
 		968182161AF2DEBC00E2403B /* TRBLCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 968182151AF2DEBC00E2403B /* TRBLCoordinator.m */; };
 		968182191AF2E20A00E2403B /* TRBLGoogleMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 968182181AF2E20A00E2403B /* TRBLGoogleMapView.m */; };
+		9692CA5D1B06BABD00ED8BC8 /* UITabBarController+Swipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 9692CA5C1B06BABD00ED8BC8 /* UITabBarController+Swipe.m */; };
 		96E5ECF61AF833B2008350F9 /* MKMapView+Bounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E5ECF51AF833B2008350F9 /* MKMapView+Bounds.m */; };
 		BD80ACFAA4DFBC0C4B24A1DA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D6DC48BF10E7E26FA89EB7 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -45,6 +46,8 @@
 		968182151AF2DEBC00E2403B /* TRBLCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLCoordinator.m; sourceTree = "<group>"; };
 		968182171AF2E20A00E2403B /* TRBLGoogleMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBLGoogleMapView.h; sourceTree = "<group>"; };
 		968182181AF2E20A00E2403B /* TRBLGoogleMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLGoogleMapView.m; sourceTree = "<group>"; };
+		9692CA5B1B06BABD00ED8BC8 /* UITabBarController+Swipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Swipe.h"; path = "Additions/UITabBarController+Swipe.h"; sourceTree = "<group>"; };
+		9692CA5C1B06BABD00ED8BC8 /* UITabBarController+Swipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITabBarController+Swipe.m"; path = "Additions/UITabBarController+Swipe.m"; sourceTree = "<group>"; };
 		96E5ECF41AF833B2008350F9 /* MKMapView+Bounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKMapView+Bounds.h"; path = "Additions/MKMapView+Bounds.h"; sourceTree = "<group>"; };
 		96E5ECF51AF833B2008350F9 /* MKMapView+Bounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKMapView+Bounds.m"; path = "Additions/MKMapView+Bounds.m"; sourceTree = "<group>"; };
 		B116BA8F324DD84E8CA1E8CC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +140,8 @@
 			children = (
 				96E5ECF41AF833B2008350F9 /* MKMapView+Bounds.h */,
 				96E5ECF51AF833B2008350F9 /* MKMapView+Bounds.m */,
+				9692CA5B1B06BABD00ED8BC8 /* UITabBarController+Swipe.h */,
+				9692CA5C1B06BABD00ED8BC8 /* UITabBarController+Swipe.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				96E5ECF61AF833B2008350F9 /* MKMapView+Bounds.m in Sources */,
 				968181DB1AF2B34900E2403B /* TRBLMapboxMapView.m in Sources */,
 				968182161AF2DEBC00E2403B /* TRBLCoordinator.m in Sources */,
+				9692CA5D1B06BABD00ED8BC8 /* UITabBarController+Swipe.m in Sources */,
 				968181D51AF2B34900E2403B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
