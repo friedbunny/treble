@@ -43,7 +43,7 @@
         NSLog(@"APPL: Updating start coords");
         [self.mapView fitBoundsToSouthWestCoordinate:self.coordinator.southWest northEastCoordinate:self.coordinator.northEast];
 
-        self.mapView.camera.heading = self.coordinator.bearing;
+        self.mapView.camera.heading = self.coordinator.bearing * -1;
         
         self.coordinator.needsUpdateMapKit = NO;
     }
@@ -58,7 +58,7 @@
         self.coordinator.southWest = self.mapView.southWestCoordinate;
         self.coordinator.northEast = self.mapView.northEastCoordinate;
         self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
-        self.coordinator.bearing = self.mapView.camera.heading;
+        self.coordinator.bearing = self.mapView.camera.heading * -1;
         
         [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapKit];
         self.shouldUpdateCoordinates = NO;

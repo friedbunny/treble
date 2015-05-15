@@ -44,11 +44,24 @@
     if (self.coordinator.needsUpdateGoogle)
     {
         NSLog(@"GOOG: Updating start coords");
+        
         GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:self.coordinator.southWest coordinate:self.coordinator.northEast];
         GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate fitBounds:bounds withPadding:0];
         
         bool animate = NO;
         animate ? [self.mapView animateWithCameraUpdate:cameraUpdate] : [self.mapView moveCamera:cameraUpdate];
+        
+        if (self.coordinator.bearing != self.mapView.camera.bearing)
+        {
+            GMSCameraPosition *position = [GMSCameraPosition cameraWithLatitude:self.mapView.camera.target.latitude
+                                                                       longitude:self.mapView.camera.target.longitude zoom:self.mapView.camera.zoom
+                                                                         bearing:self.coordinator.bearing * -1
+                                                                    viewingAngle:0];
+            GMSCameraUpdate *update = [GMSCameraUpdate setCamera:position];
+            [self.mapView moveCamera:update];
+            
+            //[self.mapView animateToBearing:self.coordinator.bearing * -1];
+        }
         
         self.coordinator.needsUpdateGoogle = NO;
     }
@@ -61,7 +74,7 @@
     if (self.shouldUpdateCoordinates)
     {
         self.coordinator.centerCoordinate = self.mapView.camera.target;
-        self.coordinator.bearing = self.mapView.camera.bearing;
+        self.coordinator.bearing = self.mapView.camera.bearing * -1;
         
         GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithRegion:self.mapView.projection.visibleRegion];
         self.coordinator.southWest = bounds.southWest;

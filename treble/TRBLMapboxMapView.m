@@ -43,6 +43,9 @@ static NSString *const kStyleVersion = @"7";
     if (self.coordinator.needsUpdateMapbox)
     {
         NSLog(@"MB: Updating start coords");
+        
+        self.mapView.direction = self.coordinator.bearing;
+        
         [self.mapView fitBoundsToSouthWestCoordinate:self.coordinator.southWest northEastCoordinate:self.coordinator.northEast padding:0 animated:NO];
         
         //self.mapView.direction = self.coordinator.bearing;
@@ -59,6 +62,7 @@ static NSString *const kStyleVersion = @"7";
     if (self.shouldUpdateCoordinates)
     {
         self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
+        self.coordinator.bearing = self.mapView.direction;
         
         CLLocationCoordinate2D southWest = [self.mapView convertPoint:CGPointMake(0, self.view.bounds.size.height)
                                                  toCoordinateFromView:self.mapView];
