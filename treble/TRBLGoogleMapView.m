@@ -108,7 +108,7 @@
     switch (self.mapView.mapType)
     {
         case kGMSTypeNormal:
-            mapType = kGMSTypeTerrain;
+            mapType = (self.mapView.camera.zoom > 15.f) ? kGMSTypeSatellite : kGMSTypeTerrain;
             break;
             
         case kGMSTypeTerrain:
