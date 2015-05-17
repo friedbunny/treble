@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
 + (TRBLCoordinator *)sharedCoordinator;
 - (instancetype)init;
 
-@property(nonatomic, assign) id<TRBLCoordinatorDelegate> delegate;
+@property (nonatomic, assign) id<TRBLCoordinatorDelegate> delegate;
 
 @property (nonatomic) NSString *mapboxAPIKey;
 

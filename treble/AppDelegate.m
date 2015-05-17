@@ -45,7 +45,7 @@
     //
     // set initial tab to Mapbox (second, center)
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    tabBarController.selectedIndex = 1;
+    tabBarController.selectedIndex = tabBarController.lastSelectedIndex = 1;
 
     // setup swipe transitions for tab bar
     [tabBarController setupSwipeGestureRecognizersAllowCyclingThroughTabs:YES];

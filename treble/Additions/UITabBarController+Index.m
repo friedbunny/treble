@@ -18,7 +18,7 @@
 {
     NSUInteger selectedIndex = [[tabBar items] indexOfObject:item];
     
-    if (selectedIndex == self.lastSelectedIndex || ! self.lastSelectedIndex)
+    if (selectedIndex == self.lastSelectedIndex)
     {
         [[TRBLCoordinator sharedCoordinator].delegate mapShouldChangeStyle];
     }
