@@ -11,9 +11,11 @@
 
 static NSString *const kStyleVersion = @"7";
 
-@interface TRBLMapboxMapView () <MGLMapViewDelegate>
+@interface TRBLMapboxMapView () <MGLMapViewDelegate, TRBLCoordinatorDelegate>
 
 @property (nonatomic) IBOutlet MGLMapView *mapView;
+@property (nonatomic) IBOutlet UIToolbar *toolbar;
+
 @property (nonatomic) NSString *currentStyle;
 @property TRBLCoordinator *coordinator;
 @property (nonatomic) BOOL shouldUpdateCoordinates;
@@ -37,6 +39,8 @@ static NSString *const kStyleVersion = @"7";
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    self.coordinator.delegate = self;
 
     //NSLog(@"MB appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
@@ -52,7 +56,6 @@ static NSString *const kStyleVersion = @"7";
         
         self.coordinator.needsUpdateMapbox = NO;
     }
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -78,11 +81,18 @@ static NSString *const kStyleVersion = @"7";
     }
     
     //NSLog(@"MB disappear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
+    
+    self.coordinator.delegate = nil;
 }
 
 - (void)mapView:(MGLMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
     self.shouldUpdateCoordinates = YES;
+}
+
+- (void)mapShouldChangeStyle
+{
+    [self cycleStyles];
 }
 
 - (NSArray *)styles

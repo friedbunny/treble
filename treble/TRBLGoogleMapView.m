@@ -11,7 +11,7 @@
 
 #import <GoogleMaps/GoogleMaps.h>
 
-@interface TRBLGoogleMapView () <GMSMapViewDelegate>
+@interface TRBLGoogleMapView () <GMSMapViewDelegate, TRBLCoordinatorDelegate>
 
 @property (nonatomic) IBOutlet GMSMapView *mapView;
 @property TRBLCoordinator *coordinator;
@@ -38,6 +38,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    self.coordinator.delegate = self;
     
     //NSLog(@"GOOG appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
@@ -85,11 +87,45 @@
     }
     
     //NSLog(@"GOOG disappear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
+    
+    self.coordinator.delegate = nil;
 }
 
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position
 {
     self.shouldUpdateCoordinates = YES;
+}
+
+- (void)mapShouldChangeStyle
+{
+    [self cycleStyles];
+}
+
+- (void)cycleStyles
+{
+    GMSMapViewType mapType;
+    
+    switch (self.mapView.mapType)
+    {
+        case kGMSTypeNormal:
+            mapType = kGMSTypeTerrain;
+            break;
+            
+        case kGMSTypeTerrain:
+            mapType = kGMSTypeSatellite;
+            break;
+            
+        case kGMSTypeSatellite:
+            mapType = kGMSTypeHybrid;
+            break;
+            
+        case kGMSTypeHybrid:
+        case kGMSTypeNone:
+            mapType = kGMSTypeNormal;
+            break;
+    }
+    
+    self.mapView.mapType = mapType;
 }
 
 @end

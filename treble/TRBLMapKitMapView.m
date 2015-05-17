@@ -12,7 +12,7 @@
 #import <MapKit/MapKit.h>
 #import "Additions/MKMapView+Bounds.h"
 
-@interface TRBLMapKitMapView () <MKMapViewDelegate>
+@interface TRBLMapKitMapView () <MKMapViewDelegate, TRBLCoordinatorDelegate>
 
 @property (nonatomic) IBOutlet MKMapView *mapView;
 @property TRBLCoordinator *coordinator;
@@ -35,6 +35,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    self.coordinator.delegate = self;
     
     //NSLog(@"APPL appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
@@ -65,11 +67,40 @@
     }
     
     //NSLog(@"APPL disappear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
+    
+    self.coordinator.delegate = nil;
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
     self.shouldUpdateCoordinates = YES;
+}
+
+- (void)mapShouldChangeStyle
+{
+    [self cycleStyles];
+}
+
+- (void)cycleStyles
+{
+    MKMapType mapType;
+
+    switch (self.mapView.mapType)
+    {
+        case MKMapTypeStandard:
+            mapType = MKMapTypeSatellite;
+            break;
+            
+        case MKMapTypeSatellite:
+            mapType = MKMapTypeHybrid;
+            break;
+            
+        case MKMapTypeHybrid:
+            mapType = MKMapTypeStandard;
+            break;
+    }
+
+    self.mapView.mapType = mapType;
 }
 
 @end

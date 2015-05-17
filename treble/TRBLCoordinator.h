@@ -16,10 +16,20 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
     TRBLMapVendorGoogle,
 };
 
+
+@protocol TRBLCoordinatorDelegate <NSObject>
+
+- (void)mapShouldChangeStyle;
+
+@end
+
+
 @interface TRBLCoordinator : NSObject
 
 + (TRBLCoordinator *)sharedCoordinator;
 - (instancetype)init;
+
+@property(nonatomic, assign) id<TRBLCoordinatorDelegate> delegate;
 
 @property (nonatomic) NSString *mapboxAPIKey;
 
@@ -35,4 +45,6 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
 - (void)setNeedsUpdateFromVendor:(TRBLMapVendor)vendor;
 
 @end
+
+
 

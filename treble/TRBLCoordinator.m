@@ -58,4 +58,11 @@
     }
 }
 
+- (void)setDelegate:(id<TRBLCoordinatorDelegate>)delegate
+{
+    if (_delegate == delegate) return;
+    
+    _delegate = delegate;
+}
+
 @end
