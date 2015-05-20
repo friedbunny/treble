@@ -134,4 +134,44 @@ static NSString *const kStyleVersion = @"7";
     self.currentStyle = styleName;
 }
 
+- (void)mapView:(__unused MGLMapView *)mapView didFailToLocateUserWithError:(__unused NSError *)error
+{
+    // iOS 8+: Prompt users to open Settings.app if authorization was denied
+    if (&UIApplicationOpenSettingsURLString != NULL)
+    {
+        if ( ! self.presentedViewController)
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Requires Authorization"
+                                                                           message:@"Please enable location services for this app in Privacy settings."
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
+                                                             style:UIAlertActionStyleCancel
+                                                           handler:nil];
+
+            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Open Settings"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(__unused UIAlertAction *action)
+                                 {
+                                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                 }];
+
+            [alert addAction:cancel];
+            [alert addAction:ok];
+
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }
+    else
+    {
+        if ( ! self.presentedViewController)
+        {
+            [[[UIAlertView alloc] initWithTitle:@"Requires Authorization"
+                                        message:@"Please enable location services for this app in Privacy settings."
+                                       delegate:nil
+                              cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        }
+    }
+}
+
 @end
