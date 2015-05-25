@@ -2,7 +2,7 @@
 
 A [Mapbox GL for iOS](https://github.com/mapbox/mapbox-gl-native) demo app, featuring [Apple MapKit](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MapKit_Framework_Reference/) and [Google Maps for iOS](https://developers.google.com/maps/documentation/ios/).
 
-![Treble](https://cloud.githubusercontent.com/assets/1198851/7528109/5b3810d0-f4d8-11e4-9e46-589a50e29bd3.gif)
+![Treble](https://cloud.githubusercontent.com/assets/1198851/7792550/1f208ad4-0269-11e5-8156-f3b7de4f32aa.gif)
 
 ## Getting started
 
