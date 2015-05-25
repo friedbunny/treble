@@ -11,6 +11,8 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
+	<key>CFBundleDisplayName</key>
 	<string>Treble</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
