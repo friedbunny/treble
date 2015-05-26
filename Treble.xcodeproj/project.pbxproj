@@ -397,6 +397,7 @@
 			baseConfigurationReference = 17375318C2A915686C03C795 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = treble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -415,6 +416,7 @@
 			baseConfigurationReference = B116BA8F324DD84E8CA1E8CC /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = treble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
