@@ -41,6 +41,8 @@ static NSString *const kStyleVersion = @"7";
     [super viewDidAppear:animated];
     
     self.coordinator.delegate = self;
+    
+    [self updateStatusBarStyleForMapStyle];
 
     //NSLog(@"MB appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
@@ -93,6 +95,7 @@ static NSString *const kStyleVersion = @"7";
 - (void)mapShouldChangeStyle
 {
     [self cycleStyles];
+    [self updateStatusBarStyleForMapStyle];
 }
 
 - (NSArray *)styles
@@ -132,6 +135,22 @@ static NSString *const kStyleVersion = @"7";
                               kStyleVersion]];
     
     self.currentStyle = styleName;
+}
+
+- (void)updateStatusBarStyleForMapStyle
+{
+    UIStatusBarStyle style;
+    
+    if ([self.currentStyle isEqualToString:@"Dark"])
+    {
+        style = UIStatusBarStyleLightContent;
+    }
+    else
+    {
+        style = UIStatusBarStyleDefault;
+    }
+
+    [[UIApplication sharedApplication] setStatusBarStyle:style animated:NO];
 }
 
 - (void)mapView:(__unused MGLMapView *)mapView didFailToLocateUserWithError:(__unused NSError *)error

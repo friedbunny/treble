@@ -41,6 +41,8 @@
     
     self.coordinator.delegate = self;
     
+    [self updateStatusBarStyleForMapStyle];
+    
     //NSLog(@"GOOG appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
     if (self.coordinator.needsUpdateGoogle)
@@ -99,6 +101,7 @@
 - (void)mapShouldChangeStyle
 {
     [self cycleStyles];
+    [self updateStatusBarStyleForMapStyle];
 }
 
 - (void)cycleStyles
@@ -126,6 +129,28 @@
     }
     
     self.mapView.mapType = mapType;
+}
+
+- (void)updateStatusBarStyleForMapStyle
+{
+    UIStatusBarStyle style;
+
+    switch (self.mapView.mapType)
+    {
+        case kGMSTypeNormal:
+        case kGMSTypeTerrain:
+        default:
+            style = UIStatusBarStyleDefault;
+            break;
+
+        case kGMSTypeSatellite:
+        case kGMSTypeHybrid:
+        case kGMSTypeNone:
+            style = UIStatusBarStyleLightContent;
+            break;
+    }
+
+    [[UIApplication sharedApplication] setStatusBarStyle:style animated:NO];
 }
 
 @end
