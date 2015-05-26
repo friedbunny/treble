@@ -4,3 +4,4 @@ pod 'MapboxGL', :podspec => 'https://raw.githubusercontent.com/friedbunny/mapbox
 use_frameworks!
 
 pod 'Google-Maps-iOS-SDK'
+pod 'BugshotKit', :git => 'https://github.com/friedbunny/BugshotKit.git', :branch => 'master'

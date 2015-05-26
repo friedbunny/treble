@@ -14,9 +14,7 @@
 #import "Additions/UITabBarController+Swipe.h"
 #import "Additions/UITabBarController+Index.h"
 
-@interface AppDelegate ()
-
-@end
+#import <BugshotKit/BugshotKit.h>
 
 @implementation AppDelegate
 
@@ -49,6 +47,12 @@
 
     // setup swipe transitions for tab bar
     [tabBarController setupSwipeGestureRecognizersAllowCyclingThroughTabs:YES];
+    
+    // bugshot setup (take screenshots, annotate them, and submit to the developers)
+    //
+    NSUInteger touches = [[[UIDevice currentDevice] model] hasSuffix:@"Simulator"] ? 2 : 3;
+    [BugshotKit enableWithNumberOfTouches:touches performingGestures:BSKInvocationGestureLongPress feedbackEmailAddress:@"treble@kulturny.com"];
+    [[BugshotKit sharedManager] setAnnotationFillColor:self.window.tintColor];
     
     return YES;
 }
