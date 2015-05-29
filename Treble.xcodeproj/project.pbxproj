@@ -187,6 +187,11 @@
 					968181CE1AF2B34900E2403B = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = MT3LAJ3HH6;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
