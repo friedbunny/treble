@@ -51,8 +51,8 @@ static NSString *const kStyleVersion = @"7";
         NSLog(@"MB: Updating start coords");
         
         self.mapView.direction = self.coordinator.bearing;
-        
-        [self.mapView fitBoundsToSouthWestCoordinate:self.coordinator.southWest northEastCoordinate:self.coordinator.northEast padding:0 animated:NO];
+
+        [self.mapView setVisibleCoordinateBounds:MGLCoordinateBoundsMake(self.coordinator.southWest, self.coordinator.northEast) animated:NO];
         
         //self.mapView.direction = self.coordinator.bearing;
         
