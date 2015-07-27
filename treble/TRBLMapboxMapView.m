@@ -108,6 +108,7 @@ static NSString *const kStyleVersion = @"7";
                     @"Emerald",
                     @"Light",
                     @"Dark",
+                    @"Satellite"
                     ];
     });
     

@@ -119,7 +119,6 @@
 				968181DD1AF2B34900E2403B /* TRBLMapKitMapView.m */,
 				968182171AF2E20A00E2403B /* TRBLGoogleMapView.h */,
 				968182181AF2E20A00E2403B /* TRBLGoogleMapView.m */,
-				968181FE1AF2BC0200E2403B /* Settings.bundle */,
 				968181DF1AF2B34900E2403B /* Main.storyboard */,
 				968181E21AF2B34900E2403B /* Images.xcassets */,
 				968181E41AF2B34900E2403B /* LaunchScreen.xib */,
@@ -131,9 +130,10 @@
 		968181D21AF2B34900E2403B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9625934F1AF541FE002A9DDC /* APIKeys.plist */,
 				968181D31AF2B34900E2403B /* Info.plist */,
 				968181D41AF2B34900E2403B /* main.m */,
-				9625934F1AF541FE002A9DDC /* APIKeys.plist */,
+				968181FE1AF2BC0200E2403B /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -189,7 +189,7 @@
 						DevelopmentTeam = MT3LAJ3HH6;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
