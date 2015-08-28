@@ -9,7 +9,7 @@
 #import "TRBLMapboxMapView.h"
 #import "TRBLCoordinator.h"
 
-static NSString *const kStyleVersion = @"7";
+static NSString *const kStyleVersion = @"8";
 
 @interface TRBLMapboxMapView () <MGLMapViewDelegate, TRBLCoordinatorDelegate>
 
@@ -104,7 +104,7 @@ static NSString *const kStyleVersion = @"7";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _styles = @[
-                    @"Mapbox Streets",
+                    @"Streets",
                     @"Emerald",
                     @"Light",
                     @"Dark",

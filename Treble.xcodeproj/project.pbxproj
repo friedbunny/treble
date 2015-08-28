@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44E95C75D05D3A5067B20ED7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5510619D789178BBC562B060 /* libPods.a */; };
 		961EA9AE1B086933006D6D57 /* UITabBarController+Index.m in Sources */ = {isa = PBXBuildFile; fileRef = 961EA9AD1B086933006D6D57 /* UITabBarController+Index.m */; };
 		962593501AF541FE002A9DDC /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9625934F1AF541FE002A9DDC /* APIKeys.plist */; };
 		968181D51AF2B34900E2403B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181D41AF2B34900E2403B /* main.m */; };
@@ -22,12 +23,11 @@
 		968182191AF2E20A00E2403B /* TRBLGoogleMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 968182181AF2E20A00E2403B /* TRBLGoogleMapView.m */; };
 		9692CA5D1B06BABD00ED8BC8 /* UITabBarController+Swipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 9692CA5C1B06BABD00ED8BC8 /* UITabBarController+Swipe.m */; };
 		96E5ECF61AF833B2008350F9 /* MKMapView+Bounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E5ECF51AF833B2008350F9 /* MKMapView+Bounds.m */; };
-		BD80ACFAA4DFBC0C4B24A1DA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D6DC48BF10E7E26FA89EB7 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		17375318C2A915686C03C795 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		65D6DC48BF10E7E26FA89EB7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5510619D789178BBC562B060 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		961EA9AC1B086933006D6D57 /* UITabBarController+Index.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Index.h"; path = "Additions/UITabBarController+Index.h"; sourceTree = "<group>"; };
 		961EA9AD1B086933006D6D57 /* UITabBarController+Index.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITabBarController+Index.m"; path = "Additions/UITabBarController+Index.m"; sourceTree = "<group>"; };
 		9625934F1AF541FE002A9DDC /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				968181FC1AF2B7AD00E2403B /* MapKit.framework in Frameworks */,
-				BD80ACFAA4DFBC0C4B24A1DA /* Pods.framework in Frameworks */,
+				44E95C75D05D3A5067B20ED7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				968181FB1AF2B7AD00E2403B /* MapKit.framework */,
-				65D6DC48BF10E7E26FA89EB7 /* Pods.framework */,
+				5510619D789178BBC562B060 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -163,7 +163,6 @@
 				968181CC1AF2B34900E2403B /* Frameworks */,
 				968181CD1AF2B34900E2403B /* Resources */,
 				82719E9592AF1F70B9EF57FF /* Copy Pods Resources */,
-				3246FCF5D38FF69625D8E9EF /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,7 +180,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TRBL;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Mapbox;
 				TargetAttributes = {
 					968181CE1AF2B34900E2403B = {
@@ -242,21 +241,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		3246FCF5D38FF69625D8E9EF /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		82719E9592AF1F70B9EF57FF /* Copy Pods Resources */ = {
@@ -335,7 +319,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -379,6 +365,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -411,6 +398,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/mapbox-gl-ios",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mapbox.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -430,6 +418,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/mapbox-gl-ios",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mapbox.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
