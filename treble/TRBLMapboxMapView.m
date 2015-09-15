@@ -142,7 +142,7 @@ static NSString *const kStyleVersion = @"8";
 {
     UIStatusBarStyle style;
     
-    if ([self.currentStyle isEqualToString:@"Dark"])
+    if ([self.currentStyle isEqualToString:@"Dark"] || [self.currentStyle isEqualToString:@"Satellite"])
     {
         style = UIStatusBarStyleLightContent;
     }
