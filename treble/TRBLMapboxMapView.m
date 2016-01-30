@@ -9,14 +9,10 @@
 #import "TRBLMapboxMapView.h"
 #import "TRBLCoordinator.h"
 
-static NSString *const kStyleVersion = @"8";
-
 @interface TRBLMapboxMapView () <MGLMapViewDelegate, TRBLCoordinatorDelegate>
 
 @property (nonatomic) IBOutlet MGLMapView *mapView;
-@property (nonatomic) IBOutlet UIToolbar *toolbar;
 
-@property (nonatomic) NSString *currentStyle;
 @property TRBLCoordinator *coordinator;
 @property (nonatomic) BOOL shouldUpdateCoordinates;
 
@@ -32,8 +28,6 @@ static NSString *const kStyleVersion = @"8";
     self.mapView.showsUserLocation = YES;
     self.mapView.userTrackingMode = MGLUserTrackingModeFollow;
     self.mapView.delegate = self;
-    
-    self.currentStyle = [[self styles] firstObject];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -104,11 +98,12 @@ static NSString *const kStyleVersion = @"8";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _styles = @[
-                    @"Streets",
-                    @"Emerald",
-                    @"Light",
-                    @"Dark",
-                    @"Satellite"
+                    [MGLStyle streetsStyleURL],
+                    [MGLStyle emeraldStyleURL],
+                    [MGLStyle lightStyleURL],
+                    [MGLStyle darkStyleURL],
+                    [MGLStyle satelliteStyleURL],
+                    [MGLStyle hybridStyleURL],
                     ];
     });
     
@@ -117,32 +112,29 @@ static NSString *const kStyleVersion = @"8";
 
 - (void)cycleStyles
 {
-    NSString *styleName = self.currentStyle;
+    NSURL *styleURL = self.mapView.styleURL;
     
-    if ( ! styleName)
+    if ( ! styleURL)
     {
-        styleName = [[self styles] firstObject];
+        styleURL = [[self styles] firstObject];
     }
     else
     {
-        NSUInteger index = [[self styles] indexOfObject:styleName] + 1;
+        NSUInteger index = [[self styles] indexOfObject:styleURL] + 1;
         if (index == [[self styles] count]) index = 0;
-        styleName = [[self styles] objectAtIndex:index];
+        styleURL = [[self styles] objectAtIndex:index];
     }
     
-    self.mapView.styleURL = [NSURL URLWithString:
-                             [NSString stringWithFormat:@"asset://styles/%@-v%@.json",
-                              [[styleName lowercaseString] stringByReplacingOccurrencesOfString:@" " withString:@"-"],
-                              kStyleVersion]];
-    
-    self.currentStyle = styleName;
+    self.mapView.styleURL = styleURL;
 }
 
 - (void)updateStatusBarStyleForMapStyle
 {
     UIStatusBarStyle style;
     
-    if ([self.currentStyle isEqualToString:@"Dark"] || [self.currentStyle isEqualToString:@"Satellite"])
+    if ([self.mapView.styleURL.absoluteString containsString:@"dark"] ||
+        [self.mapView.styleURL.absoluteString containsString:@"satellite"] ||
+        [self.mapView.styleURL.absoluteString containsString:@"hybrid"])
     {
         style = UIStatusBarStyleLightContent;
     }
