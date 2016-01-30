@@ -181,4 +181,26 @@ static NSString *const kStyleVersion = @"8";
     }
 }
 
+/*
+- (void)mapViewWillStartLoadingMap:(MGLMapView * __unused)mapView
+{
+    NSLog(@"start LOADING");
+}
+
+- (void)mapViewDidFinishLoadingMap:(MGLMapView * __unused)mapView
+{
+    NSLog(@"finish LOADING");
+}
+
+- (void)mapViewWillStartRenderingMap:(MGLMapView * __unused)mapView
+{
+    NSLog(@"start RENDERING");
+}
+
+- (void)mapViewDidFinishRenderingMap:(MGLMapView * __unused)mapView fullyRendered:(BOOL)fullyRendered
+{
+    NSLog(@"finish RENDERING fullyRendered: %@", fullyRendered ? @"YES":@"NO");
+}
+*/
+
 @end

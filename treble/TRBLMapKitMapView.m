@@ -126,4 +126,26 @@
     [[UIApplication sharedApplication] setStatusBarStyle:style animated:NO];
 }
 
+/*
+- (void)mapViewWillStartLoadingMap:(MKMapView *)mapView
+{
+    NSLog(@"start LOADING");
+}
+
+- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
+{
+    NSLog(@"finish LOADING");
+}
+
+-(void)mapViewWillStartRenderingMap:(MKMapView *)mapView
+{
+    NSLog(@"start RENDERING");
+}
+
+- (void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered
+{
+    NSLog(@"finish RENDERING fullyRendered: %@", fullyRendered ? @"YES":@"NO");
+}
+*/
+
 @end

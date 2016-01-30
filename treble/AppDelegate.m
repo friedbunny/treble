@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import <GoogleMaps/GMSServices.h>
-#import "Mapbox.h"
+#import <Mapbox/Mapbox.h>
 
 #import "Additions/UITabBarController+Swipe.h"
 #import "Additions/UITabBarController+Index.h"
