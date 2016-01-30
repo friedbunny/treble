@@ -91,14 +91,16 @@
     switch (self.mapView.mapType)
     {
         case MKMapTypeStandard:
-            mapType = MKMapTypeSatellite;
+            mapType = MKMapTypeSatelliteFlyover;
             break;
             
         case MKMapTypeSatellite:
-            mapType = MKMapTypeHybrid;
+        case MKMapTypeSatelliteFlyover:
+            mapType = MKMapTypeHybridFlyover;
             break;
             
         case MKMapTypeHybrid:
+        case MKMapTypeHybridFlyover:
             mapType = MKMapTypeStandard;
             break;
     }
@@ -113,12 +115,13 @@
     switch (self.mapView.mapType)
     {
         case MKMapTypeStandard:
-        default:
             style = UIStatusBarStyleDefault;
             break;
             
         case MKMapTypeSatellite:
+        case MKMapTypeSatelliteFlyover:
         case MKMapTypeHybrid:
+        case MKMapTypeHybridFlyover:
             style = UIStatusBarStyleLightContent;
             break;
     }
