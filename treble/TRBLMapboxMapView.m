@@ -153,6 +153,11 @@
     [[UIApplication sharedApplication] setStatusBarStyle:style animated:NO];
 }
 
+- (void)statusBarTappedAction:(NSNotification*)notification
+{
+    [self.mapView setUserTrackingMode:MGLUserTrackingModeFollow animated:YES];
+}
+
 - (void)mapView:(__unused MGLMapView *)mapView didFailToLocateUserWithError:(__unused NSError *)error
 {
     // iOS 8+: Prompt users to open Settings.app if authorization was denied
@@ -201,10 +206,5 @@
     NSLog(@"finish RENDERING fullyRendered: %@", fullyRendered ? @"YES":@"NO");
 }
 */
-
-- (void)statusBarTappedAction:(NSNotification*)notification
-{
-    [self.mapView setUserTrackingMode:MGLUserTrackingModeFollow animated:YES];
-}
 
 @end

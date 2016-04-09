@@ -135,6 +135,11 @@
     [[UIApplication sharedApplication] setStatusBarStyle:style animated:NO];
 }
 
+- (void)statusBarTappedAction:(NSNotification*)notification
+{
+    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+}
+
 /*
 - (void)mapViewWillStartLoadingMap:(MKMapView *)mapView
 {
@@ -156,10 +161,5 @@
     NSLog(@"finish RENDERING fullyRendered: %@", fullyRendered ? @"YES":@"NO");
 }
 */
-
-- (void)statusBarTappedAction:(NSNotification*)notification
-{
-    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
-}
 
 @end
