@@ -107,7 +107,6 @@
     dispatch_once(&onceToken, ^{
         _styles = @[
             [MGLStyle streetsStyleURL],
-            [MGLStyle emeraldStyleURL],
             [MGLStyle lightStyleURL],
             [MGLStyle darkStyleURL],
             [MGLStyle satelliteStyleURL],
