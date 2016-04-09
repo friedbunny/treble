@@ -9,6 +9,8 @@
 #import "TRBLMapKitMapView.h"
 #import "TRBLCoordinator.h"
 
+#import "Constants.h"
+
 #import <MapKit/MapKit.h>
 #import "Additions/MKMapView+Bounds.h"
 
@@ -44,13 +46,15 @@
     
     if (self.coordinator.needsUpdateMapKit)
     {
-        NSLog(@"APPL: Updating start coords");
+        //NSLog(@"APPL: Updating start coords");
         [self.mapView fitBoundsToSouthWestCoordinate:self.coordinator.southWest northEastCoordinate:self.coordinator.northEast];
 
         self.mapView.camera.heading = self.coordinator.bearing * -1;
         
         self.coordinator.needsUpdateMapKit = NO;
     }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -71,6 +75,8 @@
     //NSLog(@"APPL disappear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
     self.coordinator.delegate = nil;
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
@@ -150,5 +156,10 @@
     NSLog(@"finish RENDERING fullyRendered: %@", fullyRendered ? @"YES":@"NO");
 }
 */
+
+- (void)statusBarTappedAction:(NSNotification*)notification
+{
+    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+}
 
 @end

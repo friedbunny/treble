@@ -32,6 +32,7 @@
 		961EA9AC1B086933006D6D57 /* UITabBarController+Index.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Index.h"; path = "Additions/UITabBarController+Index.h"; sourceTree = "<group>"; };
 		961EA9AD1B086933006D6D57 /* UITabBarController+Index.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITabBarController+Index.m"; path = "Additions/UITabBarController+Index.m"; sourceTree = "<group>"; };
 		9625934F1AF541FE002A9DDC /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
+		967E9D031CB8A25C0004D44E /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		968181CF1AF2B34900E2403B /* treble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = treble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		968181D31AF2B34900E2403B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		968181D41AF2B34900E2403B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -134,6 +135,7 @@
 		96E5ECF31AF743BA008350F9 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				967E9D031CB8A25C0004D44E /* Constants.h */,
 				96E5ECF41AF833B2008350F9 /* MKMapView+Bounds.h */,
 				96E5ECF51AF833B2008350F9 /* MKMapView+Bounds.m */,
 				961EA9AC1B086933006D6D57 /* UITabBarController+Index.h */,

@@ -11,13 +11,13 @@
 #import <GoogleMaps/GMSServices.h>
 #import <Mapbox/Mapbox.h>
 
+#import "Constants.h"
 #import "Additions/UITabBarController+Swipe.h"
 #import "Additions/UITabBarController+Index.h"
 
 #import <BugshotKit/BugshotKit.h>
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -53,8 +53,19 @@
     NSUInteger touches = [[[UIDevice currentDevice] model] hasSuffix:@"Simulator"] ? 2 : 3;
     [BugshotKit enableWithNumberOfTouches:touches performingGestures:BSKInvocationGestureLongPress feedbackEmailAddress:@"treble@kulturny.com"];
     [[BugshotKit sharedManager] setAnnotationFillColor:self.window.tintColor];
-    
+
     return YES;
+}
+
+#pragma mark - Status bar touch tracking
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    CGPoint location = [[[event allTouches] anyObject] locationInView:[self window]];
+    CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
+    if (CGRectContainsPoint(statusBarFrame, location)) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kStatusBarTappedNotification object:nil];
+    }
 }
 
 @end

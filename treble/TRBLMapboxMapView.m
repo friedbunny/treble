@@ -9,6 +9,10 @@
 #import "TRBLMapboxMapView.h"
 #import "TRBLCoordinator.h"
 
+#import "Constants.h"
+
+#import <Mapbox/Mapbox.h>
+
 @interface TRBLMapboxMapView () <MGLMapViewDelegate, TRBLCoordinatorDelegate>
 
 @property (nonatomic) IBOutlet MGLMapView *mapView;
@@ -42,7 +46,7 @@
     
     if (self.coordinator.needsUpdateMapbox)
     {
-        NSLog(@"MB: Updating start coords");
+        //NSLog(@"MB: Updating start coords");
         
         self.mapView.direction = self.coordinator.bearing;
 
@@ -52,6 +56,8 @@
         
         self.coordinator.needsUpdateMapbox = NO;
     }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -79,6 +85,8 @@
     //NSLog(@"MB disappear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
     self.coordinator.delegate = nil;
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
 }
 
 - (void)mapView:(MGLMapView *)mapView regionDidChangeAnimated:(BOOL)animated
@@ -98,13 +106,13 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _styles = @[
-                    [MGLStyle streetsStyleURL],
-                    [MGLStyle emeraldStyleURL],
-                    [MGLStyle lightStyleURL],
-                    [MGLStyle darkStyleURL],
-                    [MGLStyle satelliteStyleURL],
-                    [MGLStyle hybridStyleURL],
-                    ];
+            [MGLStyle streetsStyleURL],
+            [MGLStyle emeraldStyleURL],
+            [MGLStyle lightStyleURL],
+            [MGLStyle darkStyleURL],
+            [MGLStyle satelliteStyleURL],
+            [MGLStyle hybridStyleURL],
+        ];
     });
     
     return _styles;
@@ -194,5 +202,10 @@
     NSLog(@"finish RENDERING fullyRendered: %@", fullyRendered ? @"YES":@"NO");
 }
 */
+
+- (void)statusBarTappedAction:(NSNotification*)notification
+{
+    [self.mapView setUserTrackingMode:MGLUserTrackingModeFollow animated:YES];
+}
 
 @end

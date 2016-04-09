@@ -8,4 +8,3 @@ target 'treble' do
 	pod 'GoogleMaps'
 	pod 'BugshotKit', :git => 'https://github.com/friedbunny/BugshotKit.git', :branch => 'master'
 end
-

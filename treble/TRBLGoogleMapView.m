@@ -9,6 +9,8 @@
 #import "TRBLGoogleMapView.h"
 #import "TRBLCoordinator.h"
 
+#import "Constants.h"
+
 #import <GoogleMaps/GoogleMaps.h>
 
 @interface TRBLGoogleMapView () <GMSMapViewDelegate, TRBLCoordinatorDelegate>
@@ -47,7 +49,7 @@
     
     if (self.coordinator.needsUpdateGoogle)
     {
-        NSLog(@"GOOG: Updating start coords");
+        //NSLog(@"GOOG: Updating start coords");
         
         GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:self.coordinator.southWest coordinate:self.coordinator.northEast];
         GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate fitBounds:bounds withPadding:0];
@@ -69,6 +71,8 @@
         
         self.coordinator.needsUpdateGoogle = NO;
     }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -91,6 +95,8 @@
     //NSLog(@"GOOG disappear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
     self.coordinator.delegate = nil;
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
 }
 
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position
@@ -151,6 +157,12 @@
     }
 
     [[UIApplication sharedApplication] setStatusBarStyle:style animated:NO];
+}
+
+- (void)statusBarTappedAction:(NSNotification*)notification
+{
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:self.mapView.myLocation.coordinate zoom:self.mapView.camera.zoom];
+    [self.mapView animateToCameraPosition:camera];
 }
 
 @end
