@@ -10,8 +10,7 @@
 
 @implementation TRBLCoordinator
 
-+ (TRBLCoordinator *)sharedCoordinator
-{
++ (TRBLCoordinator *)sharedCoordinator {
     static TRBLCoordinator *_sharedCoordinator = nil;
     
     static dispatch_once_t onceToken;
@@ -22,8 +21,7 @@
     return _sharedCoordinator;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     
     if (self) {
@@ -37,8 +35,7 @@
     return self;
 }
 
-- (void)setNeedsUpdateFromVendor:(TRBLMapVendor)vendor
-{
+- (void)setNeedsUpdateFromVendor:(TRBLMapVendor)vendor {
     switch (vendor) {
         case TRBLMapVendorMapbox:
             self.needsUpdateMapKit = self.needsUpdateGoogle = YES;
@@ -58,10 +55,8 @@
     }
 }
 
-- (void)setDelegate:(id<TRBLCoordinatorDelegate>)delegate
-{
+- (void)setDelegate:(id<TRBLCoordinatorDelegate>)delegate {
     if (_delegate == delegate) return;
-    
     _delegate = delegate;
 }
 

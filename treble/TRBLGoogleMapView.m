@@ -23,8 +23,7 @@
 
 @implementation TRBLGoogleMapView
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.coordinator = [TRBLCoordinator sharedCoordinator];
@@ -37,8 +36,7 @@
     //self.mapView.padding = UIEdgeInsetsMake(12.f, 0, 45.f, 0);
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     self.coordinator.delegate = self;
@@ -47,8 +45,7 @@
     
     //NSLog(@"GOOG appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
-    if (self.coordinator.needsUpdateGoogle)
-    {
+    if (self.coordinator.needsUpdateGoogle) {
         //NSLog(@"GOOG: Updating start coords");
         
         GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:self.coordinator.southWest coordinate:self.coordinator.northEast];
@@ -57,8 +54,7 @@
         bool animate = NO;
         animate ? [self.mapView animateWithCameraUpdate:cameraUpdate] : [self.mapView moveCamera:cameraUpdate];
         
-        if (self.coordinator.bearing != self.mapView.camera.bearing)
-        {
+        if (self.coordinator.bearing != self.mapView.camera.bearing) {
             GMSCameraPosition *position = [GMSCameraPosition cameraWithLatitude:self.mapView.camera.target.latitude
                                                                        longitude:self.mapView.camera.target.longitude zoom:self.mapView.camera.zoom
                                                                          bearing:self.coordinator.bearing * -1
@@ -75,12 +71,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    if (self.shouldUpdateCoordinates)
-    {
+    if (self.shouldUpdateCoordinates) {
         self.coordinator.centerCoordinate = self.mapView.camera.target;
         self.coordinator.bearing = self.mapView.camera.bearing * -1;
         
@@ -99,23 +93,19 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
 }
 
-- (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position
-{
+- (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
     self.shouldUpdateCoordinates = YES;
 }
 
-- (void)mapShouldChangeStyle
-{
+- (void)mapShouldChangeStyle {
     [self cycleStyles];
     [self updateStatusBarStyleForMapStyle];
 }
 
-- (void)cycleStyles
-{
+- (void)cycleStyles {
     GMSMapViewType mapType;
     
-    switch (self.mapView.mapType)
-    {
+    switch (self.mapView.mapType) {
         case kGMSTypeNormal:
             mapType = (self.mapView.camera.zoom > 15.f) ? kGMSTypeSatellite : kGMSTypeTerrain;
             break;
@@ -137,12 +127,10 @@
     self.mapView.mapType = mapType;
 }
 
-- (void)updateStatusBarStyleForMapStyle
-{
+- (void)updateStatusBarStyleForMapStyle {
     UIStatusBarStyle style;
 
-    switch (self.mapView.mapType)
-    {
+    switch (self.mapView.mapType) {
         case kGMSTypeNormal:
         case kGMSTypeTerrain:
         default:
@@ -159,8 +147,7 @@
     [[UIApplication sharedApplication] setStatusBarStyle:style animated:NO];
 }
 
-- (void)statusBarTappedAction:(NSNotification*)notification
-{
+- (void)statusBarTappedAction:(NSNotification*)notification {
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:self.mapView.myLocation.coordinate zoom:self.mapView.camera.zoom];
     [self.mapView animateToCameraPosition:camera];
 }

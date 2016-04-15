@@ -24,8 +24,7 @@
 
 @implementation TRBLMapKitMapView
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.coordinator = [TRBLCoordinator sharedCoordinator];
@@ -34,8 +33,7 @@
     self.mapView.delegate = self;
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     self.coordinator.delegate = self;
@@ -44,25 +42,20 @@
     
     //NSLog(@"APPL appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
-    if (self.coordinator.needsUpdateMapKit)
-    {
+    if (self.coordinator.needsUpdateMapKit) {
         //NSLog(@"APPL: Updating start coords");
         [self.mapView fitBoundsToSouthWestCoordinate:self.coordinator.southWest northEastCoordinate:self.coordinator.northEast];
-
         self.mapView.camera.heading = self.coordinator.bearing * -1;
-        
         self.coordinator.needsUpdateMapKit = NO;
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    if (self.shouldUpdateCoordinates)
-    {
+    if (self.shouldUpdateCoordinates) {
         self.coordinator.southWest = self.mapView.southWestCoordinate;
         self.coordinator.northEast = self.mapView.northEastCoordinate;
         self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
@@ -79,23 +72,19 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
 }
 
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
-{
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     self.shouldUpdateCoordinates = YES;
 }
 
-- (void)mapShouldChangeStyle
-{
+- (void)mapShouldChangeStyle {
     [self cycleStyles];
     [self updateStatusBarStyleForMapStyle];
 }
 
-- (void)cycleStyles
-{
+- (void)cycleStyles {
     MKMapType mapType;
 
-    switch (self.mapView.mapType)
-    {
+    switch (self.mapView.mapType) {
         case MKMapTypeStandard:
             mapType = MKMapTypeSatelliteFlyover;
             break;
@@ -114,12 +103,10 @@
     self.mapView.mapType = mapType;
 }
 
-- (void)updateStatusBarStyleForMapStyle
-{
+- (void)updateStatusBarStyleForMapStyle {
     UIStatusBarStyle style;
     
-    switch (self.mapView.mapType)
-    {
+    switch (self.mapView.mapType) {
         case MKMapTypeStandard:
             style = UIStatusBarStyleDefault;
             break;
@@ -135,29 +122,24 @@
     [[UIApplication sharedApplication] setStatusBarStyle:style animated:NO];
 }
 
-- (void)statusBarTappedAction:(NSNotification*)notification
-{
+- (void)statusBarTappedAction:(NSNotification*)notification {
     [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
 }
 
 /*
-- (void)mapViewWillStartLoadingMap:(MKMapView *)mapView
-{
+- (void)mapViewWillStartLoadingMap:(MKMapView *)mapView {
     NSLog(@"start LOADING");
 }
 
-- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
-{
+- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
     NSLog(@"finish LOADING");
 }
 
--(void)mapViewWillStartRenderingMap:(MKMapView *)mapView
-{
+-(void)mapViewWillStartRenderingMap:(MKMapView *)mapView {
     NSLog(@"start RENDERING");
 }
 
-- (void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered
-{
+- (void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered {
     NSLog(@"finish RENDERING fullyRendered: %@", fullyRendered ? @"YES":@"NO");
 }
 */

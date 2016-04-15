@@ -34,8 +34,7 @@
     self.mapView.delegate = self;
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     self.coordinator.delegate = self;
@@ -44,28 +43,20 @@
 
     //NSLog(@"MB appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
-    if (self.coordinator.needsUpdateMapbox)
-    {
+    if (self.coordinator.needsUpdateMapbox) {
         //NSLog(@"MB: Updating start coords");
-        
         self.mapView.direction = self.coordinator.bearing;
-
         [self.mapView setVisibleCoordinateBounds:MGLCoordinateBoundsMake(self.coordinator.southWest, self.coordinator.northEast) animated:NO];
-        
-        //self.mapView.direction = self.coordinator.bearing;
-        
         self.coordinator.needsUpdateMapbox = NO;
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
-    if (self.shouldUpdateCoordinates)
-    {
+    if (self.shouldUpdateCoordinates) {
         self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
         self.coordinator.bearing = self.mapView.direction;
         
@@ -89,19 +80,16 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
 }
 
-- (void)mapView:(MGLMapView *)mapView regionDidChangeAnimated:(BOOL)animated
-{
+- (void)mapView:(MGLMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     self.shouldUpdateCoordinates = YES;
 }
 
-- (void)mapShouldChangeStyle
-{
+- (void)mapShouldChangeStyle {
     [self cycleStyles];
     [self updateStatusBarStyleForMapStyle];
 }
 
-- (NSArray *)styles
-{
+- (NSArray *)styles {
     static NSArray *_styles;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -117,16 +105,12 @@
     return _styles;
 }
 
-- (void)cycleStyles
-{
+- (void)cycleStyles {
     NSURL *styleURL = self.mapView.styleURL;
     
-    if ( ! styleURL)
-    {
+    if (!styleURL) {
         styleURL = [[self styles] firstObject];
-    }
-    else
-    {
+    } else {
         NSUInteger index = [[self styles] indexOfObject:styleURL] + 1;
         if (index == [[self styles] count]) index = 0;
         styleURL = [[self styles] objectAtIndex:index];
@@ -135,34 +119,27 @@
     self.mapView.styleURL = styleURL;
 }
 
-- (void)updateStatusBarStyleForMapStyle
-{
+- (void)updateStatusBarStyleForMapStyle {
     UIStatusBarStyle style;
     
     if ([self.mapView.styleURL.absoluteString containsString:@"dark"] ||
         [self.mapView.styleURL.absoluteString containsString:@"satellite"] ||
-        [self.mapView.styleURL.absoluteString containsString:@"hybrid"])
-    {
+        [self.mapView.styleURL.absoluteString containsString:@"hybrid"]) {
         style = UIStatusBarStyleLightContent;
-    }
-    else
-    {
+    } else {
         style = UIStatusBarStyleDefault;
     }
 
     [[UIApplication sharedApplication] setStatusBarStyle:style animated:NO];
 }
 
-- (void)statusBarTappedAction:(NSNotification*)notification
-{
+- (void)statusBarTappedAction:(NSNotification*)notification {
     [self.mapView setUserTrackingMode:MGLUserTrackingModeFollow animated:YES];
 }
 
-- (void)mapView:(__unused MGLMapView *)mapView didFailToLocateUserWithError:(__unused NSError *)error
-{
+- (void)mapView:(__unused MGLMapView *)mapView didFailToLocateUserWithError:(__unused NSError *)error {
     // iOS 8+: Prompt users to open Settings.app if authorization was denied
-    if ( ! self.presentedViewController)
-    {
+    if (!self.presentedViewController) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Requires Authorization"
                                                                        message:@"Please enable location services for this app in Privacy settings."
                                                                 preferredStyle:UIAlertControllerStyleAlert];
@@ -173,10 +150,9 @@
 
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Open Settings"
                                                      style:UIAlertActionStyleDefault
-                                                   handler:^(__unused UIAlertAction *action)
-                             {
-                                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-                             }];
+                                                   handler:^(__unused UIAlertAction *action) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }];
 
         [alert addAction:cancel];
         [alert addAction:ok];
@@ -186,23 +162,19 @@
 }
 
 /*
-- (void)mapViewWillStartLoadingMap:(MGLMapView * __unused)mapView
-{
+- (void)mapViewWillStartLoadingMap:(MGLMapView * __unused)mapView {
     NSLog(@"start LOADING");
 }
 
-- (void)mapViewDidFinishLoadingMap:(MGLMapView * __unused)mapView
-{
+- (void)mapViewDidFinishLoadingMap:(MGLMapView * __unused)mapView {
     NSLog(@"finish LOADING");
 }
 
-- (void)mapViewWillStartRenderingMap:(MGLMapView * __unused)mapView
-{
+- (void)mapViewWillStartRenderingMap:(MGLMapView * __unused)mapView {
     NSLog(@"start RENDERING");
 }
 
-- (void)mapViewDidFinishRenderingMap:(MGLMapView * __unused)mapView fullyRendered:(BOOL)fullyRendered
-{
+- (void)mapViewDidFinishRenderingMap:(MGLMapView * __unused)mapView fullyRendered:(BOOL)fullyRendered {
     NSLog(@"finish RENDERING fullyRendered: %@", fullyRendered ? @"YES":@"NO");
 }
 */
