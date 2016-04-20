@@ -2,18 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "mapbox@1x.png"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "mapbox@2x.png"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "mapbox@3x.png"
+      "filename" : "mapbox.pdf"
     }
   ],
   "info" : {
