@@ -2,18 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "google@1x.png"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "google@2x.png"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "google@3x.png"
+      "filename" : "google.pdf"
     }
   ],
   "info" : {
