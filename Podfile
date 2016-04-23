@@ -2,7 +2,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'treble' do
-	pod 'Mapbox-iOS-SDK', '~> 3.2.0'
+	pod 'Mapbox-iOS-SDK', '~> 3.2.1'
 	#pod 'Mapbox-iOS-SDK', :podspec => 'https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.2.0-beta.2/platform/ios/Mapbox-iOS-SDK.podspec'
 
 	pod 'GoogleMaps'
