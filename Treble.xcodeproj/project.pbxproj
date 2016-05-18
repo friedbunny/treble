@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F366859F277C5DA83582BC1 /* Pods_treble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F1CF7C2C258A1EE65BDB30 /* Pods_treble.framework */; };
+		4130F3F6D1E3258036730A17 /* Pods_treble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EC9A75696A12630E78FEE45 /* Pods_treble.framework */; };
 		9600673C1C5C9366005B2606 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9600673B1C5C9366005B2606 /* Launch Screen.storyboard */; };
 		961EA9AE1B086933006D6D57 /* UITabBarController+Index.m in Sources */ = {isa = PBXBuildFile; fileRef = 961EA9AD1B086933006D6D57 /* UITabBarController+Index.m */; };
 		962593501AF541FE002A9DDC /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9625934F1AF541FE002A9DDC /* APIKeys.plist */; };
@@ -26,7 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		441F93A4B848EFC0BBAFA148 /* Pods-treble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-treble.debug.xcconfig"; path = "Pods/Target Support Files/Pods-treble/Pods-treble.debug.xcconfig"; sourceTree = "<group>"; };
+		4B121A17FFD5E3CA153F3A90 /* Pods-treble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-treble.debug.xcconfig"; path = "Pods/Target Support Files/Pods-treble/Pods-treble.debug.xcconfig"; sourceTree = "<group>"; };
+		6EC9A75696A12630E78FEE45 /* Pods_treble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_treble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94613F12BCB586D3CB8EA82E /* Pods-treble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-treble.release.xcconfig"; path = "Pods/Target Support Files/Pods-treble/Pods-treble.release.xcconfig"; sourceTree = "<group>"; };
 		9600673B1C5C9366005B2606 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		961EA9AC1B086933006D6D57 /* UITabBarController+Index.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Index.h"; path = "Additions/UITabBarController+Index.h"; sourceTree = "<group>"; };
 		961EA9AD1B086933006D6D57 /* UITabBarController+Index.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITabBarController+Index.m"; path = "Additions/UITabBarController+Index.m"; sourceTree = "<group>"; };
@@ -53,8 +55,6 @@
 		9692CA5C1B06BABD00ED8BC8 /* UITabBarController+Swipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITabBarController+Swipe.m"; path = "Additions/UITabBarController+Swipe.m"; sourceTree = "<group>"; };
 		96E5ECF41AF833B2008350F9 /* MKMapView+Bounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKMapView+Bounds.h"; path = "Additions/MKMapView+Bounds.h"; sourceTree = "<group>"; };
 		96E5ECF51AF833B2008350F9 /* MKMapView+Bounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKMapView+Bounds.m"; path = "Additions/MKMapView+Bounds.m"; sourceTree = "<group>"; };
-		A2F1CF7C2C258A1EE65BDB30 /* Pods_treble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_treble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBBFE91672102A4DD97E2ECD /* Pods-treble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-treble.release.xcconfig"; path = "Pods/Target Support Files/Pods-treble/Pods-treble.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,18 +63,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				968181FC1AF2B7AD00E2403B /* MapKit.framework in Frameworks */,
-				4F366859F277C5DA83582BC1 /* Pods_treble.framework in Frameworks */,
+				4130F3F6D1E3258036730A17 /* Pods_treble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22458B2C55CB2CFCD2E3A32D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4B121A17FFD5E3CA153F3A90 /* Pods-treble.debug.xcconfig */,
+				94613F12BCB586D3CB8EA82E /* Pods-treble.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5A2828F87C80135E3EC6BD67 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				968181FB1AF2B7AD00E2403B /* MapKit.framework */,
-				A2F1CF7C2C258A1EE65BDB30 /* Pods_treble.framework */,
+				6EC9A75696A12630E78FEE45 /* Pods_treble.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -85,7 +94,7 @@
 				968181D11AF2B34900E2403B /* treble */,
 				968181D01AF2B34900E2403B /* Products */,
 				5A2828F87C80135E3EC6BD67 /* Frameworks */,
-				EB1C3C4107DE30A887D9F359 /* Pods */,
+				22458B2C55CB2CFCD2E3A32D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,15 +153,6 @@
 			name = Additions;
 			sourceTree = "<group>";
 		};
-		EB1C3C4107DE30A887D9F359 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				441F93A4B848EFC0BBAFA148 /* Pods-treble.debug.xcconfig */,
-				EBBFE91672102A4DD97E2ECD /* Pods-treble.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,12 +160,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 968181F51AF2B34900E2403B /* Build configuration list for PBXNativeTarget "treble" */;
 			buildPhases = (
-				F2B0298E98B9EA326229C517 /* Check Pods Manifest.lock */,
+				4DD56935AD6E93C4A80C5E21 /* 📦 Check Pods Manifest.lock */,
 				968181CB1AF2B34900E2403B /* Sources */,
 				968181CC1AF2B34900E2403B /* Frameworks */,
 				968181CD1AF2B34900E2403B /* Resources */,
-				FF0C1A0C478A20FBD9354EEC /* Embed Pods Frameworks */,
-				3347FD34E9E2A61DAD8CEC41 /* Copy Pods Resources */,
+				C449C5CD43AF6E571BD7B639 /* 📦 Embed Pods Frameworks */,
+				8D8FA627772C3240315AE437 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,29 +231,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3347FD34E9E2A61DAD8CEC41 /* Copy Pods Resources */ = {
+		4DD56935AD6E93C4A80C5E21 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-treble/Pods-treble-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F2B0298E98B9EA326229C517 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,14 +246,29 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FF0C1A0C478A20FBD9354EEC /* Embed Pods Frameworks */ = {
+		8D8FA627772C3240315AE437 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-treble/Pods-treble-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C449C5CD43AF6E571BD7B639 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,7 +396,7 @@
 		};
 		968181F61AF2B34900E2403B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 441F93A4B848EFC0BBAFA148 /* Pods-treble.debug.xcconfig */;
+			baseConfigurationReference = 4B121A17FFD5E3CA153F3A90 /* Pods-treble.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -404,9 +404,7 @@
 				INFOPLIST_FILE = treble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mapbox.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -415,7 +413,7 @@
 		};
 		968181F71AF2B34900E2403B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EBBFE91672102A4DD97E2ECD /* Pods-treble.release.xcconfig */;
+			baseConfigurationReference = 94613F12BCB586D3CB8EA82E /* Pods-treble.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -423,9 +421,7 @@
 				INFOPLIST_FILE = treble/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mapbox.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
