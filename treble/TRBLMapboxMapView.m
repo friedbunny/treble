@@ -94,11 +94,12 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _styles = @[
-            [MGLStyle streetsStyleURL],
-            [MGLStyle lightStyleURL],
-            [MGLStyle darkStyleURL],
-            [MGLStyle satelliteStyleURL],
-            [MGLStyle hybridStyleURL],
+            [MGLStyle streetsStyleURLWithVersion:MGLStyleDefaultVersion],
+            [MGLStyle outdoorsStyleURLWithVersion:MGLStyleDefaultVersion],
+            [MGLStyle lightStyleURLWithVersion:MGLStyleDefaultVersion],
+            [MGLStyle darkStyleURLWithVersion:MGLStyleDefaultVersion],
+            [MGLStyle satelliteStyleURLWithVersion:MGLStyleDefaultVersion],
+            [MGLStyle satelliteStreetsStyleURLWithVersion:MGLStyleDefaultVersion],
         ];
     });
     
