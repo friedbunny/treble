@@ -107,14 +107,16 @@
 }
 
 - (void)cycleStyles {
+    NSArray *styles = [self styles];
     NSURL *styleURL = self.mapView.styleURL;
     
     if (!styleURL) {
         styleURL = [[self styles] firstObject];
     } else {
-        NSUInteger index = [[self styles] indexOfObject:styleURL] + 1;
-        if (index == [[self styles] count]) index = 0;
-        styleURL = [[self styles] objectAtIndex:index];
+        NSAssert([styles indexOfObject:styleURL] < [styles count], @"%@ is not indexed.", styleURL);
+        NSUInteger index = [styles indexOfObject:styleURL] + 1;
+        if (index == [styles count] || !index) index = 0;
+        styleURL = [styles objectAtIndex:index];
     }
     
     self.mapView.styleURL = styleURL;
