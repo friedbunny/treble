@@ -124,8 +124,7 @@
     UIStatusBarStyle style;
     
     if ([self.mapView.styleURL.absoluteString containsString:@"dark"] ||
-        [self.mapView.styleURL.absoluteString containsString:@"satellite"] ||
-        [self.mapView.styleURL.absoluteString containsString:@"hybrid"]) {
+        [self.mapView.styleURL.absoluteString containsString:@"satellite"]) {
         style = UIStatusBarStyleLightContent;
     } else {
         style = UIStatusBarStyleDefault;
