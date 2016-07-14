@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00974BBB58C7A8ACBA3555FA /* Pods_treble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C8494A23D05E01F15B569E /* Pods_treble.framework */; };
+		425439C5DD9C9863EAF7513E /* libPods-treble.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86C8DDB10E6A4EF606D0A060 /* libPods-treble.a */; };
 		9600673C1C5C9366005B2606 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9600673B1C5C9366005B2606 /* Launch Screen.storyboard */; };
 		961EA9AE1B086933006D6D57 /* UITabBarController+Index.m in Sources */ = {isa = PBXBuildFile; fileRef = 961EA9AD1B086933006D6D57 /* UITabBarController+Index.m */; };
 		962593501AF541FE002A9DDC /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9625934F1AF541FE002A9DDC /* APIKeys.plist */; };
@@ -40,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		4B121A17FFD5E3CA153F3A90 /* Pods-treble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-treble.debug.xcconfig"; path = "Pods/Target Support Files/Pods-treble/Pods-treble.debug.xcconfig"; sourceTree = "<group>"; };
+		86C8DDB10E6A4EF606D0A060 /* libPods-treble.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-treble.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94613F12BCB586D3CB8EA82E /* Pods-treble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-treble.release.xcconfig"; path = "Pods/Target Support Files/Pods-treble/Pods-treble.release.xcconfig"; sourceTree = "<group>"; };
 		9600673B1C5C9366005B2606 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		961EA9AC1B086933006D6D57 /* UITabBarController+Index.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Index.h"; path = "Additions/UITabBarController+Index.h"; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		96CCD4791CECC02100BDB57D /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "../../../Downloads/aa3052925ceeea2d-GoogleMaps-1.13.2.tar/Frameworks/GoogleMaps.framework"; sourceTree = "<group>"; };
 		96E5ECF41AF833B2008350F9 /* MKMapView+Bounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKMapView+Bounds.h"; path = "Additions/MKMapView+Bounds.h"; sourceTree = "<group>"; };
 		96E5ECF51AF833B2008350F9 /* MKMapView+Bounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKMapView+Bounds.m"; path = "Additions/MKMapView+Bounds.m"; sourceTree = "<group>"; };
-		D3C8494A23D05E01F15B569E /* Pods_treble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_treble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				968181FC1AF2B7AD00E2403B /* MapKit.framework in Frameworks */,
-				00974BBB58C7A8ACBA3555FA /* Pods_treble.framework in Frameworks */,
+				425439C5DD9C9863EAF7513E /* libPods-treble.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 			children = (
 				96CCD4791CECC02100BDB57D /* GoogleMaps.framework */,
 				968181FB1AF2B7AD00E2403B /* MapKit.framework */,
-				D3C8494A23D05E01F15B569E /* Pods_treble.framework */,
+				86C8DDB10E6A4EF606D0A060 /* libPods-treble.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
