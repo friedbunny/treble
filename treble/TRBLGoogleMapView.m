@@ -33,7 +33,7 @@
     self.mapView.delegate = self;
 
     // push attribution and visible region above bottom tab bar, below top status bar
-    //self.mapView.padding = UIEdgeInsetsMake(12.f, 0, 45.f, 0);
+    self.mapView.padding = UIEdgeInsetsMake(12.f, 0, 45.f, 0);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
