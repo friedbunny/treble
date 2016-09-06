@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15E33e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Mapbox-->
@@ -13,41 +14,26 @@
                         <viewControllerLayoutGuide type="top" id="ewd-WD-vJD"/>
                         <viewControllerLayoutGuide type="bottom" id="srX-ER-Qca"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rIh-lV-iQJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="rIh-lV-iQJ" customClass="MGLMapView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgP-XS-nIp" customClass="MGLMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <accessibility key="accessibilityConfiguration" label="Map">
-                                    <bool key="isElement" value="YES"/>
-                                </accessibility>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="mgP-XS-nIp" firstAttribute="top" secondItem="rIh-lV-iQJ" secondAttribute="top" id="Cqj-eA-NIt"/>
-                            <constraint firstAttribute="bottom" secondItem="mgP-XS-nIp" secondAttribute="bottom" id="SkE-wr-MBG"/>
-                            <constraint firstItem="mgP-XS-nIp" firstAttribute="leading" secondItem="rIh-lV-iQJ" secondAttribute="leading" id="TOK-LK-l4z"/>
-                            <constraint firstAttribute="trailing" secondItem="mgP-XS-nIp" secondAttribute="trailing" id="V29-Bt-KX3"/>
-                        </constraints>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Mapbox" image="Mapbox (Tab Bar)" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="mapView" destination="mgP-XS-nIp" id="aDl-c8-6UJ"/>
+                        <outlet property="mapView" destination="rIh-lV-iQJ" id="ECb-4U-ADM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="-783.20000000000005" y="760.56971514242889"/>
         </scene>
         <!--MapKit-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" userLabel="MapKit" customClass="TRBLMapKitMapView" sceneMemberID="viewController">
                     <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="v5Q-Wq-PNq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </mapView>
                     <tabBarItem key="tabBarItem" title="Apple" image="Apple (Tab Bar)" id="cPa-gy-q4n"/>
@@ -57,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="-1" y="761"/>
         </scene>
         <!--Google-->
         <scene sceneID="gqK-vt-tWA">
@@ -68,9 +54,9 @@
                         <viewControllerLayoutGuide type="bottom" id="0GJ-el-y0H"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3aw-50-mJA" customClass="GMSMapView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Google" image="Google (Tab Bar)" id="qZn-5x-Fe9"/>
                     <connections>
@@ -79,18 +65,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jA3-P9-mSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="1065"/>
+            <point key="canvasLocation" x="766" y="761"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <keyCommands/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
@@ -106,6 +91,6 @@
     <resources>
         <image name="Apple (Tab Bar)" width="25" height="25"/>
         <image name="Google (Tab Bar)" width="25" height="25"/>
-        <image name="Mapbox (Tab Bar)" width="25" height="25"/>
+        <image name="Mapbox (Tab Bar)" width="23" height="26"/>
     </resources>
 </document>
