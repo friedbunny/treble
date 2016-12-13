@@ -1,23 +1,23 @@
 PODS:
   - BugshotKit (0.1.0)
-  - GoogleMaps (2.1.0):
-    - GoogleMaps/Maps (= 2.1.0)
-  - GoogleMaps/Base (2.1.0)
-  - GoogleMaps/Maps (2.1.0):
-    - GoogleMaps/Base (= 2.1.0)
-  - Mapbox-iOS-SDK (3.4.0-beta.1)
+  - GoogleMaps (2.1.1):
+    - GoogleMaps/Maps (= 2.1.1)
+  - GoogleMaps/Base (2.1.1)
+  - GoogleMaps/Maps (2.1.1):
+    - GoogleMaps/Base
+  - Mapbox-iOS-SDK (3.4.0-beta.4)
 
 DEPENDENCIES:
   - BugshotKit (from `https://github.com/friedbunny/BugshotKit.git`, branch `master`)
   - GoogleMaps (~> 2.0)
-  - Mapbox-iOS-SDK (from `https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.4.0-beta.1/platform/ios/Mapbox-iOS-SDK.podspec`)
+  - Mapbox-iOS-SDK (from `https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.4.0-beta.4/platform/ios/Mapbox-iOS-SDK.podspec`)
 
 EXTERNAL SOURCES:
   BugshotKit:
     :branch: master
     :git: https://github.com/friedbunny/BugshotKit.git
   Mapbox-iOS-SDK:
-    :podspec: https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.4.0-beta.1/platform/ios/Mapbox-iOS-SDK.podspec
+    :podspec: https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.4.0-beta.4/platform/ios/Mapbox-iOS-SDK.podspec
 
 CHECKOUT OPTIONS:
   BugshotKit:
@@ -26,9 +26,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   BugshotKit: 58fbc895fd67afb4c6ee3559ce013a4b4db8e59c
-  GoogleMaps: '06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c'
-  Mapbox-iOS-SDK: 3884e71887ba711c4959519cc376e5974d2196e2
+  GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
+  Mapbox-iOS-SDK: 15a564af25ef0aafc4899378c41842cc2be84cc8
 
-PODFILE CHECKSUM: 686a568b332716a6d261a38737997df1e4aeecd6
+PODFILE CHECKSUM: f11be4cac1085b6bf0fc1882a7812e5a2bde4534
 
 COCOAPODS: 1.1.1
