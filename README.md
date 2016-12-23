@@ -8,3 +8,4 @@
 
 - Keep tapping the selected tab to switch styles.
 - Swipe on the bottom tab bar to switch providers.
+- Tap the top status bar to recenter the map on your location.
