@@ -1,8 +1,2 @@
-#
-# Treble
-# Ignore the api key plist, to keep your Mapbox token out of public repos
-APIKeys.plist
-
 Pods/
-
 fastlane/report.xml
