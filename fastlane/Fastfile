@@ -31,11 +31,21 @@ platform :ios do
   lane :beta do
     cocoapods(use_bundle_exec: true)
     match(type: "appstore", readonly: true)
+    bump_build_number
     gym # Build your app - more options available
     #pilot
 
     # sh "your_script.sh"
     # You can also use other beta testing services here (run `fastlane actions`)
+  end
+
+  desc "Increment build number based on current TestFlight build number"
+  desc "Commits the changes, but does not push them to any remote."
+  lane :bump_build_number do
+    increment_build_number(build_number: latest_testflight_build_number + 1)
+    version = get_version_number()
+    build = get_build_number()
+    commit_version_bump(message: "#{version} (#{build})", force: true)
   end
 
   desc "Install App Store certificate and provisioning profile from the ***REMOVED*** repo"
