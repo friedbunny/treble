@@ -84,23 +84,31 @@
 - (void)cycleStyles {
     MKMapType mapType;
 
-    switch (self.mapView.mapType) {
-        case MKMapTypeStandard:
-            mapType = MKMapTypeSatelliteFlyover;
-            break;
-            
-        case MKMapTypeSatellite:
-        case MKMapTypeSatelliteFlyover:
-            mapType = MKMapTypeHybridFlyover;
-            break;
-            
-        case MKMapTypeHybrid:
-        case MKMapTypeHybridFlyover:
-            mapType = MKMapTypeStandard;
-            break;
-    }
+    if (!self.mapView.showsTraffic &&
+        self.mapView.mapType != MKMapTypeSatellite && self.mapView.mapType != MKMapTypeSatelliteFlyover) {
+        // If traffic wasn't enabled, stay on the same mapType and enable traffic.
+        // Non-hybrid satellite does not support traffic.
+        self.mapView.showsTraffic = YES;
+    } else {
+        switch (self.mapView.mapType) {
+            case MKMapTypeStandard:
+                mapType = MKMapTypeSatelliteFlyover;
+                break;
 
-    self.mapView.mapType = mapType;
+            case MKMapTypeSatellite:
+            case MKMapTypeSatelliteFlyover:
+                mapType = MKMapTypeHybridFlyover;
+                break;
+
+            case MKMapTypeHybrid:
+            case MKMapTypeHybridFlyover:
+                mapType = MKMapTypeStandard;
+                break;
+        }
+
+        self.mapView.mapType = mapType;
+        self.mapView.showsTraffic = NO;
+    }
 }
 
 - (void)updateStatusBarStyleForMapStyle {

@@ -95,9 +95,11 @@
     dispatch_once(&onceToken, ^{
         _styles = @[
             [MGLStyle streetsStyleURLWithVersion:MGLStyleDefaultVersion],
+            [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-day-v1"],
             [MGLStyle outdoorsStyleURLWithVersion:MGLStyleDefaultVersion],
             [MGLStyle lightStyleURLWithVersion:MGLStyleDefaultVersion],
             [MGLStyle darkStyleURLWithVersion:MGLStyleDefaultVersion],
+            [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-night-v1"],
             [MGLStyle satelliteStyleURLWithVersion:MGLStyleDefaultVersion],
             [MGLStyle satelliteStreetsStyleURLWithVersion:MGLStyleDefaultVersion],
         ];
@@ -123,16 +125,18 @@
 }
 
 - (void)updateStatusBarStyleForMapStyle {
-    UIStatusBarStyle style;
-    
-    if ([self.mapView.styleURL.absoluteString containsString:@"dark"] ||
-        [self.mapView.styleURL.absoluteString containsString:@"satellite"]) {
-        style = UIStatusBarStyleLightContent;
+    UIStatusBarStyle statusBarStyle;
+    NSString *mapStyle = self.mapView.styleURL.absoluteString;
+
+    if ([mapStyle containsString:@"dark"] ||
+        [mapStyle containsString:@"satellite"] ||
+        [mapStyle containsString:@"night"]) {
+        statusBarStyle = UIStatusBarStyleLightContent;
     } else {
-        style = UIStatusBarStyleDefault;
+        statusBarStyle = UIStatusBarStyleDefault;
     }
 
-    [[UIApplication sharedApplication] setStatusBarStyle:style animated:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:statusBarStyle animated:NO];
 }
 
 - (void)statusBarTappedAction:(NSNotification*)notification {

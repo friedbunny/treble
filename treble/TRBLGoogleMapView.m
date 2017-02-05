@@ -104,27 +104,33 @@
 
 - (void)cycleStyles {
     GMSMapViewType mapType;
-    
-    switch (self.mapView.mapType) {
-        case kGMSTypeNormal:
-            mapType = (self.mapView.camera.zoom > 15.f) ? kGMSTypeSatellite : kGMSTypeTerrain;
-            break;
-            
-        case kGMSTypeTerrain:
-            mapType = kGMSTypeSatellite;
-            break;
-            
-        case kGMSTypeSatellite:
-            mapType = kGMSTypeHybrid;
-            break;
-            
-        case kGMSTypeHybrid:
-        case kGMSTypeNone:
-            mapType = kGMSTypeNormal;
-            break;
+
+    if (!self.mapView.trafficEnabled) {
+        // If traffic wasn't enabled, stay on the same mapType and enable traffic.
+        self.mapView.trafficEnabled = YES;
+    } else {
+        switch (self.mapView.mapType) {
+            case kGMSTypeNormal:
+                mapType = (self.mapView.camera.zoom > 15.f) ? kGMSTypeSatellite : kGMSTypeTerrain;
+                break;
+
+            case kGMSTypeTerrain:
+                mapType = kGMSTypeSatellite;
+                break;
+
+            case kGMSTypeSatellite:
+                mapType = kGMSTypeHybrid;
+                break;
+
+            case kGMSTypeHybrid:
+            case kGMSTypeNone:
+                mapType = kGMSTypeNormal;
+                break;
+        }
+
+        self.mapView.mapType = mapType;
+        self.mapView.trafficEnabled = NO;
     }
-    
-    self.mapView.mapType = mapType;
 }
 
 - (void)updateStatusBarStyleForMapStyle {
