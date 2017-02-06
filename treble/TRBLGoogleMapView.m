@@ -32,7 +32,7 @@
     self.mapView.settings.compassButton = YES;
     self.mapView.delegate = self;
 
-    // push attribution and visible region above bottom tab bar, below top status bar
+    // push attribution and visible region below top status bar, above bottom tab bar
     self.mapView.padding = UIEdgeInsetsMake(12.f, 0, 45.f, 0);
 }
 
@@ -48,9 +48,7 @@
         
         GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:self.coordinator.southWest coordinate:self.coordinator.northEast];
         GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate fitBounds:bounds withPadding:0];
-        
-        bool animate = NO;
-        animate ? [self.mapView animateWithCameraUpdate:cameraUpdate] : [self.mapView moveCamera:cameraUpdate];
+        [self.mapView moveCamera:cameraUpdate];
         
         if (self.coordinator.bearing != self.mapView.camera.bearing) {
             GMSCameraPosition *position = [GMSCameraPosition cameraWithLatitude:self.mapView.camera.target.latitude
@@ -59,8 +57,6 @@
                                                                     viewingAngle:0];
             GMSCameraUpdate *update = [GMSCameraUpdate setCamera:position];
             [self.mapView moveCamera:update];
-            
-            //[self.mapView animateToBearing:self.coordinator.bearing * -1];
         }
         
         self.coordinator.needsUpdateGoogle = NO;

@@ -38,8 +38,6 @@
     
     self.coordinator.delegate = self;
     
-    //[self setNeedsStatusBarAppearanceUpdate];
-    
     //NSLog(@"APPL appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
     if (self.coordinator.needsUpdateMapKit) {
