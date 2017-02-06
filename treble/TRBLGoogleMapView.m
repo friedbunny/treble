@@ -53,7 +53,7 @@
         if (self.coordinator.bearing != self.mapView.camera.bearing) {
             GMSCameraPosition *position = [GMSCameraPosition cameraWithLatitude:self.mapView.camera.target.latitude
                                                                        longitude:self.mapView.camera.target.longitude zoom:self.mapView.camera.zoom
-                                                                         bearing:self.coordinator.bearing * -1
+                                                                         bearing:self.coordinator.bearing
                                                                     viewingAngle:0];
             GMSCameraUpdate *update = [GMSCameraUpdate setCamera:position];
             [self.mapView moveCamera:update];
@@ -70,7 +70,7 @@
     
     if (self.shouldUpdateCoordinates) {
         self.coordinator.centerCoordinate = self.mapView.camera.target;
-        self.coordinator.bearing = self.mapView.camera.bearing * -1;
+        self.coordinator.bearing = self.mapView.camera.bearing;
         
         GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithRegion:self.mapView.projection.visibleRegion];
         self.coordinator.southWest = bounds.southWest;
