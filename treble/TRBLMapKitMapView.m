@@ -93,6 +93,7 @@
     MKMapType mapType;
 
     if (!self.mapView.showsTraffic &&
+        self.mapView.zoomLevel >= 9.0 &&
         self.mapView.mapType != MKMapTypeSatellite && self.mapView.mapType != MKMapTypeSatelliteFlyover) {
         // If traffic wasn't enabled, stay on the same mapType and enable traffic.
         // Non-hybrid satellite does not support traffic.

@@ -102,7 +102,7 @@
 - (void)cycleStyles {
     GMSMapViewType mapType;
 
-    if (!self.mapView.trafficEnabled) {
+    if (!self.mapView.trafficEnabled && self.mapView.camera.zoom >= 4.75) {
         // If traffic wasn't enabled, stay on the same mapType and enable traffic.
         self.mapView.trafficEnabled = YES;
     } else {
