@@ -10,6 +10,7 @@
 #import "TRBLCoordinator.h"
 
 #import "Constants.h"
+#import "UITabBarController+Visible.h"
 
 #import <GoogleMaps/GoogleMaps.h>
 
@@ -33,7 +34,9 @@
     self.mapView.delegate = self;
 
     // push attribution and visible region below top status bar, above bottom tab bar
-    self.mapView.padding = UIEdgeInsetsMake(12.f, 0, 45.f, 0);
+    // TODO: Padding affects the visible map region, which skews the translation to other vendors' maps.
+    //       This should be taken into account before re-enabling compass/attribution padding.
+    //self.mapView.padding = UIEdgeInsetsMake(12.f, 0, self.tabBarController.tabBar.frame.size.height, 0);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -151,5 +154,15 @@
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:self.mapView.myLocation.coordinate zoom:self.mapView.camera.zoom];
     [self.mapView animateToCameraPosition:camera];
 }
+
+- (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
+    [UIView animateWithDuration:0.15 animations:^{
+        [self.tabBarController toggleTabBar];
+        //        UIEdgeInsets newInsets = self.mapView.padding;
+        //        newInsets.bottom = self.tabBarController.tabBarIsVisible ? self.tabBarController.tabBar.frame.size.height : 0;
+        //        self.mapView.padding = newInsets;
+    }];
+}
+
 
 @end

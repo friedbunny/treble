@@ -10,6 +10,7 @@
 #import "TRBLCoordinator.h"
 
 #import "Constants.h"
+#import "UITabBarController+Visible.h"
 
 #import <Mapbox/Mapbox.h>
 
@@ -32,6 +33,15 @@
     self.mapView.showsUserLocation = YES;
     self.mapView.userTrackingMode = MGLUserTrackingModeFollow;
     self.mapView.delegate = self;
+
+    // Add tab bar controller toggle gesture
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleTabBarController:)];
+    for (UIGestureRecognizer *recognizer in self.mapView.gestureRecognizers) {
+        if ([recognizer isKindOfClass:[UITapGestureRecognizer class]]) {
+            [singleTap requireGestureRecognizerToFail:recognizer];
+        }
+    }
+    [self.mapView addGestureRecognizer:singleTap];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -139,6 +149,15 @@
 
 - (void)statusBarTappedAction:(NSNotification*)notification {
     [self.mapView setUserTrackingMode:MGLUserTrackingModeFollow animated:YES];
+}
+
+- (void)toggleTabBarController:(__unused UITapGestureRecognizer *)gestureRecognizer {
+    [UIView animateWithDuration:0.15 animations:^{
+        [self.tabBarController toggleTabBar];
+        UIEdgeInsets newInsets = self.mapView.contentInset;
+        newInsets.bottom = self.tabBarController.tabBarIsVisible ? self.tabBarController.tabBar.frame.size.height + 1 : 0;
+        self.mapView.contentInset = newInsets;
+    }];
 }
 
 - (void)mapView:(__unused MGLMapView *)mapView didFailToLocateUserWithError:(__unused NSError *)error {

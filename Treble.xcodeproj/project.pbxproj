@@ -22,6 +22,7 @@
 		968182161AF2DEBC00E2403B /* TRBLCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 968182151AF2DEBC00E2403B /* TRBLCoordinator.m */; };
 		968182191AF2E20A00E2403B /* TRBLGoogleMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 968182181AF2E20A00E2403B /* TRBLGoogleMapView.m */; };
 		9692CA5D1B06BABD00ED8BC8 /* UITabBarController+Swipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 9692CA5C1B06BABD00ED8BC8 /* UITabBarController+Swipe.m */; };
+		96C1DB991E4852AD00F323A0 /* UITabBarController+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1DB981E4852AD00F323A0 /* UITabBarController+Visible.m */; };
 		96E5ECF61AF833B2008350F9 /* MKMapView+Bounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E5ECF51AF833B2008350F9 /* MKMapView+Bounds.m */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,8 @@
 		968182181AF2E20A00E2403B /* TRBLGoogleMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLGoogleMapView.m; sourceTree = "<group>"; };
 		9692CA5B1B06BABD00ED8BC8 /* UITabBarController+Swipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Swipe.h"; path = "Additions/UITabBarController+Swipe.h"; sourceTree = "<group>"; };
 		9692CA5C1B06BABD00ED8BC8 /* UITabBarController+Swipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITabBarController+Swipe.m"; path = "Additions/UITabBarController+Swipe.m"; sourceTree = "<group>"; };
+		96C1DB971E4852AD00F323A0 /* UITabBarController+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Visible.h"; path = "Additions/UITabBarController+Visible.h"; sourceTree = "<group>"; };
+		96C1DB981E4852AD00F323A0 /* UITabBarController+Visible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITabBarController+Visible.m"; path = "Additions/UITabBarController+Visible.m"; sourceTree = "<group>"; };
 		96CCD4791CECC02100BDB57D /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "../../../Downloads/aa3052925ceeea2d-GoogleMaps-1.13.2.tar/Frameworks/GoogleMaps.framework"; sourceTree = "<group>"; };
 		96E5ECF41AF833B2008350F9 /* MKMapView+Bounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKMapView+Bounds.h"; path = "Additions/MKMapView+Bounds.h"; sourceTree = "<group>"; };
 		96E5ECF51AF833B2008350F9 /* MKMapView+Bounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKMapView+Bounds.m"; path = "Additions/MKMapView+Bounds.m"; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 				961EA9AD1B086933006D6D57 /* UITabBarController+Index.m */,
 				9692CA5B1B06BABD00ED8BC8 /* UITabBarController+Swipe.h */,
 				9692CA5C1B06BABD00ED8BC8 /* UITabBarController+Swipe.m */,
+				96C1DB971E4852AD00F323A0 /* UITabBarController+Visible.h */,
+				96C1DB981E4852AD00F323A0 /* UITabBarController+Visible.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96C1DB991E4852AD00F323A0 /* UITabBarController+Visible.m in Sources */,
 				968182191AF2E20A00E2403B /* TRBLGoogleMapView.m in Sources */,
 				968181DE1AF2B34900E2403B /* TRBLMapKitMapView.m in Sources */,
 				968181D81AF2B34900E2403B /* AppDelegate.m in Sources */,

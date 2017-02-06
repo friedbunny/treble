@@ -10,6 +10,7 @@
 #import "TRBLCoordinator.h"
 
 #import "Constants.h"
+#import "UITabBarController+Visible.h"
 
 #import <MapKit/MapKit.h>
 #import "Additions/MKMapView+Bounds.h"
@@ -31,6 +32,15 @@
     
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
+
+    // Add tab bar controller toggle gesture
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+    doubleTap.numberOfTapsRequired = 2;
+    [self.mapView addGestureRecognizer:doubleTap];
+
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleTabBarController:)];
+    [singleTap requireGestureRecognizerToFail:doubleTap];
+    [self.mapView addGestureRecognizer:singleTap];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -130,6 +140,18 @@
 
 - (void)statusBarTappedAction:(NSNotification*)notification {
     [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+}
+
+- (void)toggleTabBarController:(__unused UITapGestureRecognizer *)gestureRecognizer {
+    [UIView animateWithDuration:0.15 animations:^{
+        [self.tabBarController toggleTabBar];
+        for (UIView *subView in self.mapView.subviews) {
+            if ([subView isMemberOfClass:NSClassFromString(@"MKAttributionLabel")]) {
+                CGFloat tabBarHeight = self.tabBarController.tabBar.frame.size.height;
+                subView.frame = CGRectOffset(subView.frame, 0, (self.tabBarController.tabBarIsVisible ? -tabBarHeight : tabBarHeight));
+            }
+        }
+    }];
 }
 
 /*
