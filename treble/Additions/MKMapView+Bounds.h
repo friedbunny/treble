@@ -15,4 +15,6 @@
 - (CLLocationCoordinate2D)southWestCoordinate;
 - (CLLocationCoordinate2D)northEastCoordinate;
 
+- (double)zoomLevel;
+
 @end

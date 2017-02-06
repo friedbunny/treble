@@ -59,8 +59,8 @@
     return CLLocationCoordinate2DMake(max_lat, max_lon);
 }
 
-/*- (NSUInteger)zoomLevel {
- return log2(360 * ((self.frame.size.width/256) / self.region.span.longitudeDelta)) + 1;
-}*/
+- (double)zoomLevel {
+    return log2(360 * ((self.frame.size.width/256) / self.region.span.longitudeDelta)) + 1;
+}
 
 @end
