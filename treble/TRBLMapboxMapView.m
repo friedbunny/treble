@@ -38,8 +38,6 @@
     [super viewDidAppear:animated];
     
     self.coordinator.delegate = self;
-    
-    [self updateStatusBarStyleForMapStyle];
 
     //NSLog(@"MB appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
@@ -86,7 +84,7 @@
 
 - (void)mapShouldChangeStyle {
     [self cycleStyles];
-    [self updateStatusBarStyleForMapStyle];
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (NSArray *)styles {
@@ -124,7 +122,7 @@
     self.mapView.styleURL = styleURL;
 }
 
-- (void)updateStatusBarStyleForMapStyle {
+- (UIStatusBarStyle)preferredStatusBarStyle {
     UIStatusBarStyle statusBarStyle;
     NSString *mapStyle = self.mapView.styleURL.absoluteString;
 
@@ -136,7 +134,7 @@
         statusBarStyle = UIStatusBarStyleDefault;
     }
 
-    [[UIApplication sharedApplication] setStatusBarStyle:statusBarStyle animated:NO];
+    return statusBarStyle;
 }
 
 - (void)statusBarTappedAction:(NSNotification*)notification {

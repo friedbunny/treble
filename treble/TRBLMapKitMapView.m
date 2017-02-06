@@ -38,7 +38,7 @@
     
     self.coordinator.delegate = self;
     
-    [self updateStatusBarStyleForMapStyle];
+    //[self setNeedsStatusBarAppearanceUpdate];
     
     //NSLog(@"APPL appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
@@ -78,7 +78,7 @@
 
 - (void)mapShouldChangeStyle {
     [self cycleStyles];
-    [self updateStatusBarStyleForMapStyle];
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)cycleStyles {
@@ -111,14 +111,14 @@
     }
 }
 
-- (void)updateStatusBarStyleForMapStyle {
+- (UIStatusBarStyle)preferredStatusBarStyle {
     UIStatusBarStyle style;
-    
+
     switch (self.mapView.mapType) {
         case MKMapTypeStandard:
             style = UIStatusBarStyleDefault;
             break;
-            
+
         case MKMapTypeSatellite:
         case MKMapTypeSatelliteFlyover:
         case MKMapTypeHybrid:
@@ -126,8 +126,8 @@
             style = UIStatusBarStyleLightContent;
             break;
     }
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:style animated:NO];
+
+    return style;
 }
 
 - (void)statusBarTappedAction:(NSNotification*)notification {

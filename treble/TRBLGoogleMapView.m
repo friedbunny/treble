@@ -41,8 +41,6 @@
     
     self.coordinator.delegate = self;
     
-    [self updateStatusBarStyleForMapStyle];
-    
     //NSLog(@"GOOG appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
     if (self.coordinator.needsUpdateGoogle) {
@@ -99,7 +97,7 @@
 
 - (void)mapShouldChangeStyle {
     [self cycleStyles];
-    [self updateStatusBarStyleForMapStyle];
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)cycleStyles {
@@ -133,7 +131,7 @@
     }
 }
 
-- (void)updateStatusBarStyleForMapStyle {
+- (UIStatusBarStyle)preferredStatusBarStyle {
     UIStatusBarStyle style;
 
     switch (self.mapView.mapType) {
@@ -150,7 +148,7 @@
             break;
     }
 
-    [[UIApplication sharedApplication] setStatusBarStyle:style animated:NO];
+    return style;
 }
 
 - (void)statusBarTappedAction:(NSNotification*)notification {
