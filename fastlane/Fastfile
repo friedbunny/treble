@@ -30,7 +30,7 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     cocoapods(use_bundle_exec: true)
-    match(type: "appstore", readonly: true)
+    #match(type: "appstore", readonly: true)
     bump_build_number
     gym # Build your app - more options available
     #pilot
