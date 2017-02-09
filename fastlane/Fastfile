@@ -50,7 +50,7 @@ platform :ios do
 
   desc "Install App Store certificate and provisioning profile from the ***REMOVED*** repo"
   lane :team_match do
-    match(app_identifier: "com.mapbox.trbl", readonly: true)
+    match(readonly: true)
   end
 
   after_all do |lane|
