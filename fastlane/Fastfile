@@ -32,8 +32,8 @@ platform :ios do
     cocoapods(use_bundle_exec: true)
     #match(type: "appstore", readonly: true)
     bump_build_number
-    gym # Build your app - more options available
-    #pilot
+    gym(scheme: "App Store", clean: true, output_directory: "build/", include_bitcode: true)
+    pilot(skip_waiting_for_build_processing: true, ipa: "build/treble.ipa")
 
     # sh "your_script.sh"
     # You can also use other beta testing services here (run `fastlane actions`)
