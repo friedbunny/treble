@@ -66,6 +66,7 @@
 		968182151AF2DEBC00E2403B /* TRBLCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLCoordinator.m; sourceTree = "<group>"; };
 		968182171AF2E20A00E2403B /* TRBLGoogleMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBLGoogleMapView.h; sourceTree = "<group>"; };
 		968182181AF2E20A00E2403B /* TRBLGoogleMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLGoogleMapView.m; sourceTree = "<group>"; };
+		968F36B81E4D2B5C003A5522 /* PlistBefriender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlistBefriender.swift; path = scripts/PlistBefriender.swift; sourceTree = "<group>"; };
 		9692CA5B1B06BABD00ED8BC8 /* UITabBarController+Swipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Swipe.h"; path = "Additions/UITabBarController+Swipe.h"; sourceTree = "<group>"; };
 		9692CA5C1B06BABD00ED8BC8 /* UITabBarController+Swipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITabBarController+Swipe.m"; path = "Additions/UITabBarController+Swipe.m"; sourceTree = "<group>"; };
 		96C1DB971E4852AD00F323A0 /* UITabBarController+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Visible.h"; path = "Additions/UITabBarController+Visible.h"; sourceTree = "<group>"; };
@@ -154,6 +155,7 @@
 				9625934F1AF541FE002A9DDC /* APIKeys.plist */,
 				968181D31AF2B34900E2403B /* Info.plist */,
 				968181D41AF2B34900E2403B /* main.m */,
+				968F36B81E4D2B5C003A5522 /* PlistBefriender.swift */,
 				968181FE1AF2BC0200E2403B /* Settings.bundle */,
 			);
 			name = "Supporting Files";
@@ -186,6 +188,7 @@
 				968181CB1AF2B34900E2403B /* Sources */,
 				968181CC1AF2B34900E2403B /* Frameworks */,
 				968181CD1AF2B34900E2403B /* Resources */,
+				968F36BA1E4D2BD6003A5522 /* Update version strings in Settings.bundle */,
 				C449C5CD43AF6E571BD7B639 /* [CP] Embed Pods Frameworks */,
 				8D8FA627772C3240315AE437 /* [CP] Copy Pods Resources */,
 				96CCD47E1CECC03E00BDB57D /* Embed Frameworks */,
@@ -212,6 +215,7 @@
 					968181CE1AF2B34900E2403B = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = U8B2JGE4C6;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -284,6 +288,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-treble/Pods-treble-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		968F36BA1E4D2BD6003A5522 /* Update version strings in Settings.bundle */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Update version strings in Settings.bundle";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xcrun -sdk macosx swift \"${PROJECT_DIR}/treble/scripts/PlistBefriender.swift\" \"${INFOPLIST_FILE}\" \"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Settings.bundle/Root.plist\" \"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework\"\n\nplutil -lint \"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Settings.bundle/Root.plist\"";
 		};
 		C449C5CD43AF6E571BD7B639 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -428,6 +446,7 @@
 			baseConfigurationReference = 4B121A17FFD5E3CA153F3A90 /* Pods-treble.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -455,6 +474,7 @@
 			baseConfigurationReference = 94613F12BCB586D3CB8EA82E /* Pods-treble.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -523,6 +543,7 @@
 			baseConfigurationReference = 2664238999696F4AD5D84AEA /* Pods-treble.app store.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 1;

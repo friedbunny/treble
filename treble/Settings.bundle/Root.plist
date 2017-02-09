@@ -4,7 +4,7 @@
 <dict>
 	<key>PreferenceSpecifiers</key>
 	<array>
-        <dict>
+		<dict>
 			<key>Title</key>
 			<string>Privacy Settings</string>
 			<key>Type</key>
@@ -18,13 +18,41 @@
 			<key>Key</key>
 			<string>MGLMapboxMetricsEnabled</string>
 			<key>Title</key>
-			<string>Mapbox Metrics</string>
+			<string>Mapbox Telemetry</string>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>TrueValue</key>
 			<true/>
 			<key>FalseValue</key>
 			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>About Treble</string>
+			<key>FooterText</key>
+			<string>Thanks for using Treble — rock on. 🎶</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Version</string>
+			<key>DefaultValue</key>
+			<string></string>
+			<key>Key</key>
+			<string>TRBLVersionString</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Mapbox SDK Version</string>
+			<key>DefaultValue</key>
+			<string></string>
+			<key>Key</key>
+			<string>TRBLMapboxSDKVersionString</string>
 		</dict>
 	</array>
 	<key>StringsTable</key>

@@ -1,3 +1,7 @@
 ﻿"Privacy Settings" = "Privacy Settings";
-"Mapbox Metrics" = "Mapbox Metrics";
+"Mapbox Telemetry" = "Mapbox Telemetry";
 "This setting allows the application to share anonymized location and usage data with Mapbox." = "This setting allows the application to share anonymized location and usage data with Mapbox.";
+"About Treble" = "About Treble";
+"Thanks for using Treble — rock on. 🎶" = "Thanks for using Treble — rock on. 🎶"
+"Version" = "Version"
+"Mapbox SDK Version" = "Mapbox SDK Version"
