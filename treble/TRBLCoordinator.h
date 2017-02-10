@@ -31,8 +31,6 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
 
 @property (nonatomic, assign) id<TRBLCoordinatorDelegate> delegate;
 
-@property (nonatomic) NSString *mapboxAPIKey;
-
 @property (nonatomic) CLLocationCoordinate2D centerCoordinate;
 @property (nonatomic) CLLocationCoordinate2D northEast;
 @property (nonatomic) CLLocationCoordinate2D southWest;
