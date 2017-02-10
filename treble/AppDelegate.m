@@ -22,7 +22,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // set global app tint color to Mapbox turquoise
     self.window.tintColor = [UIColor colorWithRed:59.f/255.f green:178.f/255.f blue:208.f/255.f alpha:1.f];
-    
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults registerDefaults:@{
+        @"TRBLUIZoomLevel": @YES,
+        @"TRBLDebugOptionsTileBoundaries": @NO,
+        @"TRBLDebugOptionsTileInfo": @NO,
+        @"TRBLDebugOptionsTileTimestamps": @NO,
+        @"TRBLDebugOptionsCollisionBoxes": @NO,
+    }];
+
     // API key initialization
     //
     // read APIKeys.plist, see APIKeys.EXAMPLE.plist for the format

@@ -45,6 +45,8 @@
     [self.mapView addGestureRecognizer:singleTap];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
+    [self defaultsChanged:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -172,6 +174,12 @@
             }
         }
     }];
+}
+
+- (void)defaultsChanged:(__unused NSNotification *)notification {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    self.zoomLabelView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
 }
 
 /*

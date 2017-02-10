@@ -224,6 +224,8 @@
     }
 
     self.mapView.debugMask = debugMask;
+
+    self.zoomLabelView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
 }
 
 /*

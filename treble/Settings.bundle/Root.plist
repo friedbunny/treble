@@ -4,52 +4,62 @@
 <dict>
 	<key>PreferenceSpecifiers</key>
 	<array>
-        <dict>
-            <key>Type</key>
-            <string>PSGroupSpecifier</string>
-            <key>Title</key>
-            <string>Style Debugging</string>
-        </dict>
-        <dict>
-            <key>Type</key>
-            <string>PSToggleSwitchSpecifier</string>
-            <key>Title</key>
-            <string>Tile Boundaries</string>
-            <key>Key</key>
-            <string>TRBLDebugOptionsTileBoundaries</string>
-            <key>DefaultValue</key>
-            <false/>
-        </dict>
-        <dict>
-            <key>Type</key>
-            <string>PSToggleSwitchSpecifier</string>
-            <key>Title</key>
-            <string>Tile Info</string>
-            <key>Key</key>
-            <string>TRBLDebugOptionsTileInfo</string>
-            <key>DefaultValue</key>
-            <false/>
-        </dict>
-        <dict>
-            <key>Type</key>
-            <string>PSToggleSwitchSpecifier</string>
-            <key>Title</key>
-            <string>Tile Timestamps</string>
-            <key>Key</key>
-            <string>TRBLDebugOptionsTileTimestamps</string>
-            <key>DefaultValue</key>
-            <false/>
-        </dict>
-        <dict>
-            <key>Type</key>
-            <string>PSToggleSwitchSpecifier</string>
-            <key>Title</key>
-            <string>Collision Boxes</string>
-            <key>Key</key>
-            <string>TRBLDebugOptionsCollisionBoxes</string>
-            <key>DefaultValue</key>
-            <false/>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Zoom Level</string>
+			<key>Key</key>
+			<string>TRBLUIZoomLevel</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Style Debugging</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Tile Boundaries</string>
+			<key>Key</key>
+			<string>TRBLDebugOptionsTileBoundaries</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Tile Info</string>
+			<key>Key</key>
+			<string>TRBLDebugOptionsTileInfo</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Tile Timestamps</string>
+			<key>Key</key>
+			<string>TRBLDebugOptionsTileTimestamps</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Collision Boxes</string>
+			<key>Key</key>
+			<string>TRBLDebugOptionsCollisionBoxes</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
 		<dict>
 			<key>Title</key>
 			<string>Privacy</string>
