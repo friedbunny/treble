@@ -8,6 +8,7 @@
 
 #import "TRBLGoogleMapView.h"
 #import "TRBLCoordinator.h"
+#import "TRBLZoomLabelView.h"
 
 #import "Constants.h"
 #import "UITabBarController+Visible.h"
@@ -19,6 +20,7 @@
 @property (nonatomic) IBOutlet GMSMapView *mapView;
 @property TRBLCoordinator *coordinator;
 @property (nonatomic) BOOL shouldUpdateCoordinates;
+@property (nonatomic) IBOutlet TRBLZoomLabelView *zoomLabelView;
 
 @end
 
@@ -37,6 +39,8 @@
     // TODO: Padding affects the visible map region, which skews the translation to other vendors' maps.
     //       This should be taken into account before re-enabling compass/attribution padding.
     //self.mapView.padding = UIEdgeInsetsMake(12.f, 0, self.tabBarController.tabBar.frame.size.height, 0);
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -65,7 +69,7 @@
         self.coordinator.needsUpdateGoogle = NO;
     }
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
+    [self updateZoomLabel];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -88,10 +92,21 @@
     self.coordinator.delegate = nil;
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
+
+    [self resetZoomLabel];
 }
 
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
     self.shouldUpdateCoordinates = YES;
+    [self updateZoomLabel];
+}
+
+- (void)updateZoomLabel {
+    self.zoomLabelView.zoomLevel = self.mapView.camera.zoom;
+}
+
+- (void)resetZoomLabel {
+    self.zoomLabelView.zoomLevel = 0;
 }
 
 - (void)mapShouldChangeStyle {

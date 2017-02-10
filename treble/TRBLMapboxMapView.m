@@ -8,6 +8,7 @@
 
 #import "TRBLMapboxMapView.h"
 #import "TRBLCoordinator.h"
+#import "TRBLZoomLabelView.h"
 
 #import "Constants.h"
 #import "UITabBarController+Visible.h"
@@ -20,6 +21,8 @@
 
 @property TRBLCoordinator *coordinator;
 @property (nonatomic) BOOL shouldUpdateCoordinates;
+
+@property (nonatomic) IBOutlet TRBLZoomLabelView *zoomLabelView;
 
 @end
 
@@ -44,8 +47,6 @@
     [self.mapView addGestureRecognizer:singleTap];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
-
-    // Observe NSUserDefaults changes
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
     [self defaultsChanged:nil];
 }
@@ -63,6 +64,8 @@
         [self.mapView setVisibleCoordinateBounds:MGLCoordinateBoundsMake(self.coordinator.southWest, self.coordinator.northEast) animated:NO];
         self.coordinator.needsUpdateMapbox = NO;
     }
+
+    [self updateZoomLabel];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -90,10 +93,25 @@
     self.coordinator.delegate = nil;
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
+
+    [self resetZoomLabel];
 }
 
 - (void)mapView:(MGLMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     self.shouldUpdateCoordinates = YES;
+    [self updateZoomLabel];
+}
+
+- (void)mapViewRegionIsChanging:(MGLMapView *)mapView {
+    [self updateZoomLabel];
+}
+
+- (void)updateZoomLabel {
+    self.zoomLabelView.zoomLevel = self.mapView.zoomLevel;
+}
+
+- (void)resetZoomLabel {
+    self.zoomLabelView.zoomLevel = 0;
 }
 
 - (void)mapShouldChangeStyle {

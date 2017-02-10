@@ -11,6 +11,7 @@
 		9600673C1C5C9366005B2606 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9600673B1C5C9366005B2606 /* Launch Screen.storyboard */; };
 		961EA9AE1B086933006D6D57 /* UITabBarController+Index.m in Sources */ = {isa = PBXBuildFile; fileRef = 961EA9AD1B086933006D6D57 /* UITabBarController+Index.m */; };
 		962593501AF541FE002A9DDC /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9625934F1AF541FE002A9DDC /* APIKeys.plist */; };
+		96446CBB1E4E3227005E3B10 /* TRBLZoomLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96446CBA1E4E3227005E3B10 /* TRBLZoomLabelView.m */; };
 		968181D51AF2B34900E2403B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181D41AF2B34900E2403B /* main.m */; };
 		968181D81AF2B34900E2403B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181D71AF2B34900E2403B /* AppDelegate.m */; };
 		968181DB1AF2B34900E2403B /* TRBLMapboxMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181DA1AF2B34900E2403B /* TRBLMapboxMapView.m */; };
@@ -48,6 +49,8 @@
 		961EA9AC1B086933006D6D57 /* UITabBarController+Index.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Index.h"; path = "Additions/UITabBarController+Index.h"; sourceTree = "<group>"; };
 		961EA9AD1B086933006D6D57 /* UITabBarController+Index.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITabBarController+Index.m"; path = "Additions/UITabBarController+Index.m"; sourceTree = "<group>"; };
 		9625934F1AF541FE002A9DDC /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
+		96446CB91E4E3227005E3B10 /* TRBLZoomLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBLZoomLabelView.h; sourceTree = "<group>"; };
+		96446CBA1E4E3227005E3B10 /* TRBLZoomLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLZoomLabelView.m; sourceTree = "<group>"; };
 		967E9D031CB8A25C0004D44E /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		968181CF1AF2B34900E2403B /* treble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = treble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		968181D31AF2B34900E2403B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -141,6 +144,8 @@
 				968181DD1AF2B34900E2403B /* TRBLMapKitMapView.m */,
 				968182171AF2E20A00E2403B /* TRBLGoogleMapView.h */,
 				968182181AF2E20A00E2403B /* TRBLGoogleMapView.m */,
+				96446CB91E4E3227005E3B10 /* TRBLZoomLabelView.h */,
+				96446CBA1E4E3227005E3B10 /* TRBLZoomLabelView.m */,
 				968181DF1AF2B34900E2403B /* Main.storyboard */,
 				9600673B1C5C9366005B2606 /* Launch Screen.storyboard */,
 				968181E21AF2B34900E2403B /* Images.xcassets */,
@@ -325,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96446CBB1E4E3227005E3B10 /* TRBLZoomLabelView.m in Sources */,
 				96C1DB991E4852AD00F323A0 /* UITabBarController+Visible.m in Sources */,
 				968182191AF2E20A00E2403B /* TRBLGoogleMapView.m in Sources */,
 				968181DE1AF2B34900E2403B /* TRBLMapKitMapView.m in Sources */,
