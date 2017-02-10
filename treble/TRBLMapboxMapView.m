@@ -42,6 +42,12 @@
         }
     }
     [self.mapView addGestureRecognizer:singleTap];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
+
+    // Observe NSUserDefaults changes
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
+    [self defaultsChanged:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -57,8 +63,6 @@
         [self.mapView setVisibleCoordinateBounds:MGLCoordinateBoundsMake(self.coordinator.southWest, self.coordinator.northEast) animated:NO];
         self.coordinator.needsUpdateMapbox = NO;
     }
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -147,7 +151,7 @@
     return statusBarStyle;
 }
 
-- (void)statusBarTappedAction:(NSNotification*)notification {
+- (void)statusBarTappedAction:(__unused NSNotification*)notification {
     [self.mapView setUserTrackingMode:MGLUserTrackingModeFollow animated:YES];
 }
 
@@ -182,6 +186,26 @@
 
         [self presentViewController:alert animated:YES completion:nil];
     }
+}
+
+- (void)defaultsChanged:(__unused NSNotification *)notification {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    MGLMapDebugMaskOptions debugMask = 0;
+
+    if ([defaults boolForKey:@"TRBLDebugOptionsTileBoundaries"]) {
+        debugMask ^= MGLMapDebugTileBoundariesMask;
+    }
+    if ([defaults boolForKey:@"TRBLDebugOptionsTileInfo"]) {
+        debugMask ^= MGLMapDebugTileInfoMask;
+    }
+    if ([defaults boolForKey:@"TRBLDebugOptionsTileTimestamps"]) {
+        debugMask ^= MGLMapDebugTimestampsMask;
+    }
+    if ([defaults boolForKey:@"TRBLDebugOptionsCollisionBoxes"]) {
+        debugMask ^= MGLMapDebugCollisionBoxesMask;
+    }
+
+    self.mapView.debugMask = debugMask;
 }
 
 /*

@@ -4,13 +4,59 @@
 <dict>
 	<key>PreferenceSpecifiers</key>
 	<array>
+        <dict>
+            <key>Type</key>
+            <string>PSGroupSpecifier</string>
+            <key>Title</key>
+            <string>Style Debugging</string>
+        </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSToggleSwitchSpecifier</string>
+            <key>Title</key>
+            <string>Tile Boundaries</string>
+            <key>Key</key>
+            <string>TRBLDebugOptionsTileBoundaries</string>
+            <key>DefaultValue</key>
+            <false/>
+        </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSToggleSwitchSpecifier</string>
+            <key>Title</key>
+            <string>Tile Info</string>
+            <key>Key</key>
+            <string>TRBLDebugOptionsTileInfo</string>
+            <key>DefaultValue</key>
+            <false/>
+        </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSToggleSwitchSpecifier</string>
+            <key>Title</key>
+            <string>Tile Timestamps</string>
+            <key>Key</key>
+            <string>TRBLDebugOptionsTileTimestamps</string>
+            <key>DefaultValue</key>
+            <false/>
+        </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSToggleSwitchSpecifier</string>
+            <key>Title</key>
+            <string>Collision Boxes</string>
+            <key>Key</key>
+            <string>TRBLDebugOptionsCollisionBoxes</string>
+            <key>DefaultValue</key>
+            <false/>
+        </dict>
 		<dict>
 			<key>Title</key>
-			<string>Privacy Settings</string>
+			<string>Privacy</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>FooterText</key>
-			<string>This setting allows the application to share anonymized location and usage data with Mapbox.</string>
+			<string>This setting allows Treble to share anonymized location and usage data with Mapbox.</string>
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
