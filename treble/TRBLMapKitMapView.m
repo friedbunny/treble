@@ -45,8 +45,8 @@
     [self.mapView addGestureRecognizer:singleTap];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
-    [self defaultsChanged:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
+//    [self defaultsChanged:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -63,7 +63,7 @@
         self.coordinator.needsUpdateMapKit = NO;
     }
 
-    [self updateZoomLabel];
+    //[self updateZoomLabel];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -85,25 +85,25 @@
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
 
-    [self resetZoomLabel];
+    //[self resetZoomLabel];
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     self.shouldUpdateCoordinates = YES;
-    [self updateZoomLabel];
+    //[self updateZoomLabel];
 }
 
-- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
-    [self updateZoomLabel];
-}
-
-- (void)updateZoomLabel {
-    self.zoomLabelView.zoomLevel = self.mapView.zoomLevel;
-}
-
-- (void)resetZoomLabel {
-    self.zoomLabelView.zoomLevel = 0;
-}
+//- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
+//    [self updateZoomLabel];
+//}
+//
+//- (void)updateZoomLabel {
+//    self.zoomLabelView.zoomLevel = self.mapView.zoomLevel;
+//}
+//
+//- (void)resetZoomLabel {
+//    self.zoomLabelView.zoomLevel = 0;
+//}
 
 - (void)mapShouldChangeStyle {
     [self cycleStyles];
@@ -176,10 +176,10 @@
     }];
 }
 
-- (void)defaultsChanged:(__unused NSNotification *)notification {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-    self.zoomLabelView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
-}
+//- (void)defaultsChanged:(__unused NSNotification *)notification {
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//
+//    self.zoomLabelView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
+//}
 
 @end

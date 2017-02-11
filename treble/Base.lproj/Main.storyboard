@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E154a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,11 +18,11 @@
                         <viewControllerLayoutGuide type="bottom" id="srX-ER-Qca"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rIh-lV-iQJ" customClass="MGLMapView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8k-bN-Llz" customClass="TRBLZoomLabelView">
-                                <rect key="frame" x="16" y="28" width="35" height="15"/>
+                                <rect key="frame" x="20" y="28" width="35" height="15"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -54,44 +54,34 @@
             <objects>
                 <viewController id="8rJ-Kc-sve" userLabel="MapKit" customClass="TRBLMapKitMapView" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="46Z-UJ-P4s"/>
-                        <viewControllerLayoutGuide type="bottom" id="Wc1-vy-tIw"/>
+                        <viewControllerLayoutGuide type="top" id="IEV-kC-FOV"/>
+                        <viewControllerLayoutGuide type="bottom" id="tCG-u5-jpr"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8Lv-xt-ec1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" contentMode="scaleToFill" id="mGI-LK-9X1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fiA-TY-8jc">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J4K-Zk-vhd" customClass="TRBLZoomLabelView">
-                                <rect key="frame" x="16" y="28" width="35" height="15"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVG-iN-PWf" customClass="MKMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" notEnabled="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="JQ7-Wp-YQN"/>
-                                    <constraint firstAttribute="width" constant="35" id="gEC-ia-IkT"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="J4K-Zk-vhd" firstAttribute="leading" secondItem="8Lv-xt-ec1" secondAttribute="leadingMargin" id="qT5-yM-sbU"/>
-                            <constraint firstItem="J4K-Zk-vhd" firstAttribute="top" secondItem="46Z-UJ-P4s" secondAttribute="bottom" constant="8" symbolic="YES" id="ruF-5S-dsU"/>
+                            <constraint firstItem="YVG-iN-PWf" firstAttribute="leading" secondItem="mGI-LK-9X1" secondAttribute="leading" id="Io2-Rz-8q1"/>
+                            <constraint firstAttribute="trailing" secondItem="YVG-iN-PWf" secondAttribute="trailing" id="P4V-F9-Hkb"/>
+                            <constraint firstAttribute="bottom" secondItem="YVG-iN-PWf" secondAttribute="bottom" id="kkl-Hq-6Pq"/>
+                            <constraint firstItem="YVG-iN-PWf" firstAttribute="top" secondItem="mGI-LK-9X1" secondAttribute="top" id="r0m-Xg-reH"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Apple" image="Apple (Tab Bar)" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="mapView" destination="fiA-TY-8jc" id="IpT-Z6-Wso"/>
-                        <outlet property="zoomLabelView" destination="J4K-Zk-vhd" id="ntN-6g-SAS"/>
+                        <outlet property="mapView" destination="YVG-iN-PWf" id="XPT-96-tiL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2.3999999999999999" y="760.56971514242889"/>
+            <point key="canvasLocation" x="0.0" y="760"/>
         </scene>
         <!--Google-->
         <scene sceneID="gqK-vt-tWA">
@@ -102,16 +92,15 @@
                         <viewControllerLayoutGuide type="bottom" id="0GJ-el-y0H"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3aw-50-mJA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TK6-vh-6Sq" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TK6-vh-6Sq" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yae-O9-MHH" customClass="TRBLZoomLabelView">
-                                <rect key="frame" x="16" y="28" width="35" height="15"/>
+                                <rect key="frame" x="20" y="28" width="35" height="15"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -126,6 +115,10 @@
                         <constraints>
                             <constraint firstItem="Yae-O9-MHH" firstAttribute="leading" secondItem="3aw-50-mJA" secondAttribute="leadingMargin" id="90B-lb-B1Y"/>
                             <constraint firstItem="Yae-O9-MHH" firstAttribute="top" secondItem="Cft-s5-cKU" secondAttribute="bottom" constant="8" symbolic="YES" id="9Ml-wL-GGo"/>
+                            <constraint firstItem="TK6-vh-6Sq" firstAttribute="leading" secondItem="3aw-50-mJA" secondAttribute="leading" id="FiY-aI-jws"/>
+                            <constraint firstAttribute="bottom" secondItem="TK6-vh-6Sq" secondAttribute="bottom" id="eEi-Vj-XDD"/>
+                            <constraint firstItem="TK6-vh-6Sq" firstAttribute="top" secondItem="3aw-50-mJA" secondAttribute="top" id="hrX-3j-IdJ"/>
+                            <constraint firstAttribute="trailing" secondItem="TK6-vh-6Sq" secondAttribute="trailing" id="jQX-IH-OL2"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Google" image="Google (Tab Bar)" id="qZn-5x-Fe9"/>
@@ -136,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jA3-P9-mSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="765.60000000000002" y="760.56971514242889"/>
+            <point key="canvasLocation" x="765.234375" y="760.32210834553439"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
