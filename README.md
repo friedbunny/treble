@@ -9,3 +9,17 @@
 - Keep tapping the selected tab to switch styles.
 - Swipe on the bottom tab bar to switch providers.
 - Tap the top status bar to recenter the map on your location.
+
+## URL scheme
+
+To load a Mapbox map in Treble at a particular location, you can use this URL scheme in by entering it in Mobile Safari, sending it to your mobile device via AirDrop/Slack/etc., or implementing it in your iOS app:
+
+`treble://?lat=40.73&lng=-73.94&zoom=10`
+
+### Supported query parameters
+
+ * `lat`: set the map latitude
+ * `lng`: set the map longitude
+ * `zoom`: set the map zoom level (`0` being the whole world)
+ * `bearing`: set the map bearing in degrees clockwise from due north
+ * `pitch`: set the map pitch (`0` looking directly overhead, `60` being maximum tilt)

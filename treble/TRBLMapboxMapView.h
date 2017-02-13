@@ -10,4 +10,6 @@
 
 @interface TRBLMapboxMapView : UIViewController
 
+- (BOOL)loadMapFromURLScheme:(NSURL *)url;
+
 @end

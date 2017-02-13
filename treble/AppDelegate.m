@@ -14,6 +14,7 @@
 #import "Constants.h"
 #import "Additions/UITabBarController+Swipe.h"
 #import "Additions/UITabBarController+Index.h"
+#import "TRBLMapboxMapView.h"
 
 #import <BugshotKit/BugshotKit.h>
 
@@ -51,7 +52,7 @@
     //
     // set initial tab to Mapbox (second, center)
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    tabBarController.selectedIndex = tabBarController.lastSelectedIndex = 1;
+    tabBarController.selectedIndex = tabBarController.lastSelectedIndex = TRBLMapboxViewControllerIndex;
 
     // setup swipe transitions for tab bar
     [tabBarController setupSwipeGestureRecognizersAllowCyclingThroughTabs:YES];
@@ -63,6 +64,18 @@
     [[BugshotKit sharedManager] setAnnotationFillColor:self.window.tintColor];
 
     return YES;
+}
+
+#pragma mark - URL schemes
+
+- (BOOL)application:(UIApplication *)application openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    if ([url.scheme isEqualToString:TRBLURLScheme]) {
+        UITabBarController *tabBarController = (UITabBarController *)application.keyWindow.rootViewController;
+        TRBLMapboxMapView *mapboxViewController = tabBarController.viewControllers[TRBLMapboxViewControllerIndex];
+        return [mapboxViewController loadMapFromURLScheme:url];
+    }
+
+    return NO;
 }
 
 #pragma mark - Status bar touch tracking

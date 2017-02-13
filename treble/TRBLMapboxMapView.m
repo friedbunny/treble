@@ -56,9 +56,8 @@
     self.coordinator.delegate = self;
 
     //NSLog(@"MB appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
-    
+
     if (self.coordinator.needsUpdateMapbox) {
-        //NSLog(@"MB: Updating start coords");
         self.mapView.direction = self.coordinator.bearing;
         [self.mapView setVisibleCoordinateBounds:MGLCoordinateBoundsMake(self.coordinator.southWest, self.coordinator.northEast) animated:NO];
         self.coordinator.needsUpdateMapbox = NO;
@@ -227,6 +226,50 @@
     self.mapView.debugMask = debugMask;
 
     self.zoomLabelView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
+}
+
+#pragma mark - URL schemes
+
+- (BOOL)loadMapFromURLScheme:(NSURL *)url {
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:false];
+
+    if (!urlComponents) {
+        return NO;
+    }
+
+    // Parse query parameters.
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if (urlComponents.queryItems) {
+        for (NSURLQueryItem *item in urlComponents.queryItems) {
+            params[item.name] = item.value;
+        }
+    }
+
+    if ([params[@"zoom"] doubleValue]) {
+        self.mapView.zoomLevel = [params[@"zoom"] doubleValue];
+    }
+
+    MGLMapCamera *camera = self.mapView.camera;
+    if ([params[@"lat"] doubleValue] && [params[@"lng"] doubleValue]) {
+        camera.centerCoordinate = CLLocationCoordinate2DMake([params[@"lat"] doubleValue], [params[@"lng"] doubleValue]);
+    }
+    if ([params[@"bearing"] doubleValue]) {
+        camera.heading = [params[@"bearing"] doubleValue];
+    }
+    if ([params[@"pitch"] doubleValue]) {
+        camera.pitch = [params[@"pitch"] doubleValue];
+    }
+    self.mapView.camera = camera;
+
+    // Make this view controller active.
+    if (self.tabBarController.selectedIndex != TRBLMapboxViewControllerIndex) {
+        self.tabBarController.selectedIndex = TRBLMapboxViewControllerIndex;
+    }
+
+    // Wipe out any pending viewport changes.
+    self.coordinator.needsUpdateMapbox = NO;
+
+    return YES;
 }
 
 @end
