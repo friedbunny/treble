@@ -44,7 +44,6 @@
     [singleTap requireGestureRecognizerToFail:doubleTap];
     [self.mapView addGestureRecognizer:singleTap];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
 //    [self defaultsChanged:nil];
 }
@@ -64,6 +63,8 @@
     }
 
     //[self updateZoomLabel];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

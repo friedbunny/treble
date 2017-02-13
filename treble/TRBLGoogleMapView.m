@@ -40,7 +40,6 @@
     //       This should be taken into account before re-enabling compass/attribution padding.
     //self.mapView.padding = UIEdgeInsetsMake(12.f, 0, self.tabBarController.tabBar.frame.size.height, 0);
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
     [self defaultsChanged:nil];
 }
@@ -72,6 +71,8 @@
     }
 
     [self updateZoomLabel];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
