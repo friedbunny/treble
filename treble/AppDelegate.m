@@ -16,8 +16,6 @@
 #import "Additions/UITabBarController+Index.h"
 #import "TRBLMapboxMapView.h"
 
-#import <BugshotKit/BugshotKit.h>
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -57,11 +55,6 @@
     // setup swipe transitions for tab bar
     [tabBarController setupSwipeGestureRecognizersAllowCyclingThroughTabs:YES];
     
-    // bugshot setup (take screenshots, annotate them, and submit to the developers)
-    //
-    NSUInteger touches = [[[UIDevice currentDevice] model] hasSuffix:@"Simulator"] ? 2 : 3;
-    [BugshotKit enableWithNumberOfTouches:touches performingGestures:BSKInvocationGestureLongPress feedbackEmailAddress:@"treble@kulturny.com"];
-    [[BugshotKit sharedManager] setAnnotationFillColor:self.window.tintColor];
 
     return YES;
 }
