@@ -565,8 +565,6 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mapbox.trbl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0ff3551f-e02a-448c-a505-0b61799e9d5b";
-				PROVISIONING_PROFILE_SPECIFIER = com.mapbox.trbl;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
