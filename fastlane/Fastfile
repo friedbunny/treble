@@ -34,9 +34,7 @@ platform :ios do
     bump_build_number
     gym(scheme: "App Store", clean: true, output_directory: "build/", include_bitcode: true)
     pilot(skip_waiting_for_build_processing: true, ipa: "build/treble.ipa")
-
-    # sh "your_script.sh"
-    # You can also use other beta testing services here (run `fastlane actions`)
+    tag_and_push
   end
 
   desc "Increment build number based on current TestFlight build number"
@@ -46,6 +44,14 @@ platform :ios do
     version = get_version_number()
     build = get_build_number()
     commit_version_bump(message: "#{version} (#{build})", force: true)
+  end
+
+  desc "Tag and push changes to git remote."
+  lane :tag_and_push do
+    version = get_version_number()
+    build = get_build_number()
+    add_git_tag(tag: "#{version}v#{build}")
+    push_to_git_remote()
   end
 
   desc "Install App Store certificate and provisioning profile from the ***REMOVED*** repo"
