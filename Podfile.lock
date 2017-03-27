@@ -5,10 +5,12 @@ PODS:
   - GoogleMaps/Maps (2.2.0):
     - GoogleMaps/Base
   - Mapbox-iOS-SDK (3.5.0-rc.2)
+  - NSTimeZone-Coordinate (1.0.0)
 
 DEPENDENCIES:
   - GoogleMaps (~> 2.0)
   - Mapbox-iOS-SDK (from `https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.5.0-rc.2/platform/ios/Mapbox-iOS-SDK.podspec`)
+  - NSTimeZone-Coordinate
 
 EXTERNAL SOURCES:
   Mapbox-iOS-SDK:
@@ -17,7 +19,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   Mapbox-iOS-SDK: 7490bb3c671ad8a624dd2c22b3c9fce70bd903fc
+  NSTimeZone-Coordinate: 7a4620d3f86c9e42b4885ac05fb549ec2fa842dd
 
-PODFILE CHECKSUM: 7392fa0142febf130af80dbe86e4caf256151468
+PODFILE CHECKSUM: bbbebc8759b8411ec56489f8a22d43cbe93f5c24
 
 COCOAPODS: 1.2.0

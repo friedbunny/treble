@@ -14,6 +14,7 @@
 #import "UITabBarController+Visible.h"
 
 #import <Mapbox/Mapbox.h>
+#import <NSTimeZone+Coordinate.h>
 
 @interface TRBLMapboxMapView () <MGLMapViewDelegate, TRBLCoordinatorDelegate>
 
@@ -34,8 +35,9 @@
     self.coordinator = [TRBLCoordinator sharedCoordinator];
     
     self.mapView.showsUserLocation = YES;
-    self.mapView.userTrackingMode = MGLUserTrackingModeFollow;
     self.mapView.delegate = self;
+
+    [self.mapView setCenterCoordinate:NSTimeZone.localTimeZone.coordinate zoomLevel:3.0 animated:NO];
 
     // Add tab bar controller toggle gesture
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleTabBarController:)];

@@ -5,4 +5,6 @@ target 'treble' do
     pod 'Mapbox-iOS-SDK', :podspec => 'https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.5.0-rc.2/platform/ios/Mapbox-iOS-SDK.podspec'
 
     pod 'GoogleMaps', '~> 2.0'
+
+    pod 'NSTimeZone-Coordinate'
 end
