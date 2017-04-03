@@ -23,7 +23,7 @@ xcode-select --install
 </tr>
 <tr>
 <td width="33%"><code>brew cask install fastlane</code></td>
-<td width="33%"><a href="https://download.fastlane.tools/fastlane.zip">Download the zip file</a>. Then double click on the <code>install</code> script (or run it in a terminal window).</td>
+<td width="33%"><a href="https://download.fastlane.tools">Download the zip file</a>. Then double click on the <code>install</code> script (or run it in a terminal window).</td>
 <td width="33%"><code>sudo gem install fastlane -NV</code></td>
 </tr>
 </table>
@@ -48,6 +48,11 @@ fastlane ios bump_build_number
 Increment build number based on current TestFlight build number
 
 Commits the changes, but does not push them to any remote.
+### ios tag_and_push
+```
+fastlane ios tag_and_push
+```
+Tag and push changes to git remote.
 ### ios team_match
 ```
 fastlane ios team_match
