@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 
-#import <GoogleMaps/GMSServices.h>
+#import <Crashlytics/Crashlytics.h>
 #import <Mapbox/Mapbox.h>
+#import <GoogleMaps/GMSServices.h>
 
 #import "Constants.h"
 #import "Additions/UITabBarController+Swipe.h"
@@ -36,7 +37,12 @@
     //
     // read APIKeys.plist, see APIKeys.EXAMPLE.plist for the format
     NSDictionary *apiKeys = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"APIKeys" ofType:@"plist"]];
-    
+
+    // Crashlytics API key
+    NSString *crashlyticsAPIKey = [apiKeys objectForKey:@"Crashlytics API Key"];
+    NSAssert(crashlyticsAPIKey, @"REQUIRED: Crashlytics API key must be set in APIKeys.plist");
+    [Crashlytics startWithAPIKey:crashlyticsAPIKey];
+
     // Mapbox API key
     NSString *mapboxAPIKey = [apiKeys objectForKey:@"Mapbox API Key"];
     NSAssert(mapboxAPIKey, @"REQUIRED: Mapbox API key must be set in APIKeys.plist");
@@ -55,7 +61,6 @@
 
     // setup swipe transitions for tab bar
     [tabBarController setupSwipeGestureRecognizersAllowCyclingThroughTabs:YES];
-    
 
     return YES;
 }
