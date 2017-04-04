@@ -26,8 +26,7 @@ platform :ios do
     scan
   end
 
-  desc "Submit a new Beta Build to Apple TestFlight"
-  desc "This will also make sure the profile is up to date"
+  desc "Submit a new beta build to TestFlight"
   lane :beta do
     cocoapods(use_bundle_exec: true)
     #match(type: "appstore", readonly: true)
@@ -57,6 +56,14 @@ platform :ios do
   desc "Install App Store certificate and provisioning profile from the ***REMOVED*** repo"
   lane :team_match do
     match(readonly: true)
+  end
+
+  desc "Download dSYMs from iTunesConnect and upload them to Crashlytics"
+  lane :refresh_dsyms do
+    download_dsyms
+    crashlytics_api_key = get_info_plist_value(path: "treble/APIKeys.plist", key: "Crashlytics API Key")
+    upload_symbols_to_crashlytics(api_token: crashlytics_api_key)
+    clean_build_artifacts # Delete the local dSYM files
   end
 
   after_all do |lane|

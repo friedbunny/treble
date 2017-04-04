@@ -38,9 +38,7 @@ Runs all the tests
 ```
 fastlane ios beta
 ```
-Submit a new Beta Build to Apple TestFlight
-
-This will also make sure the profile is up to date
+Submit a new beta build to TestFlight
 ### ios bump_build_number
 ```
 fastlane ios bump_build_number
@@ -58,6 +56,11 @@ Tag and push changes to git remote.
 fastlane ios team_match
 ```
 Install App Store certificate and provisioning profile from the ***REMOVED*** repo
+### ios refresh_dsyms
+```
+fastlane ios refresh_dsyms
+```
+Download dSYMs from iTunesConnect and upload them to Crashlytics
 
 ----
 
