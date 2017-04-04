@@ -11,6 +11,8 @@
 		9600673C1C5C9366005B2606 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9600673B1C5C9366005B2606 /* Launch Screen.storyboard */; };
 		961EA9AE1B086933006D6D57 /* UITabBarController+Index.m in Sources */ = {isa = PBXBuildFile; fileRef = 961EA9AD1B086933006D6D57 /* UITabBarController+Index.m */; };
 		962593501AF541FE002A9DDC /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9625934F1AF541FE002A9DDC /* APIKeys.plist */; };
+		96301E7A1E937F2B005FF0F6 /* trebleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96301E791E937F2B005FF0F6 /* trebleTests.m */; };
+		96301E831E938087005FF0F6 /* TRBLCoordinatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96301E821E938087005FF0F6 /* TRBLCoordinatorTests.m */; };
 		96446CBB1E4E3227005E3B10 /* TRBLZoomLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96446CBA1E4E3227005E3B10 /* TRBLZoomLabelView.m */; };
 		968181D51AF2B34900E2403B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181D41AF2B34900E2403B /* main.m */; };
 		968181D81AF2B34900E2403B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181D71AF2B34900E2403B /* AppDelegate.m */; };
@@ -26,6 +28,16 @@
 		96C1DB991E4852AD00F323A0 /* UITabBarController+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1DB981E4852AD00F323A0 /* UITabBarController+Visible.m */; };
 		96E5ECF61AF833B2008350F9 /* MKMapView+Bounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E5ECF51AF833B2008350F9 /* MKMapView+Bounds.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		96301E7C1E937F2B005FF0F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 968181C71AF2B34900E2403B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 968181CE1AF2B34900E2403B;
+			remoteInfo = treble;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		96CCD47E1CECC03E00BDB57D /* Embed Frameworks */ = {
@@ -49,6 +61,10 @@
 		961EA9AC1B086933006D6D57 /* UITabBarController+Index.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Index.h"; path = "Additions/UITabBarController+Index.h"; sourceTree = "<group>"; };
 		961EA9AD1B086933006D6D57 /* UITabBarController+Index.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITabBarController+Index.m"; path = "Additions/UITabBarController+Index.m"; sourceTree = "<group>"; };
 		9625934F1AF541FE002A9DDC /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
+		96301E771E937F2B005FF0F6 /* trebleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = trebleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		96301E791E937F2B005FF0F6 /* trebleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = trebleTests.m; sourceTree = "<group>"; };
+		96301E7B1E937F2B005FF0F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96301E821E938087005FF0F6 /* TRBLCoordinatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLCoordinatorTests.m; sourceTree = "<group>"; };
 		96446CB91E4E3227005E3B10 /* TRBLZoomLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBLZoomLabelView.h; sourceTree = "<group>"; };
 		96446CBA1E4E3227005E3B10 /* TRBLZoomLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLZoomLabelView.m; sourceTree = "<group>"; };
 		967E9D031CB8A25C0004D44E /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -80,6 +96,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		96301E741E937F2B005FF0F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		968181CC1AF2B34900E2403B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -112,10 +135,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		96301E781E937F2B005FF0F6 /* trebleTests */ = {
+			isa = PBXGroup;
+			children = (
+				96301E791E937F2B005FF0F6 /* trebleTests.m */,
+				96301E821E938087005FF0F6 /* TRBLCoordinatorTests.m */,
+				96301E7B1E937F2B005FF0F6 /* Info.plist */,
+			);
+			path = trebleTests;
+			sourceTree = "<group>";
+		};
 		968181C61AF2B34900E2403B = {
 			isa = PBXGroup;
 			children = (
 				968181D11AF2B34900E2403B /* treble */,
+				96301E781E937F2B005FF0F6 /* trebleTests */,
 				968181D01AF2B34900E2403B /* Products */,
 				5A2828F87C80135E3EC6BD67 /* Frameworks */,
 				22458B2C55CB2CFCD2E3A32D /* Pods */,
@@ -126,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				968181CF1AF2B34900E2403B /* treble.app */,
+				96301E771E937F2B005FF0F6 /* trebleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,6 +220,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		96301E761E937F2B005FF0F6 /* trebleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96301E811E937F2B005FF0F6 /* Build configuration list for PBXNativeTarget "trebleTests" */;
+			buildPhases = (
+				96301E731E937F2B005FF0F6 /* Sources */,
+				96301E741E937F2B005FF0F6 /* Frameworks */,
+				96301E751E937F2B005FF0F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				96301E7D1E937F2B005FF0F6 /* PBXTargetDependency */,
+			);
+			name = trebleTests;
+			productName = trebleTests;
+			productReference = 96301E771E937F2B005FF0F6 /* trebleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		968181CE1AF2B34900E2403B /* treble */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 968181F51AF2B34900E2403B /* Build configuration list for PBXNativeTarget "treble" */;
@@ -217,6 +270,12 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Mapbox;
 				TargetAttributes = {
+					96301E761E937F2B005FF0F6 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = ***REMOVED***;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 968181CE1AF2B34900E2403B;
+					};
 					968181CE1AF2B34900E2403B = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = ***REMOVED***;
@@ -244,11 +303,19 @@
 			projectRoot = "";
 			targets = (
 				968181CE1AF2B34900E2403B /* treble */,
+				96301E761E937F2B005FF0F6 /* trebleTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		96301E751E937F2B005FF0F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		968181CD1AF2B34900E2403B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -326,6 +393,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		96301E731E937F2B005FF0F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96301E831E938087005FF0F6 /* TRBLCoordinatorTests.m in Sources */,
+				96301E7A1E937F2B005FF0F6 /* trebleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		968181CB1AF2B34900E2403B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -346,6 +422,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		96301E7D1E937F2B005FF0F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 968181CE1AF2B34900E2403B /* treble */;
+			targetProxy = 96301E7C1E937F2B005FF0F6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		968181DF1AF2B34900E2403B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -358,6 +442,58 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		96301E7E1E937F2B005FF0F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = ***REMOVED***;
+				INFOPLIST_FILE = trebleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mapbox.trebleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/treble.app/treble";
+			};
+			name = Debug;
+		};
+		96301E7F1E937F2B005FF0F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = ***REMOVED***;
+				INFOPLIST_FILE = trebleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mapbox.trebleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/treble.app/treble";
+			};
+			name = Release;
+		};
+		96301E801E937F2B005FF0F6 /* App Store */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = ***REMOVED***;
+				INFOPLIST_FILE = trebleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mapbox.trebleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/treble.app/treble";
+			};
+			name = "App Store";
+		};
 		968181F31AF2B34900E2403B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -573,6 +709,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		96301E811E937F2B005FF0F6 /* Build configuration list for PBXNativeTarget "trebleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96301E7E1E937F2B005FF0F6 /* Debug */,
+				96301E7F1E937F2B005FF0F6 /* Release */,
+				96301E801E937F2B005FF0F6 /* App Store */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		968181CA1AF2B34900E2403B /* Build configuration list for PBXProject "Treble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
