@@ -42,6 +42,7 @@
     NSString *crashlyticsAPIKey = [apiKeys objectForKey:@"Crashlytics API Key"];
     NSAssert(crashlyticsAPIKey, @"REQUIRED: Crashlytics API key must be set in APIKeys.plist");
     [Crashlytics startWithAPIKey:crashlyticsAPIKey];
+    [self setupCrashlytics];
 
     // Mapbox API key
     NSString *mapboxAPIKey = [apiKeys objectForKey:@"Mapbox API Key"];
@@ -86,6 +87,13 @@
     if (CGRectContainsPoint(statusBarFrame, location)) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kStatusBarTappedNotification object:nil];
     }
+}
+
+#pragma mark - Crashlytics
+
+- (void)setupCrashlytics {
+    [[Crashlytics sharedInstance] setUserName:UIDevice.currentDevice.name];
+    [[Crashlytics sharedInstance] setUserIdentifier:UIDevice.currentDevice.identifierForVendor.UUIDString];
 }
 
 @end
