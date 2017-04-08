@@ -7,26 +7,26 @@ PODS:
   - GoogleMaps/Base (2.2.0)
   - GoogleMaps/Maps (2.2.0):
     - GoogleMaps/Base
-  - Mapbox-iOS-SDK (3.5.1)
+  - Mapbox-iOS-SDK (3.5.2)
   - NSTimeZone-Coordinate (1.0.1)
 
 DEPENDENCIES:
   - Crashlytics (~> 3.8)
   - GoogleMaps (~> 2.0)
-  - Mapbox-iOS-SDK (from `https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.5.1/platform/ios/Mapbox-iOS-SDK.podspec`)
+  - Mapbox-iOS-SDK (from `https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.5.2/platform/ios/Mapbox-iOS-SDK.podspec`)
   - NSTimeZone-Coordinate (~> 1.0)
 
 EXTERNAL SOURCES:
   Mapbox-iOS-SDK:
-    :podspec: https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.5.1/platform/ios/Mapbox-iOS-SDK.podspec
+    :podspec: https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.5.2/platform/ios/Mapbox-iOS-SDK.podspec
 
 SPEC CHECKSUMS:
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
-  Mapbox-iOS-SDK: 7ec1da3e5d4feb317287b115de84a0bff42219a9
+  Mapbox-iOS-SDK: d0d58079e56e4eed4f0d8726afdbd49a76de8e5a
   NSTimeZone-Coordinate: 7228987925f2d6efeaa49ee0d4bdb208f8adc564
 
-PODFILE CHECKSUM: 8dc3f173e942659a55c87fc6543f3f5bed3099c0
+PODFILE CHECKSUM: bb129bcf18d23952b9c9e61151823eb19778220d
 
 COCOAPODS: 1.2.0
