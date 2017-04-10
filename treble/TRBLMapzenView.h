@@ -6,8 +6,8 @@
 //  Copyright © 2017 Mapbox. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <TangramMap/TangramMap.h>
+@import UIKit;
+@import TangramMap;
 
 @interface TRBLMapzenView : TGMapViewController
 

@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
     TRBLMapVendorMapbox,
     TRBLMapVendorMapKit,
     TRBLMapVendorGoogle,
+    TRBLMapVendorMapzen,
 };
 
 
@@ -29,6 +30,11 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
 + (TRBLCoordinator *)sharedCoordinator;
 - (instancetype)init;
 
+/**
+    The delegate should be set in -viewDidAppear:animated:, as the delegate will
+    be traded between already-instantiated view controllers (meaning -viewDidLoad
+    will not be called).
+ */
 @property (nonatomic, assign) id<TRBLCoordinatorDelegate> delegate;
 
 @property (nonatomic) CLLocationCoordinate2D centerCoordinate;
@@ -39,6 +45,7 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
 @property (nonatomic) BOOL needsUpdateMapbox;
 @property (nonatomic) BOOL needsUpdateMapKit;
 @property (nonatomic) BOOL needsUpdateGoogle;
+@property (nonatomic) BOOL needsUpdateMapzen;
 
 - (void)setNeedsUpdateFromVendor:(TRBLMapVendor)vendor;
 
