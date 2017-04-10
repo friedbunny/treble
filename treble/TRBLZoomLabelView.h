@@ -6,7 +6,7 @@
 //  Copyright © 2017 Mapbox. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface TRBLZoomLabelView : UILabel
 

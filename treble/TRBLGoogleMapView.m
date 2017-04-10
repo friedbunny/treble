@@ -13,7 +13,7 @@
 #import "Constants.h"
 #import "UITabBarController+Visible.h"
 
-#import <GoogleMaps/GoogleMaps.h>
+@import GoogleMaps;
 
 @interface TRBLGoogleMapView () <GMSMapViewDelegate, TRBLCoordinatorDelegate>
 

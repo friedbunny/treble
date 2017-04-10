@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Mapbox. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <MapKit/MapKit.h>
+@import Foundation;
+@import MapKit;
 
 typedef NS_ENUM(NSInteger, TRBLMapVendor) {
     TRBLMapVendorNone = 0,

@@ -13,9 +13,9 @@
 #import "Constants.h"
 #import "UITabBarController+Visible.h"
 
-#import <Mapbox/Mapbox.h>
+@import Mapbox;
 #import <NSTimeZone+Coordinate.h>
-#import <Crashlytics/Crashlytics.h>
+@import Crashlytics;
 
 @interface TRBLMapboxMapView () <MGLMapViewDelegate, TRBLCoordinatorDelegate>
 

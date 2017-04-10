@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 
-#import <Crashlytics/Crashlytics.h>
-#import <Mapbox/Mapbox.h>
+@import Crashlytics;
+@import Mapbox;
 #import <GoogleMaps/GMSServices.h>
 
 #import "Constants.h"

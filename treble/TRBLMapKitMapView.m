@@ -13,7 +13,7 @@
 #import "Constants.h"
 #import "UITabBarController+Visible.h"
 
-#import <MapKit/MapKit.h>
+@import MapKit;
 #import "Additions/MKMapView+Bounds.h"
 
 @interface TRBLMapKitMapView () <MKMapViewDelegate, TRBLCoordinatorDelegate>
