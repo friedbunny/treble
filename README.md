@@ -4,7 +4,7 @@
 
 [Mapbox iOS SDK](https://github.com/mapbox/mapbox-gl-native) comparison app, featuring [Apple MapKit](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MapKit_Framework_Reference/), [Google Maps for iOS](https://developers.google.com/maps/documentation/ios-sdk/), and [Mapzen Tangram-es](https://github.com/tangrams/tangram-es).
 
-![Treble](https://cloud.githubusercontent.com/assets/1198851/7792550/1f208ad4-0269-11e5-8156-f3b7de4f32aa.gif)
+![Treble](assets/screenshot.gif)
 
 ## Usage
 
