@@ -10,6 +10,7 @@
 #import "TRBLCoordinator.h"
 #import "TRBLZoomLabelView.h"
 #import "UITabBarController+Visible.h"
+#import <Mapbox/MGLGeometry.h>
 
 static const double MAPZEN_ZOOM_OFFSET = 1;
 
@@ -58,7 +59,7 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
 
     if (self.coordinator.needsUpdateMapzen) {
         self.position = TGGeoPointMake(self.coordinator.centerCoordinate.longitude, self.coordinator.centerCoordinate.latitude);
-        self.rotation = self.coordinator.bearing;
+        self.rotation = MGLRadiansFromDegrees(self.coordinator.bearing) * -1;
         self.zoom = self.coordinator.zoomLevel + MAPZEN_ZOOM_OFFSET;
         self.coordinator.needsUpdateMapzen = NO;
     }
@@ -71,7 +72,7 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
 
     if (self.shouldUpdateCoordinates) {
         self.coordinator.centerCoordinate = CLLocationCoordinate2DMake(self.position.latitude, self.position.longitude);
-        self.coordinator.bearing = self.rotation;
+        self.coordinator.bearing = MGLDegreesFromRadians(self.rotation) * -1;
         self.coordinator.zoomLevel = self.zoom - MAPZEN_ZOOM_OFFSET;
 
         [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapzen];
