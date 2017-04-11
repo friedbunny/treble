@@ -38,9 +38,8 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
 @property (nonatomic, assign) id<TRBLCoordinatorDelegate> delegate;
 
 @property (nonatomic) CLLocationCoordinate2D centerCoordinate;
-@property (nonatomic) CLLocationCoordinate2D northEast;
-@property (nonatomic) CLLocationCoordinate2D southWest;
 @property (nonatomic) CLLocationDirection bearing;
+@property (nonatomic) double zoomLevel;
 
 @property (nonatomic) BOOL needsUpdateMapbox;
 @property (nonatomic) BOOL needsUpdateMapKit;

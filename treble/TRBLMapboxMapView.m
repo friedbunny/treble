@@ -38,6 +38,9 @@
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
 
+    // Disable content insets so that the center coordinate is consistent across vendors.
+    self.automaticallyAdjustsScrollViewInsets = NO;
+
     [self.mapView setCenterCoordinate:NSTimeZone.localTimeZone.coordinate zoomLevel:3.0 animated:NO];
 
     // Add tab bar controller toggle gesture
@@ -69,11 +72,11 @@
     
     self.coordinator.delegate = self;
 
-    //NSLog(@"MB appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
-
     if (self.coordinator.needsUpdateMapbox) {
-        self.mapView.direction = self.coordinator.bearing;
-        [self.mapView setVisibleCoordinateBounds:MGLCoordinateBoundsMake(self.coordinator.southWest, self.coordinator.northEast) animated:NO];
+        [self.mapView setCenterCoordinate:self.coordinator.centerCoordinate
+                                zoomLevel:self.coordinator.zoomLevel
+                                direction:self.coordinator.bearing
+                                 animated:NO];
         self.coordinator.needsUpdateMapbox = NO;
     }
 
@@ -82,27 +85,21 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
 
+- (CLLocationCoordinate2D)centerCoordinate {
+    return [self.mapView convertPoint:self.view.center toCoordinateFromView:self.mapView];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
     if (self.shouldUpdateCoordinates) {
         self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
         self.coordinator.bearing = self.mapView.direction;
-        
-        CLLocationCoordinate2D southWest = [self.mapView convertPoint:CGPointMake(0, self.view.bounds.size.height)
-                                                 toCoordinateFromView:self.mapView];
-        
-        CLLocationCoordinate2D northEast = [self.mapView convertPoint:CGPointMake(self.mapView.bounds.size.width, 0)
-                                                 toCoordinateFromView:self.mapView];
-        
-        self.coordinator.southWest = southWest;
-        self.coordinator.northEast = northEast;
+        self.coordinator.zoomLevel = self.mapView.zoomLevel;
         
         [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapbox];
         self.shouldUpdateCoordinates = NO;
     }
-    
-    //NSLog(@"MB disappear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
     self.coordinator.delegate = nil;
 
@@ -188,12 +185,7 @@
 }
 
 - (void)toggleTabBarController:(__unused UITapGestureRecognizer *)gestureRecognizer {
-    [UIView animateWithDuration:0.15 animations:^{
-        [self.tabBarController toggleTabBar];
-        UIEdgeInsets newInsets = self.mapView.contentInset;
-        newInsets.bottom = self.tabBarController.tabBarIsVisible ? self.tabBarController.tabBar.frame.size.height + 1 : 0;
-        self.mapView.contentInset = newInsets;
-    }];
+    [self.tabBarController toggleTabBarAnimated:YES];
 }
 
 - (void)mapView:(__unused MGLMapView *)mapView didFailToLocateUserWithError:(__unused NSError *)error {

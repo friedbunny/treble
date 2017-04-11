@@ -14,9 +14,11 @@
 #import "UITabBarController+Visible.h"
 
 @import MapKit;
-#import "Additions/MKMapView+Bounds.h"
+#import "Additions/MKMapView+ZoomLevel.h"
 
-@interface TRBLMapKitMapView () <MKMapViewDelegate, TRBLCoordinatorDelegate>
+static const double MAPKIT_ZOOM_OFFSET = 1;
+
+@interface TRBLMapKitMapView () <MKMapViewDelegate, TRBLCoordinatorDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic) IBOutlet MKMapView *mapView;
 @property TRBLCoordinator *coordinator;
@@ -35,6 +37,8 @@
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
 
+    [self removeInsets];
+
     // Add tab bar controller toggle gesture
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
     doubleTap.numberOfTapsRequired = 2;
@@ -44,25 +48,29 @@
     [singleTap requireGestureRecognizerToFail:doubleTap];
     [self.mapView addGestureRecognizer:singleTap];
 
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
-//    [self defaultsChanged:nil];
+    // Add simultaneously-recognized pinch gesture to update the zoom label.
+    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(updateZoomLabel)];
+    pinch.delegate = self;
+    [self.mapView addGestureRecognizer:pinch];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
+    [self defaultsChanged:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     self.coordinator.delegate = self;
-    
-    //NSLog(@"APPL appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
-    
+
     if (self.coordinator.needsUpdateMapKit) {
-        //NSLog(@"APPL: Updating start coords");
-        [self.mapView fitBoundsToSouthWestCoordinate:self.coordinator.southWest northEastCoordinate:self.coordinator.northEast];
+        [self.mapView setCenterCoordinate:self.coordinator.centerCoordinate
+                                zoomLevel:self.coordinator.zoomLevel + MAPKIT_ZOOM_OFFSET
+                                 animated:NO];
         self.mapView.camera.heading = self.coordinator.bearing;
         self.coordinator.needsUpdateMapKit = NO;
     }
 
-    //[self updateZoomLabel];
+    [self updateZoomLabel];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
@@ -71,44 +79,36 @@
     [super viewWillDisappear:animated];
     
     if (self.shouldUpdateCoordinates) {
-        self.coordinator.southWest = self.mapView.southWestCoordinate;
-        self.coordinator.northEast = self.mapView.northEastCoordinate;
         self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
         self.coordinator.bearing = self.mapView.camera.heading;
+        self.coordinator.zoomLevel = self.mapView.zoomLevel - MAPKIT_ZOOM_OFFSET;
         
         [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapKit];
         self.shouldUpdateCoordinates = NO;
     }
     
-    //NSLog(@"APPL disappear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
-    
     self.coordinator.delegate = nil;
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
 
-    //[self resetZoomLabel];
+    [self resetZoomLabel];
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     self.shouldUpdateCoordinates = YES;
-    //[self updateZoomLabel];
+    [self updateZoomLabel];
 }
 
-//- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
-//    [self updateZoomLabel];
-//}
-//
-//- (void)updateZoomLabel {
-//    self.zoomLabelView.zoomLevel = self.mapView.zoomLevel;
-//}
-//
-//- (void)resetZoomLabel {
-//    self.zoomLabelView.zoomLevel = 0;
-//}
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
+    [self updateZoomLabel];
+}
 
-- (void)mapShouldChangeStyle {
-    [self cycleStyles];
-    [self setNeedsStatusBarAppearanceUpdate];
+- (void)updateZoomLabel {
+    self.zoomLabelView.zoomLevel = self.mapView.zoomLevel;
+}
+
+- (void)resetZoomLabel {
+    self.zoomLabelView.zoomLevel = 0;
 }
 
 - (void)cycleStyles {
@@ -166,21 +166,42 @@
 }
 
 - (void)toggleTabBarController:(__unused UITapGestureRecognizer *)gestureRecognizer {
-    [UIView animateWithDuration:0.15 animations:^{
-        [self.tabBarController toggleTabBar];
-        for (UIView *subView in self.mapView.subviews) {
-            if ([subView isMemberOfClass:NSClassFromString(@"MKAttributionLabel")]) {
-                CGFloat tabBarHeight = self.tabBarController.tabBar.frame.size.height;
-                subView.frame = CGRectOffset(subView.frame, 0, (self.tabBarController.tabBarIsVisible ? -tabBarHeight : tabBarHeight));
-            }
-        }
+    [self.tabBarController toggleTabBarAnimated:YES];
+}
+
+/** Insets (margins) cause the center coordinate to be offset — for now, remove them. */
+- (void)removeInsets {
+    CGFloat statusBarInset = UIApplication.sharedApplication.statusBarHidden ? 0 : UIApplication.sharedApplication.statusBarFrame.size.height;
+    self.mapView.layoutMargins = UIEdgeInsetsMake(-statusBarInset, 0, -self.tabBarController.tabBar.frame.size.height, 0);
+}
+
+/** Update insets when the view changes size (mainly due to rotation). */
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        // no-op
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        [self removeInsets];
     }];
 }
 
-//- (void)defaultsChanged:(__unused NSNotification *)notification {
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//
-//    self.zoomLabelView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
-//}
+- (void)defaultsChanged:(__unused NSNotification *)notification {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.zoomLabelView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
+}
+
+#pragma mark - TRBLCoordinatorDelegate
+
+- (void)mapShouldChangeStyle {
+    [self cycleStyles];
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
 
 @end

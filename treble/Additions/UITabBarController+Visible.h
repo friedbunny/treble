@@ -11,6 +11,8 @@
 @interface UITabBarController (Visible)
 
 - (void)toggleTabBar;
+- (void)toggleTabBarAnimated:(BOOL)animated;
+
 - (BOOL)tabBarIsVisible;
 
 @end

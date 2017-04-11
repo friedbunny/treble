@@ -15,6 +15,8 @@
 
 @import GoogleMaps;
 
+static const double GOOGLE_ZOOM_OFFSET = 1;
+
 @interface TRBLGoogleMapView () <GMSMapViewDelegate, TRBLCoordinatorDelegate>
 
 @property (nonatomic) IBOutlet GMSMapView *mapView;
@@ -35,11 +37,6 @@
     self.mapView.settings.compassButton = YES;
     self.mapView.delegate = self;
 
-    // push attribution and visible region below top status bar, above bottom tab bar
-    // TODO: Padding affects the visible map region, which skews the translation to other vendors' maps.
-    //       This should be taken into account before re-enabling compass/attribution padding.
-    //self.mapView.padding = UIEdgeInsetsMake(12.f, 0, self.tabBarController.tabBar.frame.size.height, 0);
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
     [self defaultsChanged:nil];
 }
@@ -48,24 +45,16 @@
     [super viewDidAppear:animated];
     
     self.coordinator.delegate = self;
-    
-    //NSLog(@"GOOG appear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
-    
+
     if (self.coordinator.needsUpdateGoogle) {
-        //NSLog(@"GOOG: Updating start coords");
-        
-        GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:self.coordinator.southWest coordinate:self.coordinator.northEast];
-        GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate fitBounds:bounds withPadding:0];
+        GMSCameraPosition *p = [GMSCameraPosition cameraWithLatitude:self.coordinator.centerCoordinate.latitude
+                                                           longitude:self.coordinator.centerCoordinate.longitude
+                                                                zoom:(float)self.coordinator.zoomLevel + GOOGLE_ZOOM_OFFSET
+                                                             bearing:self.coordinator.bearing
+                                                        viewingAngle:0];
+        GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate setCamera:p];
+
         [self.mapView moveCamera:cameraUpdate];
-        
-        if (self.coordinator.bearing != self.mapView.camera.bearing) {
-            GMSCameraPosition *position = [GMSCameraPosition cameraWithLatitude:self.mapView.camera.target.latitude
-                                                                       longitude:self.mapView.camera.target.longitude zoom:self.mapView.camera.zoom
-                                                                         bearing:self.coordinator.bearing
-                                                                    viewingAngle:0];
-            GMSCameraUpdate *update = [GMSCameraUpdate setCamera:position];
-            [self.mapView moveCamera:update];
-        }
         
         self.coordinator.needsUpdateGoogle = NO;
     }
@@ -81,16 +70,11 @@
     if (self.shouldUpdateCoordinates) {
         self.coordinator.centerCoordinate = self.mapView.camera.target;
         self.coordinator.bearing = self.mapView.camera.bearing;
-        
-        GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithRegion:self.mapView.projection.visibleRegion];
-        self.coordinator.southWest = bounds.southWest;
-        self.coordinator.northEast = bounds.northEast;
+        self.coordinator.zoomLevel = (double)self.mapView.camera.zoom - GOOGLE_ZOOM_OFFSET;
         
         [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorGoogle];
         self.shouldUpdateCoordinates = NO;
     }
-    
-    //NSLog(@"GOOG disappear: %f,%f by %f,%f", self.coordinator.southWest.latitude, self.coordinator.southWest.longitude, self.coordinator.northEast.latitude, self.coordinator.northEast.longitude);
     
     self.coordinator.delegate = nil;
 
@@ -174,12 +158,7 @@
 }
 
 - (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
-    [UIView animateWithDuration:0.15 animations:^{
-        [self.tabBarController toggleTabBar];
-        //        UIEdgeInsets newInsets = self.mapView.padding;
-        //        newInsets.bottom = self.tabBarController.tabBarIsVisible ? self.tabBarController.tabBar.frame.size.height : 0;
-        //        self.mapView.padding = newInsets;
-    }];
+    [self.tabBarController toggleTabBarAnimated:YES];
 }
 
 - (void)defaultsChanged:(__unused NSNotification *)notification {

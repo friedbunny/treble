@@ -30,7 +30,7 @@
 
 - (void)commonInit {
     self.alpha = 0;
-    self.layer.cornerRadius = 3.0;
+    self.layer.cornerRadius = 2.0;
     self.layer.masksToBounds = YES;
 
     self.backgroundColor = self.tintColor;

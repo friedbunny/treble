@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F43c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,18 +66,32 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YO1-Pr-wLZ" customClass="TRBLZoomLabelView">
+                                <rect key="frame" x="20" y="28" width="35" height="15"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="4ZP-GT-PqO"/>
+                                    <constraint firstAttribute="width" constant="35" id="9RZ-iu-JOI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YVG-iN-PWf" firstAttribute="leading" secondItem="mGI-LK-9X1" secondAttribute="leading" id="Io2-Rz-8q1"/>
                             <constraint firstAttribute="trailing" secondItem="YVG-iN-PWf" secondAttribute="trailing" id="P4V-F9-Hkb"/>
+                            <constraint firstItem="YO1-Pr-wLZ" firstAttribute="top" secondItem="IEV-kC-FOV" secondAttribute="bottom" constant="8" symbolic="YES" id="dOm-Fu-zC9"/>
                             <constraint firstAttribute="bottom" secondItem="YVG-iN-PWf" secondAttribute="bottom" id="kkl-Hq-6Pq"/>
                             <constraint firstItem="YVG-iN-PWf" firstAttribute="top" secondItem="mGI-LK-9X1" secondAttribute="top" id="r0m-Xg-reH"/>
+                            <constraint firstItem="YO1-Pr-wLZ" firstAttribute="leading" secondItem="mGI-LK-9X1" secondAttribute="leadingMargin" id="sEV-Io-flY"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Apple" image="Apple (Tab Bar)" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="mapView" destination="YVG-iN-PWf" id="XPT-96-tiL"/>
+                        <outlet property="zoomLabelView" destination="YO1-Pr-wLZ" id="FvN-XK-4GL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

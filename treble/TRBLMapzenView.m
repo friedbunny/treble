@@ -11,6 +11,8 @@
 #import "TRBLZoomLabelView.h"
 #import "UITabBarController+Visible.h"
 
+static const double MAPZEN_ZOOM_OFFSET = 1;
+
 @interface TRBLMapzenView () <TGMapViewDelegate, TGRecognizerDelegate, TRBLCoordinatorDelegate> {
     TGSceneUpdate *_apiKey;
 }
@@ -36,7 +38,11 @@
     self.mapViewDelegate = self;
     self.gestureDelegate = self;
 
+    // Does not load a style/scene initially.
     [self cycleScenes];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
+    [self defaultsChanged:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -51,22 +57,22 @@
     self.coordinator.delegate = self;
 
     if (self.coordinator.needsUpdateMapzen) {
-//        [self.mapView fitBoundsToSouthWestCoordinate:self.coordinator.southWest northEastCoordinate:self.coordinator.northEast];
-//        self.mapView.camera.heading = self.coordinator.bearing;
+        self.position = TGGeoPointMake(self.coordinator.centerCoordinate.longitude, self.coordinator.centerCoordinate.latitude);
+        self.rotation = self.coordinator.bearing;
+        self.zoom = self.coordinator.zoomLevel + MAPZEN_ZOOM_OFFSET;
         self.coordinator.needsUpdateMapzen = NO;
     }
 
-    //[self updateZoomLabel];
+    [self updateZoomLabel];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
     if (self.shouldUpdateCoordinates) {
-//        self.coordinator.southWest = self.mapView.southWestCoordinate;
-//        self.coordinator.northEast = self.mapView.northEastCoordinate;
-//        self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
-//        self.coordinator.bearing = self.mapView.camera.heading;
+        self.coordinator.centerCoordinate = CLLocationCoordinate2DMake(self.position.latitude, self.position.longitude);
+        self.coordinator.bearing = self.rotation;
+        self.coordinator.zoomLevel = self.zoom - MAPZEN_ZOOM_OFFSET;
 
         [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapzen];
         self.shouldUpdateCoordinates = NO;
@@ -74,7 +80,21 @@
 
     self.coordinator.delegate = nil;
 
-    //[self resetZoomLabel];
+    [self resetZoomLabel];
+}
+
+- (void)updateZoomLabel {
+    self.zoomLabelView.zoomLevel = self.zoom;
+}
+
+- (void)resetZoomLabel {
+    self.zoomLabelView.zoomLevel = 0;
+}
+
+- (void)defaultsChanged:(__unused NSNotification *)notification {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    self.zoomLabelView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
 }
 
 - (NSArray *)scenes {
@@ -150,14 +170,15 @@
     } else {
         self.finishedInitialLoading = YES;
     }
+
+    [self updateZoomLabel];
 }
 
 #pragma mark - TGRecognizerDelegate
 
 -(BOOL)mapView:(TGMapViewController *)view recognizer:(UIGestureRecognizer *)recognizer shouldRecognizeSingleTapGesture:(CGPoint)location {
-    [UIView animateWithDuration:0.15 animations:^{
-        [self.tabBarController toggleTabBar];
-    }];
+    [self.tabBarController toggleTabBarAnimated:YES];
+
     return false;
 }
 
