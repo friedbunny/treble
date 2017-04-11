@@ -164,7 +164,7 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
 
 #pragma mark - TGMapViewDelegate
 
--(void)mapViewDidCompleteLoading:(TGMapViewController *)mapView {
+- (void)mapViewDidCompleteLoading:(TGMapViewController *)mapView {
     if (self.finishedInitialLoading) {
         self.shouldUpdateCoordinates = YES;
     } else {
@@ -176,10 +176,19 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
 
 #pragma mark - TGRecognizerDelegate
 
--(BOOL)mapView:(TGMapViewController *)view recognizer:(UIGestureRecognizer *)recognizer shouldRecognizeSingleTapGesture:(CGPoint)location {
+- (BOOL)mapView:(TGMapViewController *)view recognizer:(UIGestureRecognizer *)recognizer shouldRecognizeSingleTapGesture:(CGPoint)location {
     [self.tabBarController toggleTabBarAnimated:YES];
+    return NO;
+}
 
-    return false;
+- (void)mapView:(TGMapViewController *)view recognizer:(UIGestureRecognizer *)recognizer didRecognizePinchGesture:(CGPoint)location {
+    [self updateZoomLabel];
+}
+
+- (void)mapView:(TGMapViewController *)view recognizer:(UIGestureRecognizer *)recognizer didRecognizeDoubleTapGesture:(CGPoint)location {
+    // Umm, for some reason Mapzen apparently hasn't implemented double-tap-to-zoom yet.
+    [view animateToZoomLevel:round(view.zoom) + 1 withDuration:0.3 withEaseType:TGEaseTypeQuint];
+    [view animateToPosition:[view screenPositionToLngLat:location] withDuration:0.3 withEaseType:TGEaseTypeQuint];
 }
 
 @end
