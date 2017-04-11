@@ -14,7 +14,7 @@
 
 static const double MAPZEN_ZOOM_OFFSET = 1;
 
-@interface TRBLMapzenView () <TGMapViewDelegate, TGRecognizerDelegate, TRBLCoordinatorDelegate> {
+@interface TRBLMapzenView () <TGMapViewDelegate, TGRecognizerDelegate, TRBLCoordinatorDelegate, UIGestureRecognizerDelegate> {
     TGSceneUpdate *_apiKey;
 }
 
@@ -25,6 +25,7 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
 @property (readonly) TGSceneUpdate *apiKey;
 @property (nonatomic) NSString *currentScene;
 @property (nonatomic) BOOL finishedInitialLoading;
+@property (nonatomic) UITapGestureRecognizer *twoFingerTapGesture;
 
 @end
 
@@ -41,6 +42,8 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
 
     // Does not load a style/scene initially.
     [self cycleScenes];
+
+    [self setupCustomGestures];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
     [self defaultsChanged:nil];
@@ -154,6 +157,27 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
     }
 
     return _apiKey;
+}
+
+- (void)setupCustomGestures {
+    // Two finger tap-to-zoom-out
+    self.twoFingerTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTwoFingerTap)];
+    self.twoFingerTapGesture.numberOfTouchesRequired = 2;
+    self.twoFingerTapGesture.delegate = self;
+    [self.view addGestureRecognizer:self.twoFingerTapGesture];
+}
+
+- (void)handleTwoFingerTap {
+    [self animateToZoomLevel:round(self.zoom) - 1 withDuration:0.3 withEaseType:TGEaseTypeQuint];
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    if (gestureRecognizer == self.twoFingerTapGesture || otherGestureRecognizer == self.twoFingerTapGesture) {
+        return NO;
+    }
+    return [super gestureRecognizer:gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:otherGestureRecognizer];
 }
 
 #pragma mark - TRBLCoordinatorDelegate
