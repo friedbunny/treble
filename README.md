@@ -2,7 +2,7 @@
 
 [![Build Status](https://www.bitrise.io/app/3b92313af6737ed9.svg?token=x_5gc7w21RhLrN0JYxk7iA&branch=master)](https://www.bitrise.io/app/3b92313af6737ed9)
 
-[Mapbox iOS SDK](https://github.com/mapbox/mapbox-gl-native) demo app, featuring [Apple MapKit](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MapKit_Framework_Reference/) and [Google Maps for iOS](https://developers.google.com/maps/documentation/ios-sdk/).
+[Mapbox iOS SDK](https://github.com/mapbox/mapbox-gl-native) comparison app, featuring [Apple MapKit](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MapKit_Framework_Reference/), [Google Maps for iOS](https://developers.google.com/maps/documentation/ios-sdk/), and [Mapzen Tangram-es](https://github.com/tangrams/tangram-es).
 
 ![Treble](https://cloud.githubusercontent.com/assets/1198851/7792550/1f208ad4-0269-11e5-8156-f3b7de4f32aa.gif)
 
