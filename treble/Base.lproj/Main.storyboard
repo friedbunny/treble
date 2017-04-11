@@ -210,7 +210,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mapzen" image="Google (Tab Bar)" id="HfY-W3-4D2"/>
+                    <tabBarItem key="tabBarItem" title="Mapzen" image="Mapzen (Tab Bar)" id="HfY-W3-4D2"/>
                     <connections>
                         <outlet property="zoomLabelView" destination="xOb-13-jlJ" id="QqP-ST-IFs"/>
                     </connections>
@@ -224,5 +224,6 @@
         <image name="Apple (Tab Bar)" width="25" height="25"/>
         <image name="Google (Tab Bar)" width="25" height="25"/>
         <image name="Mapbox (Tab Bar)" width="23" height="26"/>
+        <image name="Mapzen (Tab Bar)" width="25" height="25"/>
     </resources>
 </document>
