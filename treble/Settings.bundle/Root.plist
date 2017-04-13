@@ -12,7 +12,7 @@
 			<key>Key</key>
 			<string>TRBLUIAlwaysShowMapInfoLabel</string>
 			<key>DefaultValue</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Type</key>

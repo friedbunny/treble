@@ -26,7 +26,7 @@
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults registerDefaults:@{
-        @"TRBLUIAlwaysShowMapInfoLabel": @NO,
+        @"TRBLUIAlwaysShowMapInfoLabel": @YES,
         @"TRBLDebugOptionsTileBoundaries": @NO,
         @"TRBLDebugOptionsTileInfo": @NO,
         @"TRBLDebugOptionsTileTimestamps": @NO,
