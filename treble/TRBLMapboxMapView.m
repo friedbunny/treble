@@ -15,7 +15,6 @@
 
 @import Mapbox;
 #import <NSTimeZone+Coordinate.h>
-@import Crashlytics;
 
 @interface TRBLMapboxMapView () <MGLMapViewDelegate, TRBLCoordinatorDelegate>
 
@@ -52,19 +51,8 @@
     }
     [self.mapView addGestureRecognizer:singleTap];
 
-    // Temporary Crashlytics three-finger-longpress-to-crash gesture
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressToCrash:)];
-    longPress.minimumPressDuration = 2.0;
-    longPress.numberOfTouchesRequired = 3;
-    [self.mapView addGestureRecognizer:longPress];
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
     [self defaultsChanged:nil];
-}
-
-- (void)longPressToCrash:(__unused UILongPressGestureRecognizer*)gestureRecognizer {
-    CLSNSLog(@"Crashing after a long press... 💀");
-    [Crashlytics.sharedInstance crash];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
