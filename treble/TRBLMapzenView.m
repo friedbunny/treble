@@ -66,6 +66,7 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
         self.position = TGGeoPointMake(self.coordinator.centerCoordinate.longitude, self.coordinator.centerCoordinate.latitude);
         self.rotation = MGLRadiansFromDegrees(self.coordinator.bearing) * -1;
         self.zoom = self.coordinator.zoomLevel + MAPZEN_ZOOM_OFFSET;
+        self.tilt = MGLRadiansFromDegrees(self.coordinator.pitch);
         self.coordinator.needsUpdateMapzen = NO;
     }
 
@@ -79,6 +80,7 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
         self.coordinator.centerCoordinate = CLLocationCoordinate2DMake(self.position.latitude, self.position.longitude);
         self.coordinator.bearing = MGLDegreesFromRadians(self.rotation) * -1;
         self.coordinator.zoomLevel = self.zoom - MAPZEN_ZOOM_OFFSET;
+        self.coordinator.pitch = MGLDegreesFromRadians(self.tilt);
 
         [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapzen];
         self.shouldUpdateCoordinates = NO;

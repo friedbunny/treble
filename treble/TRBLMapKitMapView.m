@@ -67,6 +67,7 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
                                 zoomLevel:self.coordinator.zoomLevel + MAPKIT_ZOOM_OFFSET
                                  animated:NO];
         self.mapView.camera.heading = self.coordinator.bearing;
+        //self.mapView.camera.pitch = self.coordinator.pitch;
         self.coordinator.needsUpdateMapKit = NO;
     }
 
@@ -82,6 +83,7 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
         self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
         self.coordinator.bearing = self.mapView.camera.heading;
         self.coordinator.zoomLevel = self.mapView.zoomLevel - MAPKIT_ZOOM_OFFSET;
+        //self.coordinator.pitch = self.mapView.camera.pitch;
         
         [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapKit];
         self.shouldUpdateCoordinates = NO;

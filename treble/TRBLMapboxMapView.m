@@ -77,6 +77,14 @@
                                 zoomLevel:self.coordinator.zoomLevel
                                 direction:self.coordinator.bearing
                                  animated:NO];
+
+        // There is no working pitch setter (and MGLMapCamera does not take/convert zoom).
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
+            MGLMapCamera *camera = self.mapView.camera;
+            camera.pitch = self.coordinator.pitch;
+            [self.mapView setCamera:camera];
+        });
+
         self.coordinator.needsUpdateMapbox = NO;
     }
 
@@ -96,6 +104,7 @@
         self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
         self.coordinator.bearing = self.mapView.direction;
         self.coordinator.zoomLevel = self.mapView.zoomLevel;
+        self.coordinator.pitch = self.mapView.camera.pitch;
         
         [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapbox];
         self.shouldUpdateCoordinates = NO;

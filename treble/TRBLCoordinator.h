@@ -40,6 +40,7 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
 @property (nonatomic) CLLocationCoordinate2D centerCoordinate;
 @property (nonatomic) CLLocationDirection bearing;
 @property (nonatomic) double zoomLevel;
+@property (nonatomic) CGFloat pitch;
 
 @property (nonatomic) BOOL needsUpdateMapbox;
 @property (nonatomic) BOOL needsUpdateMapKit;
@@ -49,6 +50,3 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
 - (void)setNeedsUpdateFromVendor:(TRBLMapVendor)vendor;
 
 @end
-
-
-
