@@ -22,7 +22,7 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
 @property (nonatomic) IBOutlet GMSMapView *mapView;
 @property TRBLCoordinator *coordinator;
 @property (nonatomic) BOOL shouldUpdateCoordinates;
-@property (nonatomic) IBOutlet TRBLZoomLabelView *zoomLabelView;
+@property (nonatomic) IBOutlet TRBLZoomLabelView *mapInfoView;
 
 @end
 
@@ -59,7 +59,7 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
         self.coordinator.needsUpdateGoogle = NO;
     }
 
-    [self updateZoomLabel];
+    [self updateMapInfoViewAnimated:NO];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
@@ -79,21 +79,19 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
     self.coordinator.delegate = nil;
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
-
-    [self resetZoomLabel];
 }
 
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
     self.shouldUpdateCoordinates = YES;
-    [self updateZoomLabel];
+    [self updateMapInfoViewAnimated:YES];
 }
 
-- (void)updateZoomLabel {
-    self.zoomLabelView.zoomLevel = self.mapView.camera.zoom;
-}
-
-- (void)resetZoomLabel {
-    self.zoomLabelView.zoomLevel = 0;
+- (void)updateMapInfoViewAnimated:(BOOL)animated {
+    if (!animated) {
+        self.mapInfoView.alpha = 1;
+    }
+    self.mapInfoView.zoomLevel = self.mapView.camera.zoom;
+    self.mapInfoView.pitch = (CGFloat)self.mapView.camera.viewingAngle;
 }
 
 - (void)mapShouldChangeStyle {
@@ -164,7 +162,7 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
 - (void)defaultsChanged:(__unused NSNotification *)notification {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    self.zoomLabelView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
+    self.mapInfoView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
 }
 
 @end

@@ -20,12 +20,13 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
 
 @property TRBLCoordinator *coordinator;
 @property (nonatomic) BOOL shouldUpdateCoordinates;
-@property (nonatomic) IBOutlet TRBLZoomLabelView *zoomLabelView;
+@property (nonatomic) IBOutlet TRBLZoomLabelView *mapInfoView;
 
 @property (readonly) TGSceneUpdate *apiKey;
 @property (nonatomic) NSString *currentScene;
 @property (nonatomic) BOOL finishedInitialLoading;
 @property (nonatomic) UITapGestureRecognizer *twoFingerTapGesture;
+@property (nonatomic) UIPanGestureRecognizer *twoFingerDragGesture;
 
 @end
 
@@ -67,7 +68,7 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
         self.coordinator.needsUpdateMapzen = NO;
     }
 
-    [self updateZoomLabel];
+    [self updateMapInfoViewAnimated:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -83,22 +84,20 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
     }
 
     self.coordinator.delegate = nil;
-
-    [self resetZoomLabel];
 }
 
-- (void)updateZoomLabel {
-    self.zoomLabelView.zoomLevel = self.zoom;
-}
-
-- (void)resetZoomLabel {
-    self.zoomLabelView.zoomLevel = 0;
+- (void)updateMapInfoViewAnimated:(BOOL)animated {
+    if (!animated) {
+        self.mapInfoView.alpha = 1;
+    }
+    self.mapInfoView.zoomLevel = self.zoom;
+    self.mapInfoView.pitch = MGLDegreesFromRadians(self.tilt);
 }
 
 - (void)defaultsChanged:(__unused NSNotification *)notification {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    self.zoomLabelView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
+    self.mapInfoView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
 }
 
 - (NSArray *)scenes {
@@ -165,10 +164,22 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
     self.twoFingerTapGesture.numberOfTouchesRequired = 2;
     self.twoFingerTapGesture.delegate = self;
     [self.view addGestureRecognizer:self.twoFingerTapGesture];
+
+    // Hook the built-in two finger drag-to-tilt gesture.
+    // Add simultaneously-recognized pitch/tilt gesture to update the map info label.
+    self.twoFingerDragGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleTwoFingerDrag)];
+    self.twoFingerDragGesture.minimumNumberOfTouches = 2;
+    self.twoFingerDragGesture.maximumNumberOfTouches = 2;
+    self.twoFingerDragGesture.delegate = self;
+    [self.view addGestureRecognizer:self.twoFingerDragGesture];
 }
 
 - (void)handleTwoFingerTap {
     [self animateToZoomLevel:round(self.zoom) - 1 withDuration:0.3 withEaseType:TGEaseTypeQuint];
+}
+
+- (void)handleTwoFingerDrag {
+    [self updateMapInfoViewAnimated:YES];
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -176,6 +187,8 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     if (gestureRecognizer == self.twoFingerTapGesture || otherGestureRecognizer == self.twoFingerTapGesture) {
         return NO;
+    } else if (gestureRecognizer == self.twoFingerDragGesture && [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
+        return ((UIPanGestureRecognizer *)otherGestureRecognizer).minimumNumberOfTouches == 2;
     }
     return [super gestureRecognizer:gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:otherGestureRecognizer];
 }
@@ -196,7 +209,7 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
         self.finishedInitialLoading = YES;
     }
 
-    [self updateZoomLabel];
+    [self updateMapInfoViewAnimated:YES];
 }
 
 #pragma mark - TGRecognizerDelegate
@@ -207,7 +220,7 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
 }
 
 - (void)mapView:(TGMapViewController *)view recognizer:(UIGestureRecognizer *)recognizer didRecognizePinchGesture:(CGPoint)location {
-    [self updateZoomLabel];
+    [self updateMapInfoViewAnimated:YES];
 }
 
 - (void)mapView:(TGMapViewController *)view recognizer:(UIGestureRecognizer *)recognizer didRecognizeDoubleTapGesture:(CGPoint)location {

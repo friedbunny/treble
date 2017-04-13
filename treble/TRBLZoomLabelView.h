@@ -8,11 +8,9 @@
 
 @import UIKit;
 
-@interface TRBLZoomLabelView : UILabel
+@interface TRBLZoomLabelView : UIButton
 
 @property (nonatomic) double zoomLevel;
-
-- (void)fadeIn;
-- (void)fadeOut;
+@property (nonatomic) CGFloat pitch;
 
 @end

@@ -35,9 +35,10 @@
 
     self.backgroundColor = self.tintColor;
 
-    self.font = [UIFont monospacedDigitSystemFontOfSize:9.0 weight:UIFontWeightMedium];
-    self.textColor = [UIColor whiteColor];
-    self.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.font = [UIFont monospacedDigitSystemFontOfSize:9.0 weight:UIFontWeightMedium];
+    self.titleLabel.textColor = [UIColor whiteColor];
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.contentEdgeInsets = UIEdgeInsetsMake(2, 4, 2, 4);
 
     self.userInteractionEnabled = NO;
 }
@@ -51,7 +52,7 @@
         return;
     }
 
-    [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+    [UIView animateWithDuration:.15 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.alpha = 1.0;
     } completion:nil];
 }
@@ -75,21 +76,48 @@
     [[NSRunLoop currentRunLoop] addTimer:_fadeTimer forMode:NSDefaultRunLoopMode];
 }
 
-#pragma mark - Setters
-
-- (void)setZoomLevel:(double)zoomLevel {
-    double roundedZoom = roundf(zoomLevel * 100.f) / 100.f;
-    if (_zoomLevel == roundedZoom) {
-        return;
-    }
-
-    _zoomLevel = roundedZoom;
-    self.text = [NSString stringWithFormat:@"%.2f", roundedZoom];
+- (void)update {
+    [self setTitle:[NSString stringWithFormat:@"%.2f ∕ %.f°", _zoomLevel, _pitch] forState:UIControlStateNormal];
 
     [self fadeIn];
     [self startFadeOutTimer];
 
     [self setNeedsLayout];
+}
+
+- (void)reset {
+    _zoomLevel = 0;
+    _pitch = 0;
+}
+
+- (void)didMoveToWindow {
+    if (!self.window) {
+        [self reset];
+    }
+}
+
+#pragma mark - Setters
+
+- (void)setZoomLevel:(double)zoomLevel {
+    double roundedZoom = round(zoomLevel * 100.f) / 100.f;
+    if (_zoomLevel == roundedZoom) {
+        return;
+    }
+
+    _zoomLevel = roundedZoom;
+
+    [self update];
+}
+
+- (void)setPitch:(CGFloat)pitch {
+    CGFloat roundedPitch = roundf(pitch * 100.f) / 100.f;
+    if (_pitch == roundedPitch) {
+        return;
+    }
+
+    _pitch = roundedPitch;
+
+    [self update];
 }
 
 @end

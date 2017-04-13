@@ -24,7 +24,7 @@
 @property TRBLCoordinator *coordinator;
 @property (nonatomic) BOOL shouldUpdateCoordinates;
 
-@property (nonatomic) IBOutlet TRBLZoomLabelView *zoomLabelView;
+@property (nonatomic) IBOutlet TRBLZoomLabelView *mapInfoView;
 
 @end
 
@@ -80,7 +80,7 @@
         self.coordinator.needsUpdateMapbox = NO;
     }
 
-    [self updateZoomLabel];
+    [self updateMapInfoViewAnimated:NO];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
@@ -104,25 +104,23 @@
     self.coordinator.delegate = nil;
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
-
-    [self resetZoomLabel];
 }
 
 - (void)mapView:(MGLMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     self.shouldUpdateCoordinates = YES;
-    [self updateZoomLabel];
+    [self updateMapInfoViewAnimated:YES];
 }
 
 - (void)mapViewRegionIsChanging:(MGLMapView *)mapView {
-    [self updateZoomLabel];
+    [self updateMapInfoViewAnimated:YES];
 }
 
-- (void)updateZoomLabel {
-    self.zoomLabelView.zoomLevel = self.mapView.zoomLevel;
-}
-
-- (void)resetZoomLabel {
-    self.zoomLabelView.zoomLevel = 0;
+- (void)updateMapInfoViewAnimated:(BOOL)animated {
+    if (!animated) {
+        self.mapInfoView.alpha = 1;
+    }
+    self.mapInfoView.zoomLevel = self.mapView.zoomLevel;
+    self.mapInfoView.pitch = self.mapView.camera.pitch;
 }
 
 - (void)mapShouldChangeStyle {
@@ -231,7 +229,7 @@
 
     self.mapView.debugMask = debugMask;
 
-    self.zoomLabelView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
+    self.mapInfoView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
 }
 
 #pragma mark - URL schemes

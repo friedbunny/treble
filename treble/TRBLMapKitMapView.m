@@ -23,7 +23,7 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
 @property (nonatomic) IBOutlet MKMapView *mapView;
 @property TRBLCoordinator *coordinator;
 @property (nonatomic) BOOL shouldUpdateCoordinates;
-@property (nonatomic) IBOutlet TRBLZoomLabelView *zoomLabelView;
+@property (nonatomic) IBOutlet TRBLZoomLabelView *mapInfoView;
 
 @end
 
@@ -48,8 +48,8 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
     [singleTap requireGestureRecognizerToFail:doubleTap];
     [self.mapView addGestureRecognizer:singleTap];
 
-    // Add simultaneously-recognized pinch gesture to update the zoom label.
-    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(updateZoomLabel)];
+    // Add simultaneously-recognized pinch gesture to update the debug label.
+    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(updateMapInfoViewAnimated:)];
     pinch.delegate = self;
     [self.mapView addGestureRecognizer:pinch];
 
@@ -70,7 +70,7 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
         self.coordinator.needsUpdateMapKit = NO;
     }
 
-    [self updateZoomLabel];
+    [self updateMapInfoViewAnimated:NO];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
@@ -90,25 +90,23 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
     self.coordinator.delegate = nil;
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
-
-    [self resetZoomLabel];
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     self.shouldUpdateCoordinates = YES;
-    [self updateZoomLabel];
+    [self updateMapInfoViewAnimated:YES];
 }
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
-    [self updateZoomLabel];
+    [self updateMapInfoViewAnimated:YES];
 }
 
-- (void)updateZoomLabel {
-    self.zoomLabelView.zoomLevel = self.mapView.zoomLevel;
-}
-
-- (void)resetZoomLabel {
-    self.zoomLabelView.zoomLevel = 0;
+- (void)updateMapInfoViewAnimated:(BOOL)animated {
+    if (!animated) {
+        self.mapInfoView.alpha = 1;
+    }
+    self.mapInfoView.zoomLevel = self.mapView.zoomLevel;
+    self.mapInfoView.pitch = self.mapView.camera.pitch;
 }
 
 - (void)cycleStyles {
@@ -188,7 +186,7 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
 
 - (void)defaultsChanged:(__unused NSNotification *)notification {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.zoomLabelView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
+    self.mapInfoView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
 }
 
 #pragma mark - TRBLCoordinatorDelegate
