@@ -13,6 +13,7 @@
 #import <Mapbox/MGLGeometry.h>
 
 static const double MAPZEN_ZOOM_OFFSET = 1;
+static const double MAPZEN_ANIMATION_DURATION = 0.3;
 
 @interface TRBLMapzenView () <TGMapViewDelegate, TGRecognizerDelegate, TRBLCoordinatorDelegate, UIGestureRecognizerDelegate> {
     TGSceneUpdate *_apiKey;
@@ -175,7 +176,7 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
 }
 
 - (void)handleTwoFingerTap {
-    [self animateToZoomLevel:round(self.zoom) - 1 withDuration:0.3 withEaseType:TGEaseTypeQuint];
+    [self animateToZoomLevel:round(self.zoom) - 1 withDuration:MAPZEN_ANIMATION_DURATION withEaseType:TGEaseTypeCubic];
 }
 
 - (void)handleTwoFingerDrag {
@@ -225,8 +226,8 @@ static const double MAPZEN_ZOOM_OFFSET = 1;
 
 - (void)mapView:(TGMapViewController *)view recognizer:(UIGestureRecognizer *)recognizer didRecognizeDoubleTapGesture:(CGPoint)location {
     // Umm, for some reason Mapzen apparently hasn't implemented double-tap-to-zoom yet.
-    [view animateToZoomLevel:round(view.zoom) + 1 withDuration:0.3 withEaseType:TGEaseTypeQuint];
-    [view animateToPosition:[view screenPositionToLngLat:location] withDuration:0.3 withEaseType:TGEaseTypeQuint];
+    [view animateToZoomLevel:round(view.zoom) + 1 withDuration:MAPZEN_ANIMATION_DURATION withEaseType:TGEaseTypeCubic];
+    [view animateToPosition:[view screenPositionToLngLat:location] withDuration:MAPZEN_ANIMATION_DURATION withEaseType:TGEaseTypeCubic];
 }
 
 @end
