@@ -40,7 +40,12 @@
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.contentEdgeInsets = UIEdgeInsetsMake(2, 4, 2, 4);
 
-    self.userInteractionEnabled = NO;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)];
+    [self addGestureRecognizer:tapGesture];
+}
+
+- (void)handleTap {
+    [self fadeOut];
 }
 
 - (void)tintColorDidChange {
@@ -58,7 +63,7 @@
 }
 
 - (void)fadeOut {
-    if (!self.alpha || [NSUserDefaults.standardUserDefaults boolForKey:@"TRBLUIAlwaysShowMapInfoLabel"]) {
+    if (!self.alpha) {
         return;
     }
 
@@ -68,6 +73,10 @@
 }
 
 - (void)startFadeOutTimer {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"TRBLUIAlwaysShowMapInfoLabel"]) {
+        return;
+    }
+
     if (_fadeTimer) {
         [_fadeTimer invalidate];
     }
