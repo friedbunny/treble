@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
 @property (nonatomic, assign) id<TRBLCoordinatorDelegate> delegate;
 
 @property (nonatomic) CLLocationCoordinate2D centerCoordinate;
-@property (nonatomic) CLLocationDirection bearing;
+@property (nonatomic) CLLocationDirection heading;
 @property (nonatomic) double zoomLevel;
 @property (nonatomic) CGFloat pitch;
 

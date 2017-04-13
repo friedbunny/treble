@@ -50,7 +50,7 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
         GMSCameraPosition *p = [GMSCameraPosition cameraWithLatitude:self.coordinator.centerCoordinate.latitude
                                                            longitude:self.coordinator.centerCoordinate.longitude
                                                                 zoom:(float)self.coordinator.zoomLevel + GOOGLE_ZOOM_OFFSET
-                                                             bearing:self.coordinator.bearing
+                                                             bearing:self.coordinator.heading
                                                         viewingAngle:self.coordinator.pitch];
         GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate setCamera:p];
 
@@ -69,7 +69,7 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
     
     if (self.shouldUpdateCoordinates) {
         self.coordinator.centerCoordinate = self.mapView.camera.target;
-        self.coordinator.bearing = self.mapView.camera.bearing;
+        self.coordinator.heading = self.mapView.camera.bearing;
         self.coordinator.zoomLevel = (double)self.mapView.camera.zoom - GOOGLE_ZOOM_OFFSET;
         self.coordinator.pitch = (CGFloat)self.mapView.camera.viewingAngle;
         

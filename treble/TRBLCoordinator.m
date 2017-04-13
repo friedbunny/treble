@@ -26,7 +26,7 @@
     
     if (self) {
         self.centerCoordinate = kCLLocationCoordinate2DInvalid;
-        self.bearing = 0;
+        self.heading = 0;
         self.zoomLevel = 0;
         self.pitch = 0;
         [self setNeedsUpdateFromVendor:TRBLMapVendorMapbox];

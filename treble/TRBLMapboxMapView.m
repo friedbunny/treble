@@ -75,7 +75,7 @@
     if (self.coordinator.needsUpdateMapbox) {
         [self.mapView setCenterCoordinate:self.coordinator.centerCoordinate
                                 zoomLevel:self.coordinator.zoomLevel
-                                direction:self.coordinator.bearing
+                                direction:self.coordinator.heading
                                  animated:NO];
 
         // There is no working pitch setter (and MGLMapCamera does not take/convert zoom).
@@ -102,7 +102,7 @@
 
     if (self.shouldUpdateCoordinates) {
         self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
-        self.coordinator.bearing = self.mapView.direction;
+        self.coordinator.heading = self.mapView.direction;
         self.coordinator.zoomLevel = self.mapView.zoomLevel;
         self.coordinator.pitch = self.mapView.camera.pitch;
         

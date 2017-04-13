@@ -66,7 +66,7 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
         [self.mapView setCenterCoordinate:self.coordinator.centerCoordinate
                                 zoomLevel:self.coordinator.zoomLevel + MAPKIT_ZOOM_OFFSET
                                  animated:NO];
-        self.mapView.camera.heading = self.coordinator.bearing;
+        self.mapView.camera.heading = self.coordinator.heading;
         //self.mapView.camera.pitch = self.coordinator.pitch;
         self.coordinator.needsUpdateMapKit = NO;
     }
@@ -81,7 +81,7 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
     
     if (self.shouldUpdateCoordinates) {
         self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
-        self.coordinator.bearing = self.mapView.camera.heading;
+        self.coordinator.heading = self.mapView.camera.heading;
         self.coordinator.zoomLevel = self.mapView.zoomLevel - MAPKIT_ZOOM_OFFSET;
         //self.coordinator.pitch = self.mapView.camera.pitch;
         
