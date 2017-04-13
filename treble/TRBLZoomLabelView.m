@@ -58,7 +58,7 @@
 }
 
 - (void)fadeOut {
-    if (!self.alpha) {
+    if (!self.alpha || [NSUserDefaults.standardUserDefaults boolForKey:@"TRBLUIAlwaysShowMapInfoLabel"]) {
         return;
     }
 

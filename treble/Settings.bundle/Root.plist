@@ -8,11 +8,11 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Zoom Level</string>
+			<string>Always Show Map Info Label</string>
 			<key>Key</key>
-			<string>TRBLUIZoomLevel</string>
+			<string>TRBLUIAlwaysShowMapInfoLabel</string>
 			<key>DefaultValue</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Type</key>

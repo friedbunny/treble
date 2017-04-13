@@ -52,9 +52,6 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(updateMapInfoViewAnimated:)];
     pinch.delegate = self;
     [self.mapView addGestureRecognizer:pinch];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
-    [self defaultsChanged:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -184,11 +181,6 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         [self removeInsets];
     }];
-}
-
-- (void)defaultsChanged:(__unused NSNotification *)notification {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.mapInfoView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
 }
 
 #pragma mark - TRBLCoordinatorDelegate

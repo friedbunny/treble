@@ -26,7 +26,7 @@
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults registerDefaults:@{
-        @"TRBLUIZoomLevel": @YES,
+        @"TRBLUIAlwaysShowMapInfoLabel": @NO,
         @"TRBLDebugOptionsTileBoundaries": @NO,
         @"TRBLDebugOptionsTileInfo": @NO,
         @"TRBLDebugOptionsTileTimestamps": @NO,

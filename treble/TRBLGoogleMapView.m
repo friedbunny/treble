@@ -36,9 +36,6 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
     self.mapView.myLocationEnabled = YES;
     self.mapView.settings.compassButton = YES;
     self.mapView.delegate = self;
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
-    [self defaultsChanged:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -58,10 +55,6 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
         
         self.coordinator.needsUpdateGoogle = NO;
     }
-
-    [self updateMapInfoViewAnimated:NO];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -158,12 +151,6 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
 
 - (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
     [self.tabBarController toggleTabBarAnimated:YES];
-}
-
-- (void)defaultsChanged:(__unused NSNotification *)notification {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-    self.mapInfoView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
 }
 
 @end

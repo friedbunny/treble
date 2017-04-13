@@ -46,9 +46,6 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
     [self cycleScenes];
 
     [self setupCustomGestures];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
-    [self defaultsChanged:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -95,12 +92,6 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
     }
     self.mapInfoView.zoomLevel = self.zoom;
     self.mapInfoView.pitch = MGLDegreesFromRadians(self.tilt);
-}
-
-- (void)defaultsChanged:(__unused NSNotification *)notification {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-    self.mapInfoView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
 }
 
 - (NSArray *)scenes {

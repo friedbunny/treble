@@ -237,8 +237,6 @@
     }
 
     self.mapView.debugMask = debugMask;
-
-    self.mapInfoView.hidden = ![defaults boolForKey:@"TRBLUIZoomLevel"];
 }
 
 #pragma mark - URL schemes
