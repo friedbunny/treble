@@ -75,7 +75,7 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
 
     if (self.shouldUpdateCoordinates) {
         self.coordinator.centerCoordinate = CLLocationCoordinate2DMake(self.position.latitude, self.position.longitude);
-        self.coordinator.heading = MGLDegreesFromRadians(self.rotation) * -1;
+        self.coordinator.heading = fabs(MGLDegreesFromRadians(self.rotation) - 360);
         self.coordinator.zoomLevel = self.zoom - MAPZEN_ZOOM_OFFSET;
         self.coordinator.pitch = MGLDegreesFromRadians(self.tilt);
 
