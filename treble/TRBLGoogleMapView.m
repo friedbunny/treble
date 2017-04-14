@@ -50,11 +50,12 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
                                                              bearing:self.coordinator.heading
                                                         viewingAngle:self.coordinator.pitch];
         GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate setCamera:p];
-
         [self.mapView moveCamera:cameraUpdate];
         
         self.coordinator.needsUpdateGoogle = NO;
     }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:kStatusBarTappedNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
