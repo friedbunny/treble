@@ -61,18 +61,12 @@
     self.coordinator.delegate = self;
 
     if (self.coordinator.needsUpdateMapbox) {
-        [self.mapView setCenterCoordinate:self.coordinator.centerCoordinate
-                                zoomLevel:self.coordinator.zoomLevel
-                                direction:self.coordinator.heading
-                                 animated:NO];
-
-        // There is no working pitch setter (and MGLMapCamera does not take/convert zoom).
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
-            MGLMapCamera *camera = self.mapView.camera;
-            camera.pitch = self.coordinator.pitch;
-            [self.mapView setCamera:camera];
-        });
-
+        self.mapView.zoomLevel = self.coordinator.zoomLevel;
+        MGLMapCamera *camera = self.mapView.camera;
+        camera.centerCoordinate = self.coordinator.centerCoordinate;
+        camera.heading = self.coordinator.heading;
+        camera.pitch = self.coordinator.pitch;
+        self.mapView.camera = camera;
         self.coordinator.needsUpdateMapbox = NO;
     }
 
