@@ -126,10 +126,12 @@
         _styles = @[
             [MGLStyle streetsStyleURLWithVersion:MGLStyleDefaultVersion],
             [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-day-v1"],
+            [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-day-v2"],
             [MGLStyle outdoorsStyleURLWithVersion:MGLStyleDefaultVersion],
             [MGLStyle lightStyleURLWithVersion:MGLStyleDefaultVersion],
             [MGLStyle darkStyleURLWithVersion:MGLStyleDefaultVersion],
             [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-night-v1"],
+            [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-night-v2"],
             [MGLStyle satelliteStyleURLWithVersion:MGLStyleDefaultVersion],
             [MGLStyle satelliteStreetsStyleURLWithVersion:MGLStyleDefaultVersion],
         ];
