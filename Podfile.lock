@@ -14,13 +14,9 @@ PODS:
 DEPENDENCIES:
   - Crashlytics (~> 3.8)
   - GoogleMaps (~> 2.0)
-  - Mapbox-iOS-SDK (from `https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.5.2/platform/ios/Mapbox-iOS-SDK.podspec`)
+  - Mapbox-iOS-SDK (~> 3.5.2)
   - NSTimeZone-Coordinate (~> 1.0)
   - Tangram-es
-
-EXTERNAL SOURCES:
-  Mapbox-iOS-SDK:
-    :podspec: https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.5.2/platform/ios/Mapbox-iOS-SDK.podspec
 
 SPEC CHECKSUMS:
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
@@ -30,6 +26,6 @@ SPEC CHECKSUMS:
   NSTimeZone-Coordinate: 7228987925f2d6efeaa49ee0d4bdb208f8adc564
   Tangram-es: 7d63fab43bb0221a60d130291d9c45e01e53e5c0
 
-PODFILE CHECKSUM: 0afd01601738a9cbb99239f0c1988a1b5f34fa95
+PODFILE CHECKSUM: 6bb938496cb567f641d8f63ce078261987e8233e
 
 COCOAPODS: 1.2.1
