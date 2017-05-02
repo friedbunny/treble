@@ -1,15 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="1024px" height="1024px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
-    <title>treble appicon</title>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024px" height="1024px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>appicon.svg</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="treble-appicon" sketch:type="MSLayerGroup">
-            <rect id="Shape" fill="#3BB2D0" sketch:type="MSShapeGroup" x="4.8316906e-13" y="8.52651283e-14" width="1024" height="1024"></rect>
-            <path d="M292.920889,386.059378 C241.572978,386.059378 199.805156,344.280178 199.805156,292.932267 C199.805156,241.584356 241.584356,199.805156 292.920889,199.805156 C344.280178,199.805156 386.048,241.584356 386.048,292.932267 C386.048,344.280178 344.2688,386.059378 292.920889,386.059378 L292.920889,386.059378 Z" id="Path" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
-            <path d="M512,605.127111 C460.640711,605.127111 418.872889,563.347911 418.872889,512 C418.872889,460.652089 460.652089,418.872889 512,418.872889 C563.347911,418.872889 605.115733,460.652089 605.115733,512 C605.115733,563.347911 563.347911,605.127111 512,605.127111 L512,605.127111 Z" id="Path" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
-            <path d="M731.067733,824.206222 C679.708444,824.206222 637.940622,782.427022 637.940622,731.079111 C637.940622,679.7312 679.719822,637.952 731.067733,637.952 C782.427022,637.952 824.194844,679.7312 824.194844,731.079111 C824.194844,782.427022 782.427022,824.206222 731.067733,824.206222 L731.067733,824.206222 Z" id="Path" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+    <g id="Template---App-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Labels-+-Background" transform="translate(-600.000000, -610.000000)">
+            <rect id="BG" fill="#666666" x="0" y="0" width="3250" height="2190"></rect>
+            <g id="_Template-Resources-/-Header-and-Footer">
+                <rect id="BG" fill="#666666" fill-rule="evenodd" x="0" y="0" width="3250" height="2190"></rect>
+                <text id="Subtitle" opacity="0.5" font-family="SFUIText-Medium, SF UI Text" font-size="16" font-weight="400" line-spacing="26" letter-spacing="0.200000003" fill="#FFFFFF">
+                    <tspan x="40" y="87">Values in pixels. Hide “Guide” group before exporting.</tspan>
+                </text>
+                <text id="OS" font-family="SFUIDisplay-Regular, SF UI Display" font-size="40" font-weight="normal" line-spacing="48" letter-spacing="0.75999999" fill="#FFFFFF">
+                    <tspan x="3096.07281" y="60">iOS 10</tspan>
+                </text>
+                <text id="Title" font-family="SFUIDisplay-Regular, SF UI Display" font-size="40" font-weight="normal" line-spacing="48" letter-spacing="0.75999999" fill="#FFFFFF">
+                    <tspan x="40" y="60">App Icons</tspan>
+                </text>
+            </g>
+        </g>
+        <g id="App-Icons" transform="translate(-560.000000, -330.000000)">
+            <g id="@2x" transform="translate(560.000000, 0.000000)">
+                <g id="App-Icon" transform="translate(0.000000, 330.000000)">
+                    <rect id="App-Icon-Mask-1536x1536" fill="#FFFFFF" x="0" y="0" width="1024" height="1024"></rect>
+                    <g id="backgrounds" stroke-width="1" fill="#273D56">
+                        <rect id="grey-dark" fill-rule="nonzero" x="0" y="0.425477879" width="1024" height="1023.21511"></rect>
+                    </g>
+                    <g id="appicon" stroke-width="1" transform="translate(199.333333, 199.333333)" fill="#FFFFFF">
+                        <path d="M93.5875557,186.726045 C42.2396447,186.726045 0.471822667,144.946845 0.471822667,93.5989337 C0.471822667,42.2510227 42.2510227,0.471822667 93.5875557,0.471822667 C144.946845,0.471822667 186.714667,42.2510227 186.714667,93.5989337 C186.714667,144.946845 144.935467,186.726045 93.5875557,186.726045 L93.5875557,186.726045 Z" id="Path" fill-rule="nonzero"></path>
+                        <path d="M312.666667,405.793778 C261.307378,405.793778 219.539556,364.014578 219.539556,312.666667 C219.539556,261.318756 261.318756,219.539556 312.666667,219.539556 C364.014578,219.539556 405.7824,261.318756 405.7824,312.666667 C405.7824,364.014578 364.014578,405.793778 312.666667,405.793778 L312.666667,405.793778 Z" id="Path" fill-rule="nonzero"></path>
+                        <path d="M531.7344,624.872889 C480.375111,624.872889 438.607289,583.093689 438.607289,531.745778 C438.607289,480.397867 480.386489,438.618667 531.7344,438.618667 C583.093689,438.618667 624.861511,480.397867 624.861511,531.745778 C624.861511,583.093689 583.093689,624.872889 531.7344,624.872889 L531.7344,624.872889 Z" id="Path" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
         </g>
     </g>
 </svg>
