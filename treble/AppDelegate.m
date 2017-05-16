@@ -78,6 +78,24 @@
     return NO;
 }
 
+#pragma mark - URL schemes
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
+    completionHandler([self handleShortcut:shortcutItem]);
+}
+
+- (BOOL)handleShortcut:(UIApplicationShortcutItem *)shortcut {
+    if ([[shortcut.type componentsSeparatedByString:@"."].lastObject isEqual:@"settings"]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        });
+
+        return YES;
+    }
+
+    return NO;
+}
+
 #pragma mark - Status bar touch tracking
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
