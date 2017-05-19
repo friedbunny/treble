@@ -29,6 +29,7 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
 @property (nonatomic) UITapGestureRecognizer *twoFingerTapGesture;
 @property (nonatomic) UIPanGestureRecognizer *twoFingerDragGesture;
 @property (nonatomic) BOOL showsBikeOverlay;
+@property (nonatomic) BOOL showsTransitOverlay;
 
 @end
 
@@ -106,7 +107,6 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
             @"https://tangrams.github.io/walkabout-style-more-labels/walkabout-style-more-labels.yaml",
             @"https://tangrams.github.io/zinc-style-more-labels/zinc-style-more-labels.yaml",
             @"https://tangrams.github.io/tron-style/tron-style-more-labels.yaml",
-            @"https://tangrams.github.io/transit-style/transit-style.yaml",
         ];
     });
 
@@ -120,10 +120,14 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
 
     if (!scene) {
         scene = [[self scenes] firstObject];
-    } else if (!self.showsBikeOverlay && [self.currentScene containsString:@"walkabout-style"]) {
-        // Stay once more on Walkabout and enable the bike overlay.
+    } else if (!self.showsBikeOverlay && [self sceneSupportsBikeOverlay:self.currentScene] && self.zoom >= 8.0) {
+        // Stay once more on the current scene and enable the bike overlay.
         [sceneUpdates addObject:[[TGSceneUpdate alloc] initWithPath:@"global.sdk_bike_overlay" value:@"true"]];
         self.showsBikeOverlay = YES;
+    } else if (!self.showsTransitOverlay && [self sceneSupportsTransitOverlay:self.currentScene] && self.zoom >= 5.0) {
+        // Stay once more on the current scene and enable the transit overlay.
+        [sceneUpdates addObject:[[TGSceneUpdate alloc] initWithPath:@"global.sdk_transit_overlay" value:@"true"]];
+        self.showsTransitOverlay = YES;
     } else {
         NSAssert([scenes indexOfObject:scene] < [scenes count], @"%@ is not indexed.", scene);
         NSUInteger index = [scenes indexOfObject:scene] + 1;
@@ -131,10 +135,19 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
         scene = [scenes objectAtIndex:index];
 
         self.showsBikeOverlay = NO;
+        self.showsTransitOverlay = NO;
     }
 
     [self loadSceneFileAsync:scene sceneUpdates:sceneUpdates.copy];
     self.currentScene = scene;
+}
+
+- (BOOL)sceneSupportsBikeOverlay:(NSString *)scene {
+    return [scene containsString:@"walkabout-style"];
+}
+
+- (BOOL)sceneSupportsTransitOverlay:(NSString *)scene {
+    return ![scene containsString:@"tron-style"];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
