@@ -28,6 +28,7 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
 @property (nonatomic) BOOL finishedInitialLoading;
 @property (nonatomic) UITapGestureRecognizer *twoFingerTapGesture;
 @property (nonatomic) UIPanGestureRecognizer *twoFingerDragGesture;
+@property (nonatomic) BOOL showsBikeOverlay;
 
 @end
 
@@ -115,17 +116,24 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
 - (void)cycleScenes {
     NSArray *scenes = [self scenes];
     NSString *scene = self.currentScene;
+    NSMutableArray<TGSceneUpdate *> *sceneUpdates = [NSMutableArray arrayWithObject:self.apiKey];
 
     if (!scene) {
         scene = [[self scenes] firstObject];
+    } else if (!self.showsBikeOverlay && [self.currentScene containsString:@"walkabout-style"]) {
+        // Stay once more on Walkabout and enable the bike overlay.
+        [sceneUpdates addObject:[[TGSceneUpdate alloc] initWithPath:@"global.sdk_bike_overlay" value:@"true"]];
+        self.showsBikeOverlay = YES;
     } else {
         NSAssert([scenes indexOfObject:scene] < [scenes count], @"%@ is not indexed.", scene);
         NSUInteger index = [scenes indexOfObject:scene] + 1;
         if (index == [scenes count] || !index) index = 0;
         scene = [scenes objectAtIndex:index];
+
+        self.showsBikeOverlay = NO;
     }
 
-    [self loadSceneFileAsync:scene sceneUpdates:@[self.apiKey]];
+    [self loadSceneFileAsync:scene sceneUpdates:sceneUpdates.copy];
     self.currentScene = scene;
 }
 
