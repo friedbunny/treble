@@ -37,6 +37,9 @@
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
 
+    // Default to the first style in our list.
+    [self.mapView setStyleURL:[self styles].firstObject];
+
     // Disable content insets so that the center coordinate is consistent across vendors.
     self.automaticallyAdjustsScrollViewInsets = NO;
 
@@ -124,16 +127,16 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _styles = @[
-            [MGLStyle streetsStyleURLWithVersion:MGLStyleDefaultVersion],
+            [MGLStyle streetsStyleURLWithVersion:10],
             [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-day-v1"],
             [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-day-v2"],
-            [MGLStyle outdoorsStyleURLWithVersion:MGLStyleDefaultVersion],
-            [MGLStyle lightStyleURLWithVersion:MGLStyleDefaultVersion],
-            [MGLStyle darkStyleURLWithVersion:MGLStyleDefaultVersion],
+            [MGLStyle outdoorsStyleURLWithVersion:10],
+            [MGLStyle lightStyleURLWithVersion:9],
+            [MGLStyle darkStyleURLWithVersion:9],
             [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-night-v1"],
             [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-night-v2"],
-            [MGLStyle satelliteStyleURLWithVersion:MGLStyleDefaultVersion],
-            [MGLStyle satelliteStreetsStyleURLWithVersion:MGLStyleDefaultVersion],
+            [MGLStyle satelliteStyleURLWithVersion:9],
+            [MGLStyle satelliteStreetsStyleURLWithVersion:10],
         ];
     });
     
@@ -145,9 +148,9 @@
     NSURL *styleURL = self.mapView.styleURL;
     
     if (!styleURL) {
-        styleURL = [[self styles] firstObject];
+        styleURL = [self styles].firstObject;
     } else {
-        NSAssert([styles indexOfObject:styleURL] < [styles count], @"%@ is not indexed.", styleURL);
+        NSAssert([styles indexOfObject:styleURL] < styles.count, @"%@ is not indexed.", styleURL);
         NSUInteger index = [styles indexOfObject:styleURL] + 1;
         if (index == [styles count] || !index) index = 0;
         styleURL = [styles objectAtIndex:index];
