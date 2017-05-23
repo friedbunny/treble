@@ -101,12 +101,12 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _scenes = @[
-            @"https://tangrams.github.io/bubble-wrap/bubble-wrap-style-more-labels.yaml",
-            @"https://tangrams.github.io/cinnabar-style-more-labels/cinnabar-style-more-labels.yaml",
-            @"https://tangrams.github.io/refill-style-more-labels/refill-style-more-labels.yaml",
-            @"https://tangrams.github.io/walkabout-style-more-labels/walkabout-style-more-labels.yaml",
-            @"https://tangrams.github.io/zinc-style-more-labels/zinc-style-more-labels.yaml",
-            @"https://tangrams.github.io/tron-style/tron-style-more-labels.yaml",
+            @"https://mapzen.com/carto/bubble-wrap-style-more-labels/bubble-wrap-style-more-labels.zip",
+            @"https://mapzen.com/carto/cinnabar-style-more-labels/cinnabar-style-more-labels.zip",
+            @"https://mapzen.com/carto/refill-style-more-labels/refill-style-more-labels.zip",
+            @"https://mapzen.com/carto/walkabout-style-more-labels/walkabout-style-more-labels.zip",
+            @"https://mapzen.com/carto/zinc-style-more-labels/zinc-style-more-labels.zip",
+            @"https://mapzen.com/carto/tron-style-more-labels/tron-style-more-labels.zip",
         ];
     });
 
