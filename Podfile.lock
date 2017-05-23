@@ -9,7 +9,7 @@ PODS:
     - GoogleMaps/Base
   - Mapbox-iOS-SDK (3.6.0-alpha.1)
   - NSTimeZone-Coordinate (1.0.1)
-  - Tangram-es (0.6.2)
+  - Tangram-es (0.7.0)
 
 DEPENDENCIES:
   - Crashlytics (~> 3.8)
@@ -28,7 +28,7 @@ SPEC CHECKSUMS:
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   Mapbox-iOS-SDK: a7dabb123538b2f2c83433be8ca74d22b57f2d4a
   NSTimeZone-Coordinate: 7228987925f2d6efeaa49ee0d4bdb208f8adc564
-  Tangram-es: 99ebcecc38c67d40ec290e2fd0c61253bd89beeb
+  Tangram-es: 07181363dbe7833288ed7ed27623660d101e4f70
 
 PODFILE CHECKSUM: b9a946ace03bd4a261edff19bc19bace7ef7a49c
 
