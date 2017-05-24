@@ -128,13 +128,13 @@
     dispatch_once(&onceToken, ^{
         _styles = @[
             [MGLStyle streetsStyleURLWithVersion:10],
-            [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-day-v1"],
-            [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-day-v2"],
+            [MGLStyle trafficDayStyleURLWithVersion:1],
+            [MGLStyle trafficDayStyleURLWithVersion:2],
             [MGLStyle outdoorsStyleURLWithVersion:10],
             [MGLStyle lightStyleURLWithVersion:9],
             [MGLStyle darkStyleURLWithVersion:9],
-            [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-night-v1"],
-            [NSURL URLWithString:@"mapbox://styles/mapbox/traffic-night-v2"],
+            [MGLStyle trafficNightStyleURLWithVersion:1],
+            [MGLStyle trafficNightStyleURLWithVersion:2],
             [MGLStyle satelliteStyleURLWithVersion:9],
             [MGLStyle satelliteStreetsStyleURLWithVersion:10],
         ];
