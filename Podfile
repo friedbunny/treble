@@ -2,7 +2,7 @@ platform :ios, '9.3'
 
 target 'treble' do
     #pod 'Mapbox-iOS-SDK', '~> 3.5.3'
-    pod 'Mapbox-iOS-SDK', :podspec => 'https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.6.0-beta.1/platform/ios/Mapbox-iOS-SDK.podspec'
+    pod 'Mapbox-iOS-SDK', :podspec => 'https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.6.0-beta.2/platform/ios/Mapbox-iOS-SDK.podspec'
 
     pod 'Crashlytics', '~> 3.8'
     pod 'GoogleMaps', '~> 2.0'
