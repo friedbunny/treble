@@ -11,7 +11,7 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "2.2.0"
+fastlane_version "2.39.0"
 
 default_platform :ios
 
@@ -26,17 +26,14 @@ platform :ios do
     scan
   end
 
-  desc "Submit a new beta build to TestFlight"
-  lane :beta do
-    cocoapods(use_bundle_exec: true)
-    #match(type: "appstore", readonly: true)
-    bump_build_number
-    gym(scheme: "App Store", clean: true, output_directory: "build/", include_bitcode: true)
-    pilot(skip_waiting_for_build_processing: true, ipa: "build/treble.ipa")
-    tag_and_push
+  desc "Update dependencies, then stage any changes."
+  lane :update_dependencies do
+    puts `bundle update`
+    update_fastlane()
+    git_add(path: ["./Gemfile.lock"])
   end
 
-  desc "Increment build number based on current TestFlight build number"
+  desc "Increment build number based on current TestFlight build number."
   desc "Commits the changes, but does not push them to any remote."
   lane :bump_build_number do
     increment_build_number(build_number: latest_testflight_build_number + 1)
@@ -45,20 +42,33 @@ platform :ios do
     commit_version_bump(message: "#{version} (#{build})", force: true)
   end
 
-  desc "Tag and push changes to git remote."
-  lane :tag_and_push do
-    version = get_version_number()
-    build = get_build_number()
-    add_git_tag(tag: "#{version}v#{build}")
-    push_to_git_remote()
+  desc "Prepare a release — bump the build number and update dependencies."
+  lane :prepare do
+    update_dependencies
+    bump_build_number
   end
 
-  desc "Install App Store certificate and provisioning profile from the ***REMOVED*** repo"
-  lane :team_match do
-    match(readonly: true)
+  desc "Build and submit a new beta build to Apple TestFlight."
+  desc "Use `beta` if you want to run this manually."
+  lane :build_and_submit do
+    cocoapods(use_bundle_exec: true)
+    gym(scheme: "App Store", include_bitcode: true)
+    pilot(skip_waiting_for_build_processing: true)
   end
 
-  desc "Download dSYMs from iTunesConnect and upload them to Crashlytics"
+  desc "Manually bump the version and dependencies, then build and submit a new beta build to Apple TestFlight."
+  lane :beta do
+    prepare
+    build_and_submit
+  end
+
+  desc "For CI: build and submit a new beta build to Apple TestFlight."
+  desc "Use `prepare` and then make a new release on GitHub to trigger this command."
+  lane :beta_ci do
+    build_and_submit
+  end
+
+  desc "Download dSYMs from iTunesConnect and upload them to Crashlytics."
   lane :refresh_dsyms do
     download_dsyms
     crashlytics_api_key = get_info_plist_value(path: "treble/APIKeys.plist", key: "Crashlytics API Key")
