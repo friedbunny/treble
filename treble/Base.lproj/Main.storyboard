@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G23a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -33,18 +33,33 @@
                                     <constraint firstAttribute="height" constant="15" id="vs5-YV-wyN"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="gSt-JT-V00" customClass="TRBLStyleLabelView">
+                                <rect key="frame" x="190" y="661" width="35" height="18"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="15" id="dlc-vF-0WR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="gSt-JT-V00" firstAttribute="centerX" secondItem="rIh-lV-iQJ" secondAttribute="centerX" id="73P-FV-eC8"/>
                             <constraint firstItem="c8k-bN-Llz" firstAttribute="leading" secondItem="rIh-lV-iQJ" secondAttribute="leadingMargin" id="DNf-5Z-NH0"/>
                             <constraint firstItem="c8k-bN-Llz" firstAttribute="top" secondItem="ewd-WD-vJD" secondAttribute="bottom" constant="8" symbolic="YES" id="l14-QR-ZqY"/>
                             <constraint firstAttribute="trailing" secondItem="c8k-bN-Llz" secondAttribute="trailing" priority="500" constant="359" id="mQE-YF-XEa"/>
+                            <constraint firstItem="srX-ER-Qca" firstAttribute="top" secondItem="gSt-JT-V00" secondAttribute="bottom" constant="8" symbolic="YES" id="qmT-aZ-bwX"/>
+                            <constraint firstItem="gSt-JT-V00" firstAttribute="top" secondItem="ewd-WD-vJD" secondAttribute="bottom" priority="500" constant="641" id="xzB-Ad-oUY"/>
+                            <constraint firstItem="gSt-JT-V00" firstAttribute="leading" secondItem="rIh-lV-iQJ" secondAttribute="leading" priority="500" constant="190" id="ze0-MO-4yI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Tab Bar Icons/Mapbox" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="mapInfoView" destination="c8k-bN-Llz" id="VEE-L7-fmY"/>
                         <outlet property="mapView" destination="rIh-lV-iQJ" id="ECb-4U-ADM"/>
+                        <outlet property="styleLabelView" destination="gSt-JT-V00" id="DlG-Be-89B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>

@@ -9,6 +9,7 @@
 #import "TRBLMapboxMapView.h"
 #import "TRBLCoordinator.h"
 #import "TRBLZoomLabelView.h"
+#import "TRBLStyleLabelView.h"
 
 #import "Constants.h"
 #import "UITabBarController+Visible.h"
@@ -24,6 +25,7 @@
 @property (nonatomic) BOOL shouldUpdateCoordinates;
 
 @property (nonatomic) IBOutlet TRBLZoomLabelView *mapInfoView;
+@property (nonatomic) IBOutlet TRBLStyleLabelView *styleLabelView;
 
 @end
 
@@ -117,8 +119,13 @@
     self.mapInfoView.pitch = self.mapView.camera.pitch;
 }
 
+- (void)updateStyleLabelView {
+    self.styleLabelView.styleName = /*self.mapView.style.name ?: */self.mapView.styleURL.lastPathComponent;
+}
+
 - (void)mapShouldChangeStyle {
     [self cycleStyles];
+    [self updateStyleLabelView];
     [self setNeedsStatusBarAppearanceUpdate];
 }
 
