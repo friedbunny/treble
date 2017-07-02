@@ -13,8 +13,7 @@
 #import <GoogleMaps/GMSServices.h>
 
 #import "Constants.h"
-#import "Additions/UITabBarController+Swipe.h"
-#import "Additions/UITabBarController+Index.h"
+#import "TRBLTabBarController.h"
 #import "TRBLMapboxMapView.h"
 
 @implementation AppDelegate
@@ -53,15 +52,6 @@
     NSString *googleAPIKey = [apiKeys objectForKey:@"Google Maps iOS API Key"];
     NSAssert(googleAPIKey, @"REQUIRED: Google Maps iOS API key must be set in APIKeys.plist");
     [GMSServices provideAPIKey:googleAPIKey];
-    
-    // tab bar customization
-    //
-    // set initial tab to Mapbox (second, center)
-    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    tabBarController.selectedIndex = tabBarController.lastSelectedIndex = TRBLMapboxViewControllerIndex;
-
-    // setup swipe transitions for tab bar
-    [tabBarController setupSwipeGestureRecognizersAllowCyclingThroughTabs:YES];
 
     return YES;
 }

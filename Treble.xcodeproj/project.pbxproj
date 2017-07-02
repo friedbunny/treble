@@ -13,6 +13,7 @@
 		96301E7A1E937F2B005FF0F6 /* trebleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96301E791E937F2B005FF0F6 /* trebleTests.m */; };
 		96301E831E938087005FF0F6 /* TRBLCoordinatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96301E821E938087005FF0F6 /* TRBLCoordinatorTests.m */; };
 		96446CBB1E4E3227005E3B10 /* TRBLZoomLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96446CBA1E4E3227005E3B10 /* TRBLZoomLabelView.m */; };
+		9652C2931F08BBAA006C3F4B /* TRBLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9652C2921F08BBAA006C3F4B /* TRBLTabBarController.m */; };
 		968181D51AF2B34900E2403B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181D41AF2B34900E2403B /* main.m */; };
 		968181D81AF2B34900E2403B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181D71AF2B34900E2403B /* AppDelegate.m */; };
 		968181DB1AF2B34900E2403B /* TRBLMapboxMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181DA1AF2B34900E2403B /* TRBLMapboxMapView.m */; };
@@ -68,6 +69,8 @@
 		96301E821E938087005FF0F6 /* TRBLCoordinatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLCoordinatorTests.m; sourceTree = "<group>"; };
 		96446CB91E4E3227005E3B10 /* TRBLZoomLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBLZoomLabelView.h; sourceTree = "<group>"; };
 		96446CBA1E4E3227005E3B10 /* TRBLZoomLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLZoomLabelView.m; sourceTree = "<group>"; };
+		9652C2911F08BBAA006C3F4B /* TRBLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBLTabBarController.h; sourceTree = "<group>"; };
+		9652C2921F08BBAA006C3F4B /* TRBLTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLTabBarController.m; sourceTree = "<group>"; };
 		967E9D031CB8A25C0004D44E /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		968181CF1AF2B34900E2403B /* treble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = treble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		968181D31AF2B34900E2403B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -148,6 +151,17 @@
 			path = trebleTests;
 			sourceTree = "<group>";
 		};
+		9652C2941F08BBF0006C3F4B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9652C2911F08BBAA006C3F4B /* TRBLTabBarController.h */,
+				9652C2921F08BBAA006C3F4B /* TRBLTabBarController.m */,
+				96446CB91E4E3227005E3B10 /* TRBLZoomLabelView.h */,
+				96446CBA1E4E3227005E3B10 /* TRBLZoomLabelView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		968181C61AF2B34900E2403B = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				96E5ECF31AF743BA008350F9 /* Additions */,
+				9652C2941F08BBF0006C3F4B /* Views */,
 				968181D61AF2B34900E2403B /* AppDelegate.h */,
 				968181D71AF2B34900E2403B /* AppDelegate.m */,
 				968182141AF2DEBC00E2403B /* TRBLCoordinator.h */,
@@ -184,8 +199,6 @@
 				968181DD1AF2B34900E2403B /* TRBLMapKitMapView.m */,
 				96BDB1491E7755880062D0E0 /* TRBLMapzenView.h */,
 				96BDB14A1E7755880062D0E0 /* TRBLMapzenView.m */,
-				96446CB91E4E3227005E3B10 /* TRBLZoomLabelView.h */,
-				96446CBA1E4E3227005E3B10 /* TRBLZoomLabelView.m */,
 				968181DF1AF2B34900E2403B /* Main.storyboard */,
 				9600673B1C5C9366005B2606 /* Launch Screen.storyboard */,
 				968181E21AF2B34900E2403B /* Images.xcassets */,
@@ -414,6 +427,7 @@
 				96446CBB1E4E3227005E3B10 /* TRBLZoomLabelView.m in Sources */,
 				96BDB14B1E7755880062D0E0 /* TRBLMapzenView.m in Sources */,
 				96C1DB991E4852AD00F323A0 /* UITabBarController+Visible.m in Sources */,
+				9652C2931F08BBAA006C3F4B /* TRBLTabBarController.m in Sources */,
 				968182191AF2E20A00E2403B /* TRBLGoogleMapView.m in Sources */,
 				968181DE1AF2B34900E2403B /* TRBLMapKitMapView.m in Sources */,
 				968181D81AF2B34900E2403B /* AppDelegate.m in Sources */,

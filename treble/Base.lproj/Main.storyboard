@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F43c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G23a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Mapbox-->
+        <!--Mapbox Map View-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="TRBLMapboxMapView" sceneMemberID="viewController">
@@ -41,7 +41,7 @@
                             <constraint firstAttribute="trailing" secondItem="c8k-bN-Llz" secondAttribute="trailing" priority="500" constant="359" id="mQE-YF-XEa"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mapbox" image="Mapbox (Tab Bar)" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="" image="Tab Bar Icons/Mapbox" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="mapInfoView" destination="c8k-bN-Llz" id="VEE-L7-fmY"/>
                         <outlet property="mapView" destination="rIh-lV-iQJ" id="ECb-4U-ADM"/>
@@ -90,7 +90,7 @@
                             <constraint firstAttribute="trailing" secondItem="YO1-Pr-wLZ" secondAttribute="trailing" priority="500" constant="359" id="zcm-tp-2HB"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Apple" image="Apple (Tab Bar)" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="" image="Tab Bar Icons/Apple" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="mapInfoView" destination="YO1-Pr-wLZ" id="QVe-gX-ip4"/>
                         <outlet property="mapView" destination="YVG-iN-PWf" id="XPT-96-tiL"/>
@@ -100,7 +100,7 @@
             </objects>
             <point key="canvasLocation" x="-607" y="760"/>
         </scene>
-        <!--Google-->
+        <!--Google Map View-->
         <scene sceneID="gqK-vt-tWA">
             <objects>
                 <viewController id="IUi-on-x41" customClass="TRBLGoogleMapView" sceneMemberID="viewController">
@@ -139,7 +139,7 @@
                             <constraint firstAttribute="trailing" secondItem="TK6-vh-6Sq" secondAttribute="trailing" id="jQX-IH-OL2"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Google" image="Google (Tab Bar)" id="qZn-5x-Fe9"/>
+                    <tabBarItem key="tabBarItem" title="" image="Tab Bar Icons/Google" id="qZn-5x-Fe9"/>
                     <connections>
                         <outlet property="mapInfoView" destination="Yae-O9-MHH" id="dAo-Hd-jgL"/>
                         <outlet property="mapView" destination="TK6-vh-6Sq" id="23V-l9-ZqM"/>
@@ -152,7 +152,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="TRBLTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -214,7 +214,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mapzen" image="Mapzen (Tab Bar)" id="HfY-W3-4D2"/>
+                    <tabBarItem key="tabBarItem" title="" image="Tab Bar Icons/Mapzen" id="HfY-W3-4D2"/>
                     <connections>
                         <outlet property="mapInfoView" destination="xOb-13-jlJ" id="zOK-IZ-u8Y"/>
                     </connections>
@@ -225,9 +225,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Apple (Tab Bar)" width="25" height="25"/>
-        <image name="Google (Tab Bar)" width="25" height="25"/>
-        <image name="Mapbox (Tab Bar)" width="23" height="26"/>
-        <image name="Mapzen (Tab Bar)" width="25" height="25"/>
+        <image name="Tab Bar Icons/Apple" width="25" height="25"/>
+        <image name="Tab Bar Icons/Google" width="25" height="25"/>
+        <image name="Tab Bar Icons/Mapbox" width="25" height="25"/>
+        <image name="Tab Bar Icons/Mapzen" width="25" height="25"/>
     </resources>
 </document>
