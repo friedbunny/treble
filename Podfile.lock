@@ -7,7 +7,7 @@ PODS:
   - GoogleMaps/Base (2.3.1)
   - GoogleMaps/Maps (2.3.1):
     - GoogleMaps/Base
-  - Mapbox-iOS-SDK (3.6.0)
+  - Mapbox-iOS-SDK (3.6.1)
   - NSTimeZone-Coordinate (1.0.2)
   - Tangram-es (0.7.2)
 
@@ -22,7 +22,7 @@ SPEC CHECKSUMS:
   Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
   Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
   GoogleMaps: c66a71058b9b1294bcdd5463a68e357fa50c079f
-  Mapbox-iOS-SDK: c911b1875a00f12bb74253b763ac483425bd4225
+  Mapbox-iOS-SDK: 7dd2a0fd08e9444b9c47f6e8fd1c32509bce3243
   NSTimeZone-Coordinate: 984ba9c2337a5991d58f7c7525f4781b7b9609a8
   Tangram-es: 13c8180eb78c78767bca4e47d92fa12b1fa73279
 
