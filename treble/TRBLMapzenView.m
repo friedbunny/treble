@@ -240,8 +240,8 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
 
 - (void)mapView:(TGMapViewController *)view recognizer:(UIGestureRecognizer *)recognizer didRecognizeDoubleTapGesture:(CGPoint)location {
     // Umm, for some reason Mapzen apparently hasn't implemented double-tap-to-zoom yet.
-    [view animateToZoomLevel:round(view.zoom) + 1 withDuration:MAPZEN_ANIMATION_DURATION withEaseType:TGEaseTypeCubic];
-    [view animateToPosition:[view screenPositionToLngLat:location] withDuration:MAPZEN_ANIMATION_DURATION withEaseType:TGEaseTypeCubic];
+    [view animateToZoomLevel:round(view.zoom) + 1 withDuration:MAPZEN_ANIMATION_DURATION];
+    [view animateToPosition:[view screenPositionToLngLat:location] withDuration:MAPZEN_ANIMATION_DURATION];
 }
 
 @end
