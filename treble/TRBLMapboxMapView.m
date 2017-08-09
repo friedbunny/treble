@@ -135,15 +135,15 @@
     dispatch_once(&onceToken, ^{
         _styles = @[
             [MGLStyle streetsStyleURLWithVersion:10],
-            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-preview-day-v2"],
-            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-guidance-day-v2"],
             [MGLStyle outdoorsStyleURLWithVersion:10],
             [MGLStyle lightStyleURLWithVersion:9],
             [MGLStyle darkStyleURLWithVersion:9],
-            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-preview-night-v2"],
-            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-guidance-night-v2"],
             [MGLStyle satelliteStyleURLWithVersion:9],
             [MGLStyle satelliteStreetsStyleURLWithVersion:10],
+            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-preview-day-v2"],
+            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-guidance-day-v2"],
+            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-preview-night-v2"],
+            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-guidance-night-v2"],
         ];
     });
     
