@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="srX-ER-Qca"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rIh-lV-iQJ" customClass="MGLMapView">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="c8k-bN-Llz" customClass="TRBLZoomLabelView">
-                                <rect key="frame" x="20" y="28" width="35" height="15"/>
+                                <rect key="frame" x="16" y="28" width="15" height="15"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -34,7 +34,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="gSt-JT-V00" customClass="TRBLStyleLabelView">
-                                <rect key="frame" x="190" y="661" width="35" height="18"/>
+                                <rect key="frame" x="180" y="610" width="15" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -75,15 +75,15 @@
                         <viewControllerLayoutGuide type="bottom" id="tCG-u5-jpr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mGI-LK-9X1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVG-iN-PWf" customClass="MKMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="YO1-Pr-wLZ" customClass="TRBLZoomLabelView">
-                                <rect key="frame" x="20" y="28" width="35" height="15"/>
+                                <rect key="frame" x="16" y="28" width="15" height="15"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -124,15 +124,15 @@
                         <viewControllerLayoutGuide type="bottom" id="0GJ-el-y0H"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3aw-50-mJA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TK6-vh-6Sq" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Yae-O9-MHH" customClass="TRBLZoomLabelView">
-                                <rect key="frame" x="20" y="28" width="35" height="15"/>
+                                <rect key="frame" x="16" y="28" width="15" height="15"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -194,7 +194,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4zP-SW-ZtT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yzB-z7-be7" customClass="GLKView">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UsW-qn-b76">
@@ -202,7 +202,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="xOb-13-jlJ" customClass="TRBLZoomLabelView">
-                                <rect key="frame" x="20" y="28" width="35" height="15"/>
+                                <rect key="frame" x="16" y="28" width="15" height="15"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -215,12 +215,8 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="UsW-qn-b76" secondAttribute="trailing" id="17A-fZ-0L6"/>
-                            <constraint firstAttribute="bottom" secondItem="UsW-qn-b76" secondAttribute="bottom" id="JoB-4R-x0l"/>
                             <constraint firstItem="xOb-13-jlJ" firstAttribute="leading" secondItem="yzB-z7-be7" secondAttribute="leadingMargin" id="MtN-Gj-oOF"/>
-                            <constraint firstItem="UsW-qn-b76" firstAttribute="top" secondItem="yzB-z7-be7" secondAttribute="top" id="Zv9-3d-JkK"/>
                             <constraint firstAttribute="trailing" secondItem="xOb-13-jlJ" secondAttribute="trailing" priority="500" constant="359" id="h13-gE-oW3"/>
-                            <constraint firstItem="UsW-qn-b76" firstAttribute="leading" secondItem="yzB-z7-be7" secondAttribute="leading" id="jq8-GZ-yO2"/>
                             <constraint firstItem="xOb-13-jlJ" firstAttribute="top" secondItem="bVB-x9-HmE" secondAttribute="bottom" constant="8" symbolic="YES" id="k0Z-SU-dcV"/>
                         </constraints>
                         <variation key="default">
