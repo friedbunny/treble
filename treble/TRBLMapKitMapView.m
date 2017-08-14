@@ -158,8 +158,20 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
     return style;
 }
 
-- (void)statusBarTappedAction:(NSNotification*)notification {
-    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+- (void)statusBarTappedAction:(__unused NSNotification*)notification {
+    MKUserTrackingMode nextMode;
+    switch (self.mapView.userTrackingMode) {
+        case MKUserTrackingModeNone:
+            nextMode = MKUserTrackingModeFollow;
+            break;
+        case MKUserTrackingModeFollow:
+            nextMode = MKUserTrackingModeFollowWithHeading;
+            break;
+        case MKUserTrackingModeFollowWithHeading:
+            nextMode = MKUserTrackingModeFollow;
+            break;
+    }
+    [self.mapView setUserTrackingMode:nextMode animated:YES];
 }
 
 - (void)toggleTabBarController:(__unused UITapGestureRecognizer *)gestureRecognizer {

@@ -182,7 +182,22 @@
 }
 
 - (void)statusBarTappedAction:(__unused NSNotification*)notification {
-    [self.mapView setUserTrackingMode:MGLUserTrackingModeFollow animated:YES];
+    MGLUserTrackingMode nextMode;
+    switch (self.mapView.userTrackingMode) {
+        case MGLUserTrackingModeNone:
+            nextMode = MGLUserTrackingModeFollow;
+            break;
+        case MGLUserTrackingModeFollow:
+            nextMode = MGLUserTrackingModeFollowWithHeading;
+            break;
+        case MGLUserTrackingModeFollowWithHeading:
+            nextMode = MGLUserTrackingModeFollowWithCourse;
+            break;
+        case MGLUserTrackingModeFollowWithCourse:
+            nextMode = MGLUserTrackingModeFollow;
+            break;
+    }
+    [self.mapView setUserTrackingMode:nextMode animated:YES];
 }
 
 - (void)toggleTabBarController:(__unused UITapGestureRecognizer *)gestureRecognizer {
