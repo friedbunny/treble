@@ -45,7 +45,11 @@
     // Disable content insets so that the center coordinate is consistent across vendors.
     self.automaticallyAdjustsScrollViewInsets = NO;
 
-    [self.mapView setCenterCoordinate:NSTimeZone.localTimeZone.coordinate zoomLevel:3.0 animated:NO];
+    // Center the map on the largest city in the user’s time zone.
+    CLLocationCoordinate2D locationFromTimeZone = NSTimeZone.localTimeZone.coordinate;
+    if (CLLocationCoordinate2DIsValid(locationFromTimeZone)) {
+        [self.mapView setCenterCoordinate:locationFromTimeZone zoomLevel:3.0 animated:NO];
+    }
 
     // Add tab bar controller toggle gesture
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleTabBarController:)];
