@@ -65,6 +65,8 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
                                  animated:NO];
         self.mapView.camera.heading = self.coordinator.heading;
         //self.mapView.camera.pitch = self.coordinator.pitch;
+        self.mapView.userTrackingMode = (MKUserTrackingMode)self.coordinator.userTrackingMode;
+
         self.coordinator.needsUpdateMapKit = NO;
     }
 
@@ -81,6 +83,7 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
         self.coordinator.heading = self.mapView.camera.heading;
         self.coordinator.zoomLevel = self.mapView.zoomLevel - MAPKIT_ZOOM_OFFSET;
         //self.coordinator.pitch = self.mapView.camera.pitch;
+        self.coordinator.userTrackingMode = (TRBLUserTrackingMode)self.mapView.userTrackingMode;
         
         [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapKit];
         self.shouldUpdateCoordinates = NO;

@@ -17,6 +17,12 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
     TRBLMapVendorMapzen,
 };
 
+typedef NS_ENUM(NSInteger, TRBLUserTrackingMode) {
+    TRBLUserTrackingModeNone = 0,
+    TRBLUserTrackingModeFollow,
+    TRBLUserTrackingModeFollowWithHeading,
+    TRBLUserTrackingModeFollowWithCourse,
+};
 
 @protocol TRBLCoordinatorDelegate <NSObject>
 
@@ -41,6 +47,7 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
 @property (nonatomic) CLLocationDirection heading;
 @property (nonatomic) double zoomLevel;
 @property (nonatomic) CGFloat pitch;
+@property (nonatomic) TRBLUserTrackingMode userTrackingMode;
 
 @property (nonatomic) BOOL needsUpdateMapbox;
 @property (nonatomic) BOOL needsUpdateMapKit;

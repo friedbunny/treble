@@ -29,6 +29,7 @@
         self.heading = 0;
         self.zoomLevel = 0;
         self.pitch = 0;
+        self.userTrackingMode = TRBLUserTrackingModeNone;
         [self setNeedsUpdateFromVendor:TRBLMapVendorMapbox];
     }
     
@@ -37,6 +38,10 @@
 
 - (void)setNeedsUpdateFromVendor:(TRBLMapVendor)vendor {
     switch (vendor) {
+        case TRBLMapVendorNone:
+            self.needsUpdateMapbox = self.needsUpdateMapKit = self.needsUpdateGoogle = self.needsUpdateMapzen = YES;
+            break;
+
         case TRBLMapVendorMapbox:
             self.needsUpdateMapKit = self.needsUpdateGoogle = self.needsUpdateMapzen = YES;
             break;
@@ -51,10 +56,6 @@
 
         case TRBLMapVendorMapzen:
             self.needsUpdateMapbox = self.needsUpdateMapKit = self.needsUpdateGoogle = YES;
-            break;
-        
-        case TRBLMapVendorNone:
-            self.needsUpdateMapbox = self.needsUpdateMapKit = self.needsUpdateGoogle = self.needsUpdateMapzen = YES;
             break;
     }
 }

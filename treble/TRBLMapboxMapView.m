@@ -76,6 +76,8 @@
         camera.heading = self.coordinator.heading;
         camera.pitch = self.coordinator.pitch;
         self.mapView.camera = camera;
+        self.mapView.userTrackingMode = (MGLUserTrackingMode)self.coordinator.userTrackingMode;
+
         self.coordinator.needsUpdateMapbox = NO;
     }
 
@@ -96,6 +98,7 @@
         self.coordinator.heading = self.mapView.direction;
         self.coordinator.zoomLevel = self.mapView.zoomLevel;
         self.coordinator.pitch = self.mapView.camera.pitch;
+        self.coordinator.userTrackingMode = (TRBLUserTrackingMode)self.mapView.userTrackingMode;
         
         [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapbox];
         self.shouldUpdateCoordinates = NO;
