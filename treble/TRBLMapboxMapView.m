@@ -109,6 +109,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
 }
 
+- (void)mapView:(MGLMapView *)mapView didFinishLoadingStyle:(MGLStyle *)style {
+    style.localizesLabels = [NSUserDefaults.standardUserDefaults boolForKey:TRBLDefaultsMapboxLocalizesStyle];
+}
+
 - (void)mapView:(MGLMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     self.shouldUpdateCoordinates = YES;
     [self updateMapInfoViewAnimated:YES];
@@ -237,18 +241,21 @@
 
 - (void)defaultsChanged:(__unused NSNotification *)notification {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    self.mapView.style.localizesLabels = [defaults boolForKey:TRBLDefaultsMapboxLocalizesStyle];
+
     MGLMapDebugMaskOptions debugMask = 0;
 
-    if ([defaults boolForKey:@"TRBLDebugOptionsTileBoundaries"]) {
+    if ([defaults boolForKey:TRBLDefaultsDebugOptionsTileBoundaries]) {
         debugMask ^= MGLMapDebugTileBoundariesMask;
     }
-    if ([defaults boolForKey:@"TRBLDebugOptionsTileInfo"]) {
+    if ([defaults boolForKey:TRBLDefaultsDebugOptionsTileInfo]) {
         debugMask ^= MGLMapDebugTileInfoMask;
     }
-    if ([defaults boolForKey:@"TRBLDebugOptionsTileTimestamps"]) {
+    if ([defaults boolForKey:TRBLDefaultsDebugOptionsTileTimestamps]) {
         debugMask ^= MGLMapDebugTimestampsMask;
     }
-    if ([defaults boolForKey:@"TRBLDebugOptionsCollisionBoxes"]) {
+    if ([defaults boolForKey:TRBLDefaultsDebugOptionsCollisionBoxes]) {
         debugMask ^= MGLMapDebugCollisionBoxesMask;
     }
 

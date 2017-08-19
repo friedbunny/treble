@@ -25,11 +25,12 @@
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults registerDefaults:@{
-        @"TRBLUIAlwaysShowMapInfoLabel": @YES,
-        @"TRBLDebugOptionsTileBoundaries": @NO,
-        @"TRBLDebugOptionsTileInfo": @NO,
-        @"TRBLDebugOptionsTileTimestamps": @NO,
-        @"TRBLDebugOptionsCollisionBoxes": @NO,
+        TRBLDefaultsUIAlwaysShowMapInfoLabel: @YES,
+        TRBLDefaultsMapboxLocalizesStyle: @YES,
+        TRBLDefaultsDebugOptionsTileBoundaries: @NO,
+        TRBLDefaultsDebugOptionsTileInfo: @NO,
+        TRBLDefaultsDebugOptionsTileTimestamps: @NO,
+        TRBLDefaultsDebugOptionsCollisionBoxes: @NO,
     }];
 
     // API key initialization

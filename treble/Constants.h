@@ -10,3 +10,11 @@ static NSString * const TRBLURLScheme = @"treble";
 static NSUInteger const TRBLMapboxViewControllerIndex = 1;
 
 static NSString * const kStatusBarTappedNotification = @"statusBarTappedNotification";
+
+// NSUserDefaults
+static NSString * const TRBLDefaultsUIAlwaysShowMapInfoLabel    = @"TRBLUIAlwaysShowMapInfoLabel";
+static NSString * const TRBLDefaultsMapboxLocalizesStyle        = @"TRBLMapboxLocalizesStyle";
+static NSString * const TRBLDefaultsDebugOptionsTileBoundaries  = @"TRBLDebugOptionsTileBoundaries";
+static NSString * const TRBLDefaultsDebugOptionsTileInfo        = @"TRBLDebugOptionsTileInfo";
+static NSString * const TRBLDefaultsDebugOptionsTileTimestamps  = @"TRBLDebugOptionsTileTimestamps";
+static NSString * const TRBLDefaultsDebugOptionsCollisionBoxes  = @"TRBLDebugOptionsCollisionBoxes";
