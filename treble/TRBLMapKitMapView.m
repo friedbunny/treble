@@ -123,6 +123,16 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
     } else {
         switch (self.mapView.mapType) {
             case MKMapTypeStandard:
+                if (@available(iOS 11, *)) {
+                    mapType = MKMapTypeMutedStandard;
+                } else {
+                    mapType = MKMapTypeSatelliteFlyover;
+                }
+                break;
+
+#pragma clang diagnostic ignored "-Wpartial-availability"
+            case MKMapTypeMutedStandard:
+#pragma clang diagnostic pop
                 mapType = MKMapTypeSatelliteFlyover;
                 break;
 
@@ -147,6 +157,9 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
 
     switch (self.mapView.mapType) {
         case MKMapTypeStandard:
+#pragma clang diagnostic ignored "-Wpartial-availability"
+        case MKMapTypeMutedStandard:
+#pragma clang diagnostic pop
             style = UIStatusBarStyleDefault;
             break;
 
