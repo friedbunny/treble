@@ -138,7 +138,7 @@ static const double MAPZEN_ANIMATION_DURATION = 0.3;
         self.showsTransitOverlay = NO;
     }
 
-    [self loadSceneFileAsync:scene sceneUpdates:sceneUpdates.copy];
+    [self loadSceneAsyncFromURL:[NSURL URLWithString:scene] withUpdates:sceneUpdates.copy];
     self.currentScene = scene;
 }
 
