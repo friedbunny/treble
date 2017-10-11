@@ -37,6 +37,7 @@
     self.coordinator = [TRBLCoordinator sharedCoordinator];
     
     self.mapView.showsUserLocation = YES;
+    self.mapView.showsUserHeadingIndicator = YES;
     self.mapView.delegate = self;
 
     // Default to the first style in our list.
