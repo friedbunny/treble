@@ -1,35 +1,35 @@
 PODS:
-  - Crashlytics (3.9.0):
-    - Fabric (~> 1.7.0)
-  - Fabric (1.7.1)
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
+  - Fabric (1.7.2)
   - GoogleMaps (2.5.0):
     - GoogleMaps/Maps (= 2.5.0)
   - GoogleMaps/Base (2.5.0)
   - GoogleMaps/Maps (2.5.0):
     - GoogleMaps/Base
-  - Mapbox-iOS-SDK (3.7.0-beta.3)
+  - Mapbox-iOS-SDK (3.7.0-rc.1)
   - NSTimeZone-Coordinate (1.0.2)
   - Tangram-es (0.8.1)
 
 DEPENDENCIES:
   - Crashlytics (~> 3.8)
   - GoogleMaps (~> 2.0)
-  - Mapbox-iOS-SDK (from `https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.7.0-beta.3/platform/ios/Mapbox-iOS-SDK.podspec`)
+  - Mapbox-iOS-SDK (from `https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.7.0-rc.1/platform/ios/Mapbox-iOS-SDK.podspec`)
   - NSTimeZone-Coordinate (~> 1.0)
   - Tangram-es
 
 EXTERNAL SOURCES:
   Mapbox-iOS-SDK:
-    :podspec: https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.7.0-beta.3/platform/ios/Mapbox-iOS-SDK.podspec
+    :podspec: https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.7.0-rc.1/platform/ios/Mapbox-iOS-SDK.podspec
 
 SPEC CHECKSUMS:
-  Crashlytics: 64aad5dd97249dd3ff94b979fea140144590cdd3
-  Fabric: c7cfc652f036180a72fe2539646c8a624420419d
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
-  Mapbox-iOS-SDK: 48d252fcda516e58ff2d5c79cd7135e4e167e010
+  Mapbox-iOS-SDK: b8c7a64066347854f796f4120dbdccaf2e4a92f0
   NSTimeZone-Coordinate: 984ba9c2337a5991d58f7c7525f4781b7b9609a8
   Tangram-es: 4d6d08e8d25900899073133756b35b4cfe2e97f7
 
-PODFILE CHECKSUM: 5fa9ee72d80c95c399ae9084fa1c8de9f451cab7
+PODFILE CHECKSUM: 78f7e61ff038cd0d4b1ccc48232aaff8b45f034f
 
 COCOAPODS: 1.4.0.beta.2
