@@ -14,7 +14,6 @@ typedef NS_ENUM(NSInteger, TRBLMapVendor) {
     TRBLMapVendorMapbox,
     TRBLMapVendorMapKit,
     TRBLMapVendorGoogle,
-    TRBLMapVendorMapzen,
 };
 
 typedef NS_ENUM(NSInteger, TRBLUserTrackingMode) {
@@ -52,7 +51,6 @@ typedef NS_ENUM(NSInteger, TRBLUserTrackingMode) {
 @property (nonatomic) BOOL needsUpdateMapbox;
 @property (nonatomic) BOOL needsUpdateMapKit;
 @property (nonatomic) BOOL needsUpdateGoogle;
-@property (nonatomic) BOOL needsUpdateMapzen;
 
 - (void)setNeedsUpdateFromVendor:(TRBLMapVendor)vendor;
 

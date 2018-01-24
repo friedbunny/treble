@@ -39,23 +39,19 @@
 - (void)setNeedsUpdateFromVendor:(TRBLMapVendor)vendor {
     switch (vendor) {
         case TRBLMapVendorNone:
-            self.needsUpdateMapbox = self.needsUpdateMapKit = self.needsUpdateGoogle = self.needsUpdateMapzen = YES;
+            self.needsUpdateMapbox = self.needsUpdateMapKit = self.needsUpdateGoogle = YES;
             break;
 
         case TRBLMapVendorMapbox:
-            self.needsUpdateMapKit = self.needsUpdateGoogle = self.needsUpdateMapzen = YES;
+            self.needsUpdateMapKit = self.needsUpdateGoogle = YES;
             break;
             
         case TRBLMapVendorMapKit:
-            self.needsUpdateMapbox = self.needsUpdateGoogle = self.needsUpdateMapzen = YES;
+            self.needsUpdateMapbox = self.needsUpdateGoogle = YES;
             break;
             
         case TRBLMapVendorGoogle:
-            self.needsUpdateMapbox = self.needsUpdateMapKit = self.needsUpdateMapzen = YES;
-            break;
-
-        case TRBLMapVendorMapzen:
-            self.needsUpdateMapbox = self.needsUpdateMapKit = self.needsUpdateGoogle = YES;
+            self.needsUpdateMapbox = self.needsUpdateMapKit = YES;
             break;
     }
 }

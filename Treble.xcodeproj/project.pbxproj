@@ -25,7 +25,6 @@
 		968182161AF2DEBC00E2403B /* TRBLCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 968182151AF2DEBC00E2403B /* TRBLCoordinator.m */; };
 		968182191AF2E20A00E2403B /* TRBLGoogleMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 968182181AF2E20A00E2403B /* TRBLGoogleMapView.m */; };
 		9692CA5D1B06BABD00ED8BC8 /* UITabBarController+Swipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 9692CA5C1B06BABD00ED8BC8 /* UITabBarController+Swipe.m */; };
-		96BDB14B1E7755880062D0E0 /* TRBLMapzenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BDB14A1E7755880062D0E0 /* TRBLMapzenView.m */; };
 		96C1DB991E4852AD00F323A0 /* UITabBarController+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1DB981E4852AD00F323A0 /* UITabBarController+Visible.m */; };
 		96C6DEA71F21B2E600444A50 /* TRBLStyleLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C6DEA61F21B2E600444A50 /* TRBLStyleLabelView.m */; };
 		96E5ECF61AF833B2008350F9 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E5ECF51AF833B2008350F9 /* MKMapView+ZoomLevel.m */; };
@@ -93,8 +92,6 @@
 		968F36B81E4D2B5C003A5522 /* PlistBefriender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlistBefriender.swift; path = scripts/PlistBefriender.swift; sourceTree = "<group>"; };
 		9692CA5B1B06BABD00ED8BC8 /* UITabBarController+Swipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Swipe.h"; path = "Additions/UITabBarController+Swipe.h"; sourceTree = "<group>"; };
 		9692CA5C1B06BABD00ED8BC8 /* UITabBarController+Swipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITabBarController+Swipe.m"; path = "Additions/UITabBarController+Swipe.m"; sourceTree = "<group>"; };
-		96BDB1491E7755880062D0E0 /* TRBLMapzenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBLMapzenView.h; sourceTree = "<group>"; };
-		96BDB14A1E7755880062D0E0 /* TRBLMapzenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLMapzenView.m; sourceTree = "<group>"; };
 		96C1DB971E4852AD00F323A0 /* UITabBarController+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Visible.h"; path = "Additions/UITabBarController+Visible.h"; sourceTree = "<group>"; };
 		96C1DB981E4852AD00F323A0 /* UITabBarController+Visible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITabBarController+Visible.m"; path = "Additions/UITabBarController+Visible.m"; sourceTree = "<group>"; };
 		96C6DEA51F21B2E600444A50 /* TRBLStyleLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBLStyleLabelView.h; sourceTree = "<group>"; };
@@ -202,8 +199,6 @@
 				968181DA1AF2B34900E2403B /* TRBLMapboxMapView.m */,
 				968181DC1AF2B34900E2403B /* TRBLMapKitMapView.h */,
 				968181DD1AF2B34900E2403B /* TRBLMapKitMapView.m */,
-				96BDB1491E7755880062D0E0 /* TRBLMapzenView.h */,
-				96BDB14A1E7755880062D0E0 /* TRBLMapzenView.m */,
 				968181DF1AF2B34900E2403B /* Main.storyboard */,
 				9600673B1C5C9366005B2606 /* Launch Screen.storyboard */,
 				968181E21AF2B34900E2403B /* Images.xcassets */,
@@ -415,13 +410,11 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-treble/Pods-treble-frameworks.sh",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
-				"${PODS_ROOT}/Tangram-es/TangramMap.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TangramMap.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -445,7 +438,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				96446CBB1E4E3227005E3B10 /* TRBLZoomLabelView.m in Sources */,
-				96BDB14B1E7755880062D0E0 /* TRBLMapzenView.m in Sources */,
 				96C1DB991E4852AD00F323A0 /* UITabBarController+Visible.m in Sources */,
 				96C6DEA71F21B2E600444A50 /* TRBLStyleLabelView.m in Sources */,
 				9652C2931F08BBAA006C3F4B /* TRBLTabBarController.m in Sources */,

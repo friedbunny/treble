@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -178,67 +178,16 @@
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="IUi-on-x41" kind="relationship" relationship="viewControllers" id="R28-LY-5Oh"/>
-                        <segue destination="WBJ-cJ-LQ3" kind="relationship" relationship="viewControllers" id="xcE-ky-EXx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="409" y="-46"/>
-        </scene>
-        <!--Mapzen-->
-        <scene sceneID="itp-sj-HY7">
-            <objects>
-                <viewController id="WBJ-cJ-LQ3" userLabel="Mapzen" customClass="TRBLMapzenView" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bVB-x9-HmE"/>
-                        <viewControllerLayoutGuide type="bottom" id="4zP-SW-ZtT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yzB-z7-be7" customClass="GLKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UsW-qn-b76">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="xOb-13-jlJ" customClass="TRBLZoomLabelView">
-                                <rect key="frame" x="16" y="28" width="15" height="15"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" notEnabled="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="15" id="G5c-UC-QJn"/>
-                                    <constraint firstAttribute="height" constant="15" id="K9c-aK-fdf"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="xOb-13-jlJ" firstAttribute="leading" secondItem="yzB-z7-be7" secondAttribute="leadingMargin" id="MtN-Gj-oOF"/>
-                            <constraint firstAttribute="trailing" secondItem="xOb-13-jlJ" secondAttribute="trailing" priority="500" constant="359" id="h13-gE-oW3"/>
-                            <constraint firstItem="xOb-13-jlJ" firstAttribute="top" secondItem="bVB-x9-HmE" secondAttribute="bottom" constant="8" symbolic="YES" id="k0Z-SU-dcV"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="UsW-qn-b76"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="Tab Bar Icons/Mapzen" id="HfY-W3-4D2"/>
-                    <connections>
-                        <outlet property="mapInfoView" destination="xOb-13-jlJ" id="zOK-IZ-u8Y"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OPr-Ft-MeI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1401" y="760"/>
+            <point key="canvasLocation" x="70" y="-12"/>
         </scene>
     </scenes>
     <resources>
         <image name="Tab Bar Icons/Apple" width="25" height="25"/>
         <image name="Tab Bar Icons/Google" width="25" height="25"/>
         <image name="Tab Bar Icons/Mapbox" width="25" height="25"/>
-        <image name="Tab Bar Icons/Mapzen" width="25" height="25"/>
     </resources>
 </document>
