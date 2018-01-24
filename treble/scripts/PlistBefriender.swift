@@ -42,7 +42,11 @@ func SDKVersionString(fromPlist path: String) -> String {
 
 extension String {
     func truncate(length: Int) -> String {
-        return String(characters.prefix(length))
+        #if swift(>=3.2)
+            return String(prefix(length))
+        #else
+            return String(characters.prefix(length))
+        #endif
     }
 }
 
