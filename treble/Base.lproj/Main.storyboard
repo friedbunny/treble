@@ -33,8 +33,8 @@
                                     <constraint firstAttribute="height" constant="15" id="vs5-YV-wyN"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="gSt-JT-V00" customClass="TRBLStyleLabelView">
-                                <rect key="frame" x="180" y="610" width="15" height="0.0"/>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gSt-JT-V00" customClass="TRBLStyleLabelView">
+                                <rect key="frame" x="162" y="326" width="50" height="15"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -50,9 +50,7 @@
                             <constraint firstItem="c8k-bN-Llz" firstAttribute="leading" secondItem="rIh-lV-iQJ" secondAttribute="leadingMargin" id="DNf-5Z-NH0"/>
                             <constraint firstItem="c8k-bN-Llz" firstAttribute="top" secondItem="ewd-WD-vJD" secondAttribute="bottom" constant="8" symbolic="YES" id="l14-QR-ZqY"/>
                             <constraint firstAttribute="trailing" secondItem="c8k-bN-Llz" secondAttribute="trailing" priority="500" constant="359" id="mQE-YF-XEa"/>
-                            <constraint firstItem="srX-ER-Qca" firstAttribute="top" secondItem="gSt-JT-V00" secondAttribute="bottom" constant="8" symbolic="YES" id="qmT-aZ-bwX"/>
-                            <constraint firstItem="gSt-JT-V00" firstAttribute="top" secondItem="ewd-WD-vJD" secondAttribute="bottom" priority="500" constant="641" id="xzB-Ad-oUY"/>
-                            <constraint firstItem="gSt-JT-V00" firstAttribute="leading" secondItem="rIh-lV-iQJ" secondAttribute="leading" priority="500" constant="190" id="ze0-MO-4yI"/>
+                            <constraint firstItem="gSt-JT-V00" firstAttribute="centerY" secondItem="rIh-lV-iQJ" secondAttribute="centerY" constant="-60" id="qmT-aZ-bwX"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Tab Bar Icons/Mapbox" id="acW-dT-cKf"/>
