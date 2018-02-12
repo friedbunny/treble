@@ -28,8 +28,8 @@
     [self setupSwipeGestureRecognizersAllowCyclingThroughTabs:YES];
 }
 
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
 
     [self truncateTabBarHeight];
     [self hideTarBarItemText];
@@ -37,10 +37,18 @@
 
 - (void)truncateTabBarHeight {
     CGFloat newHeight = 45;
+
+    if (@available(iOS 11.0, *)) {
+        if (self.view.safeAreaInsets.bottom) {
+            newHeight += 15;
+        }
+    }
+
     CGRect newFrame = self.tabBar.frame;
 
     newFrame.size.height = newHeight;
     newFrame.origin.y = self.view.frame.size.height - newHeight;
+
 
     self.tabBar.frame = newFrame;
 }
@@ -58,6 +66,14 @@
         case UIUserInterfaceIdiomUnspecified:
             inset = 7;
             break;
+    }
+
+    if (@available(iOS 11.0, *)) {
+        if (self.view.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+            inset = 0;
+        } else if (self.view.safeAreaInsets.bottom) {
+            inset += 6;
+        }
     }
 
     for (UITabBarItem *item in self.tabBar.items) {
