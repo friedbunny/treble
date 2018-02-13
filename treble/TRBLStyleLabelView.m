@@ -33,18 +33,22 @@
     self.layer.cornerRadius = 2.0;
     self.layer.masksToBounds = YES;
 
-    self.backgroundColor = self.tintColor;
+    self.backgroundColor = [self.tintColor colorWithAlphaComponent:0.95];
 
-    self.titleLabel.font = [UIFont systemFontOfSize:11.0 weight:UIFontWeightMedium];
+    self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     self.titleLabel.textColor = [UIColor whiteColor];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.contentEdgeInsets = UIEdgeInsetsMake(3, 6, 3, 6);
+
+    if (@available(iOS 10, *)) {
+        self.titleLabel.adjustsFontForContentSizeCategory = YES;
+    }
 
     self.userInteractionEnabled = NO;
 }
 
 - (void)tintColorDidChange {
-    self.backgroundColor = self.tintColor;
+    self.backgroundColor = [self.tintColor colorWithAlphaComponent:0.95];
 }
 
 - (void)fadeIn {

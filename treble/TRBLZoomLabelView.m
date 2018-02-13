@@ -33,7 +33,7 @@
     self.layer.cornerRadius = 2.0;
     self.layer.masksToBounds = YES;
 
-    self.backgroundColor = self.tintColor;
+    self.backgroundColor = [self.tintColor colorWithAlphaComponent:0.95];;
 
     self.titleLabel.font = [UIFont monospacedDigitSystemFontOfSize:9.0 weight:UIFontWeightMedium];
     self.titleLabel.textColor = [UIColor whiteColor];
@@ -49,7 +49,7 @@
 }
 
 - (void)tintColorDidChange {
-    self.backgroundColor = self.tintColor;
+    self.backgroundColor = [self.tintColor colorWithAlphaComponent:0.95];;
 }
 
 - (void)fadeIn {
