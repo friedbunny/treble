@@ -53,6 +53,8 @@
     NSString *googleAPIKey = [apiKeys objectForKey:@"Google Maps iOS API Key"];
     NSAssert(googleAPIKey, @"REQUIRED: Google Maps iOS API key must be set in APIKeys.plist");
     [GMSServices provideAPIKey:googleAPIKey];
+    // Opt-in to new style — https://maps-apis.googleblog.com/2018/02/updated-basemap-style-for-google-maps.html
+    [GMSServices provideAPIOptions:@[@"B3MWHUG2MR0DQW"]];
 
     return YES;
 }
