@@ -35,6 +35,7 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
 
     self.mapView.myLocationEnabled = YES;
     self.mapView.settings.compassButton = YES;
+    self.mapView.paddingAdjustmentBehavior = kGMSMapViewPaddingAdjustmentBehaviorNever;
     self.mapView.delegate = self;
 }
 
