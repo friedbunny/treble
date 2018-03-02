@@ -3,6 +3,5 @@ type "appstore" # The default type, can be: appstore, adhoc, or development
 app_identifier "com.mapbox.trbl"
 
 # For consistency, only one username should ever be used to update certs/profiles.
-# username "jesse@mapbox.com" # Your Apple Developer Portal username
-
-# For all available options run `match --help`
+# See 1Password for account credentials.
+username "***REMOVED***"

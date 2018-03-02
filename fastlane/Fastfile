@@ -11,7 +11,7 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "2.39.0"
+fastlane_version "2.84.0"
 
 default_platform :ios
 
@@ -52,6 +52,7 @@ platform :ios do
   desc "Use `beta` if you want to run this manually."
   lane :build_and_submit do
     cocoapods(use_bundle_exec: true)
+    match(readonly: true)
     gym(scheme: "App Store", include_bitcode: true)
     pilot(skip_waiting_for_build_processing: true)
   end
