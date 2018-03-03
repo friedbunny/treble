@@ -27,13 +27,21 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
 
 @end
 
+
+@interface MKMapView (Private)
+
+@property (getter=_showsTrafficIncidents, setter=_setShowsTrafficIncidents:, nonatomic) BOOL showsTrafficIncidents;
+
+@end
+
+
 @implementation TRBLMapKitMapView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.coordinator = [TRBLCoordinator sharedCoordinator];
-    
+
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
 
@@ -52,11 +60,14 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(updateMapInfoViewAnimated:)];
     pinch.delegate = self;
     [self.mapView addGestureRecognizer:pinch];
+
+    // Private API 🤐
+    self.mapView.showsTrafficIncidents = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+
     self.coordinator.delegate = self;
 
     if (self.coordinator.needsUpdateMapKit) {
@@ -77,18 +88,18 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
+
     if (self.shouldUpdateCoordinates) {
         self.coordinator.centerCoordinate = self.mapView.centerCoordinate;
         self.coordinator.heading = self.mapView.camera.heading;
         self.coordinator.zoomLevel = self.mapView.zoomLevel - MAPKIT_ZOOM_OFFSET;
         //self.coordinator.pitch = self.mapView.camera.pitch;
         self.coordinator.userTrackingMode = (TRBLUserTrackingMode)self.mapView.userTrackingMode;
-        
+
         [self.coordinator setNeedsUpdateFromVendor:TRBLMapVendorMapKit];
         self.shouldUpdateCoordinates = NO;
     }
-    
+
     self.coordinator.delegate = nil;
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kStatusBarTappedNotification object:nil];
