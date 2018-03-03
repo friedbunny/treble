@@ -31,6 +31,7 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
 @interface MKMapView (Private)
 
 @property (getter=_showsTrafficIncidents, setter=_setShowsTrafficIncidents:, nonatomic) BOOL showsTrafficIncidents;
+@property (getter=_showsNightMode, setter=_setShowsNightMode:, nonatomic) BOOL showsNightMode;
 
 @end
 
@@ -131,6 +132,8 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
         // If traffic wasn't enabled, stay on the same mapType and enable traffic.
         // Non-hybrid satellite does not support traffic.
         self.mapView.showsTraffic = YES;
+    } else if (!self.mapView.showsNightMode) {
+        self.mapView.showsNightMode = YES;
     } else {
         switch (self.mapView.mapType) {
             case MKMapTypeStandard:
@@ -160,6 +163,7 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
 
         self.mapView.mapType = mapType;
         self.mapView.showsTraffic = NO;
+        self.mapView.showsNightMode = NO;
     }
 }
 
