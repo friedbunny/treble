@@ -30,33 +30,14 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-
-    [self truncateTabBarHeight];
-    [self hideTarBarItemText];
+    [self adjustInsetsForNoLabels];
 }
 
-- (void)truncateTabBarHeight {
-    CGFloat newHeight = 45;
-
-    if (@available(iOS 11.0, *)) {
-        if (self.view.safeAreaInsets.bottom) {
-            newHeight += 15;
-        }
-    }
-
-    CGRect newFrame = self.tabBar.frame;
-
-    newFrame.size.height = newHeight;
-    newFrame.origin.y = self.view.frame.size.height - newHeight;
-
-
-    self.tabBar.frame = newFrame;
-}
-
-- (void)hideTarBarItemText {
+- (void)adjustInsetsForNoLabels {
     CGFloat inset;
+    UITraitCollection *traits = self.view.traitCollection;
 
-    switch (UIDevice.currentDevice.userInterfaceIdiom) {
+    switch (traits.userInterfaceIdiom) {
         case UIUserInterfaceIdiomPhone:
             inset = 5;
             break;
@@ -64,16 +45,12 @@
         case UIUserInterfaceIdiomTV:
         case UIUserInterfaceIdiomCarPlay:
         case UIUserInterfaceIdiomUnspecified:
-            inset = 7;
+            if (@available(iOS 11.0, *)) {
+                inset = traits.horizontalSizeClass == UIUserInterfaceSizeClassRegular ? -2 : 5;
+            } else {
+                inset = 6;
+            }
             break;
-    }
-
-    if (@available(iOS 11.0, *)) {
-        if (self.view.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
-            inset = 0;
-        } else if (self.view.safeAreaInsets.bottom) {
-            inset += 6;
-        }
     }
 
     for (UITabBarItem *item in self.tabBar.items) {
