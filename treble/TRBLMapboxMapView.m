@@ -141,8 +141,8 @@
     [self setNeedsStatusBarAppearanceUpdate];
 }
 
-- (NSArray *)styles {
-    static NSArray *_styles;
+- (NSArray<NSURL *> *)styles {
+    static NSArray<NSURL *> *_styles;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _styles = @[
@@ -163,15 +163,15 @@
 }
 
 - (void)cycleStyles {
-    NSArray *styles = [self styles];
+    NSArray<NSURL *> *styles = [self styles];
     NSURL *styleURL = self.mapView.styleURL;
     
     if (!styleURL) {
-        styleURL = [self styles].firstObject;
+        styleURL = styles.firstObject;
     } else {
         NSAssert([styles indexOfObject:styleURL] < styles.count, @"%@ is not indexed.", styleURL);
         NSUInteger index = [styles indexOfObject:styleURL] + 1;
-        if (index == [styles count] || !index) index = 0;
+        if (index == styles.count || !index) index = 0;
         styleURL = [styles objectAtIndex:index];
     }
     
