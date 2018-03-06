@@ -25,6 +25,9 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
 @property (nonatomic) BOOL shouldUpdateCoordinates;
 @property (nonatomic) IBOutlet TRBLZoomLabelView *mapInfoView;
 
+@property (nonatomic, readonly) BOOL canShowTraffic;
+@property (nonatomic, readonly) BOOL canShowNightMode;
+
 @end
 
 
@@ -126,18 +129,14 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
 - (void)cycleStyles {
     MKMapType mapType;
 
-    if (!self.mapView.showsTraffic &&
-        self.mapView.zoomLevel >= 9.0 &&
-        self.mapView.mapType != MKMapTypeSatellite && self.mapView.mapType != MKMapTypeSatelliteFlyover) {
-        // If traffic wasn't enabled, stay on the same mapType and enable traffic.
-        // Non-hybrid satellite does not support traffic.
+    if (self.canShowTraffic && !self.mapView.showsTraffic) {
         self.mapView.showsTraffic = YES;
-    } else if (!self.mapView.showsNightMode) {
+    } else if (self.canShowNightMode && !self.mapView.showsNightMode) {
         self.mapView.showsNightMode = YES;
     } else {
         switch (self.mapView.mapType) {
             case MKMapTypeStandard:
-                if (@available(iOS 11, *)) {
+                if (@available(iOS 11.0, *)) {
                     mapType = MKMapTypeMutedStandard;
                 } else {
                     mapType = MKMapTypeSatelliteFlyover;
@@ -164,6 +163,20 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
         self.mapView.mapType = mapType;
         self.mapView.showsTraffic = NO;
         self.mapView.showsNightMode = NO;
+    }
+}
+
+- (BOOL)canShowTraffic {
+    return self.mapView.zoomLevel >= 9.0 && self.mapView.mapType != MKMapTypeSatellite && self.mapView.mapType != MKMapTypeSatelliteFlyover;
+}
+
+- (BOOL)canShowNightMode {
+    MKMapType mapType = self.mapView.mapType;
+
+    if (@available(iOS 11.0, *)) {
+        return mapType != MKMapTypeMutedStandard && mapType != MKMapTypeSatellite && mapType != MKMapTypeSatelliteFlyover;
+    } else {
+        return mapType == MKMapTypeStandard;
     }
 }
 
