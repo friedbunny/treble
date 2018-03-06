@@ -168,6 +168,10 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
+    if (self.mapView.showsNightMode) {
+        return UIStatusBarStyleLightContent;
+    }
+
     UIStatusBarStyle style;
 
     switch (self.mapView.mapType) {
