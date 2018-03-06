@@ -39,7 +39,11 @@
 
     switch (traits.userInterfaceIdiom) {
         case UIUserInterfaceIdiomPhone:
-            inset = 5;
+            if (@available(iOS 11.0, *)) {
+                inset = self.view.safeAreaInsets.bottom ? 8 : 5;
+            } else {
+                inset = 5;
+            }
             break;
         case UIUserInterfaceIdiomPad:
         case UIUserInterfaceIdiomTV:
