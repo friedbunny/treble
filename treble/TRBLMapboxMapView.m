@@ -111,7 +111,9 @@
 }
 
 - (void)mapView:(MGLMapView *)mapView didFinishLoadingStyle:(MGLStyle *)style {
-    style.localizesLabels = [NSUserDefaults.standardUserDefaults boolForKey:TRBLDefaultsMapboxLocalizesStyle];
+    if ([NSUserDefaults.standardUserDefaults boolForKey:TRBLDefaultsMapboxLocalizesStyle]) {
+        [style localizeLabelsIntoLocale:nil];
+    }
 }
 
 - (void)mapView:(MGLMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
@@ -243,7 +245,11 @@
 - (void)defaultsChanged:(__unused NSNotification *)notification {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    self.mapView.style.localizesLabels = [defaults boolForKey:TRBLDefaultsMapboxLocalizesStyle];
+    if ([defaults boolForKey:TRBLDefaultsMapboxLocalizesStyle]) {
+        [self.mapView.style localizeLabelsIntoLocale:nil];
+    } else {
+        [self.mapView reloadStyle:nil];
+    }
 
     MGLMapDebugMaskOptions debugMask = 0;
 
