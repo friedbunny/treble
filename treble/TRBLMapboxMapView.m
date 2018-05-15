@@ -154,10 +154,10 @@
             [MGLStyle darkStyleURL],
             [MGLStyle satelliteStyleURL],
             [MGLStyle satelliteStreetsStyleURL],
-            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-preview-day-v2"],
-            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-guidance-day-v2"],
-            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-preview-night-v2"],
-            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-guidance-night-v2"],
+            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-preview-day-v3"],
+            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-guidance-day-v3"],
+            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-preview-night-v3"],
+            [NSURL URLWithString:@"mapbox://styles/mapbox/navigation-guidance-night-v3"],
         ];
     });
     
