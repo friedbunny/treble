@@ -207,6 +207,10 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
 }
 
 - (void)statusBarTappedAction:(__unused NSNotification*)notification {
+    [self cycleUserTrackingModes];
+}
+
+- (void)cycleUserTrackingModes {
     MKUserTrackingMode nextMode;
     switch (self.mapView.userTrackingMode) {
         case MKUserTrackingModeNone:
@@ -222,8 +226,20 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
     [self.mapView setUserTrackingMode:nextMode animated:YES];
 }
 
-- (void)toggleTabBarController:(__unused UITapGestureRecognizer *)gestureRecognizer {
-    [self.tabBarController toggleTabBarAnimated:YES];
+- (void)toggleTabBarController:(UITapGestureRecognizer *)gestureRecognizer {
+    // Don't toggle if the user has tapped on the user location annotation.
+    MKAnnotationView *userLocationAnnotationView = [self.mapView viewForAnnotation:self.mapView.userLocation];
+    CGPoint tapPoint = [gestureRecognizer locationInView:self.mapView];
+    if (!CGRectContainsPoint(userLocationAnnotationView.frame, tapPoint)) {
+        [self.tabBarController toggleTabBarAnimated:YES];
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    if ([view.annotation isKindOfClass:[MKUserLocation class]]) {
+        [self cycleUserTrackingModes];
+        [self.mapView deselectAnnotation:view.annotation animated:NO];
+    }
 }
 
 /** Insets (margins) cause the center coordinate to be offset — for now, remove them. */

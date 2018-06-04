@@ -147,8 +147,20 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
 }
 
 - (void)statusBarTappedAction:(NSNotification*)notification {
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:self.mapView.myLocation.coordinate zoom:self.mapView.camera.zoom];
-    [self.mapView animateToCameraPosition:camera];
+    [self moveCameraToUserLocation];
+}
+
+- (void)mapView:(GMSMapView *)mapView didTapMyLocation:(CLLocationCoordinate2D)location {
+    [self moveCameraToUserLocation];
+}
+
+- (void)moveCameraToUserLocation {
+    if (!self.mapView.myLocation) return;
+
+    if (CLLocationCoordinate2DIsValid(self.mapView.myLocation.coordinate)) {
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:self.mapView.myLocation.coordinate zoom:self.mapView.camera.zoom];
+        [self.mapView animateToCameraPosition:camera];
+    }
 }
 
 - (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {

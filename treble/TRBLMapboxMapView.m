@@ -195,7 +195,11 @@
     return statusBarStyle;
 }
 
-- (void)statusBarTappedAction:(__unused NSNotification*)notification {
+- (void)statusBarTappedAction:(__unused NSNotification *)notification {
+    [self cycleUserTrackingModes];
+}
+
+- (void)cycleUserTrackingModes {
     MGLUserTrackingMode nextMode;
     switch (self.mapView.userTrackingMode) {
         case MGLUserTrackingModeNone:
@@ -216,6 +220,13 @@
 
 - (void)toggleTabBarController:(__unused UITapGestureRecognizer *)gestureRecognizer {
     [self.tabBarController toggleTabBarAnimated:YES];
+}
+
+- (void)mapView:(MGLMapView *)mapView didSelectAnnotation:(nonnull id<MGLAnnotation>)annotation {
+    if ([annotation isKindOfClass:[MGLUserLocation class]]) {
+        [self cycleUserTrackingModes];
+        [self.mapView deselectAnnotation:annotation animated:NO];
+    }
 }
 
 - (void)mapView:(__unused MGLMapView *)mapView didFailToLocateUserWithError:(__unused NSError *)error {
