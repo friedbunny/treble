@@ -1,6 +1,6 @@
 # Treble
 
-[![Build Status](https://www.bitrise.io/app/3b92313af6737ed9.svg?token=x_5gc7w21RhLrN0JYxk7iA&branch=master)](https://www.bitrise.io/app/3b92313af6737ed9)
+[![Build Status](https://app.bitrise.io/app/3b92313af6737ed9/status.svg?token=x_5gc7w21RhLrN0JYxk7iA&branch=master)](https://www.bitrise.io/app/3b92313af6737ed9)
 
 [Mapbox iOS SDK](https://github.com/mapbox/mapbox-gl-native) comparison app, featuring [Apple MapKit](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MapKit_Framework_Reference/) and [Google Maps for iOS](https://developers.google.com/maps/documentation/ios-sdk/).
 
