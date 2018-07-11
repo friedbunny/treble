@@ -7,4 +7,8 @@ target 'treble' do
     pod 'Crashlytics', '~> 3.8'
     pod 'GoogleMaps', '~> 2.0'
     pod 'NSTimeZone-Coordinate', '~> 1.0'
+
+    script_phase :name => "Copy bitcode symbol maps into Products directory",
+        :script => "if [ \"$ACTION\" = \"install\" ]; then mdfind -name .bcsymbolmap -onlyin \"${PODS_ROOT}\" | xargs -I{} cp -v {} \"${CONFIGURATION_BUILD_DIR}\"; fi;",
+        :execution_position => :after_compile
 end
