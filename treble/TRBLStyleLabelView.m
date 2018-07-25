@@ -84,7 +84,7 @@
     NSTimeInterval transitionDuration = self.alpha ? .1 : 0;
 
     [UIView transitionWithView:self duration:transitionDuration options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        [self setTitle:_styleName forState:UIControlStateNormal];
+        [self setTitle:self.styleName forState:UIControlStateNormal];
     } completion:nil];
 
     [UIView animateWithDuration:transitionDuration delay:0 options:0 animations:^{
