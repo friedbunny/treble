@@ -52,6 +52,13 @@
         [self.mapView setCenterCoordinate:locationFromTimeZone zoomLevel:3.0 animated:NO];
     }
 
+    // Allow 120 FPS on devices that support it.
+    if (@available(iOS 10.3, *)) {
+        if (UIScreen.mainScreen.maximumFramesPerSecond > 60) {
+            self.mapView.preferredFramesPerSecond = 0;
+        }
+    }
+
     // Add tab bar controller toggle gesture
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleTabBarController:)];
     for (UIGestureRecognizer *recognizer in self.mapView.gestureRecognizers) {
