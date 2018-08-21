@@ -389,7 +389,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-treble/Pods-treble-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-treble/Pods-treble-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/NSTimeZone-Coordinate/NSTimeZone+Coordinate/timezones.plist",
 			);
@@ -400,7 +400,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-treble/Pods-treble-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-treble/Pods-treble-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		968F36BA1E4D2BD6003A5522 /* Update version strings in Settings.bundle */ = {
@@ -423,7 +423,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-treble/Pods-treble-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-treble/Pods-treble-frameworks.sh",
 				"${PODS_ROOT}/Mapbox-iOS-SDK-symbols/dynamic/Mapbox.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK-symbols/dynamic/Mapbox.framework.dSYM",
 			);
@@ -434,7 +434,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-treble/Pods-treble-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-treble/Pods-treble-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
