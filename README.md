@@ -2,7 +2,7 @@
 
 [![Build Status](https://app.bitrise.io/app/3b92313af6737ed9/status.svg?token=x_5gc7w21RhLrN0JYxk7iA&branch=master)](https://www.bitrise.io/app/3b92313af6737ed9)
 
-[Mapbox iOS SDK](https://github.com/mapbox/mapbox-gl-native) comparison app, featuring [Apple MapKit](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MapKit_Framework_Reference/) and [Google Maps for iOS](https://developers.google.com/maps/documentation/ios-sdk/).
+[Mapbox Maps SDK for iOS](https://github.com/mapbox/mapbox-gl-native) comparison app, featuring [Apple MapKit](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MapKit_Framework_Reference/) and [Google Maps for iOS](https://developers.google.com/maps/documentation/ios-sdk/).
 
 ![Treble](assets/screenshot.gif)
 
@@ -25,3 +25,7 @@ To load a Mapbox map in Treble at a particular location, you can use this URL sc
  * `zoom`: set the map zoom level (`0` being the whole world)
  * `bearing`: set the map bearing in degrees clockwise from due north
  * `pitch`: set the map pitch (`0` looking directly overhead, `60` being maximum tilt)
+
+## Releasing
+
+Follow [this checklist](https://github.com/***REMOVED***Release-Checklist) to release new versions to TestFlight.
