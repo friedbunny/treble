@@ -57,7 +57,31 @@ platform :ios do
     pilot(skip_waiting_for_build_processing: true)
   end
 
-  desc "Manually bump the version and dependencies, then build and submit a new beta build to Apple TestFlight."
+  desc "Push current branch and create a GitHub pull request."
+  lane :github_pull_request do
+    push_to_git_remote(tags: false)
+    create_pull_request(
+      repository_name: "mapbox/treble",
+      title: "Release #{get_version_number()} (#{get_build_number()})",
+      api_token: ENV["GITHUB_TOKEN"]
+    )
+  end
+
+  desc "Create a GitHub release."
+  lane :github_release do
+    version = get_version_number()
+    build = get_build_number()
+    set_github_release(
+      repository_name: "mapbox/treble",
+      tag_name: "#{version}v#{build}",
+      name: "#{version} (#{build})",
+      description: changelog_from_git_commits(between: [last_git_tag, "HEAD~1"], pretty: "- %s."),
+      is_draft: true,
+      api_token: ENV["GITHUB_TOKEN"]
+    )
+  end
+
+  desc "Bump the version and dependencies, then build and submit a new beta build to Apple TestFlight."
   lane :beta do
     prepare
     build_and_submit
@@ -67,6 +91,14 @@ platform :ios do
   desc "Use `prepare` and then make a new release on GitHub to trigger this command."
   lane :beta_ci do
     build_and_submit
+  end
+
+  desc "The whole kit and kaboodle."
+  lane :release do
+    prepare
+    build_and_submit
+    github_pull_request
+    github_release
   end
 
   desc "Download dSYMs from iTunesConnect and upload them to Crashlytics."
