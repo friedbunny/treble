@@ -1,4 +1,4 @@
-git_url "git@github.com:***REMOVED***.git"
+git_url "https://github.com/***REMOVED***"
 type "appstore" # The default type, can be: appstore, adhoc, or development
 app_identifier "com.mapbox.trbl"
 
