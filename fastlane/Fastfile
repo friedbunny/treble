@@ -22,7 +22,7 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
-    cocoapods(use_bundle_exec: true)
+    cocoapods()
     scan
   end
 
@@ -31,6 +31,36 @@ platform :ios do
     puts `bundle update`
     update_fastlane()
     git_add(path: ["./Gemfile.lock"])
+  end
+
+  desc "Update maps SDK to latest version, then commit changes."
+  lane :update_maps_sdk do
+    new_version = nil
+    puts "Fetching latest maps SDK version from website"
+    open('https://www.mapbox.com/ios-sdk/Mapbox-iOS-SDK-symbols.json') do |file|
+      version_json = JSON.parse(file.read)
+        .collect { |v| v.first }
+        .sort_by { |v| Gem::Version.new(v) }
+        .reverse
+      new_version = version_json.first
+      puts "Latest maps SDK version on website: #{new_version}"
+    end
+
+    podfile = "#{ENV['PWD']}/Podfile"
+    podfile_text = File.read(podfile)
+    version_regex = /@MAPS_SDK_VERSION = '(.+)'/
+    current_version = podfile_text.match(version_regex).captures.last
+    puts "Currently installed maps SDK version: #{current_version}"
+    if Gem::Version.new(new_version) > Gem::Version.new(current_version)
+      updated_podfile_text = podfile_text.gsub(version_regex, "@MAPS_SDK_VERSION = '#{new_version}'")
+      File.open(podfile, "w") { |f| f.write(updated_podfile_text) }
+      puts "Podfile updated to Mapbox-iOS-SDK #{new_version} ✅"
+    else
+      UI.user_error!("Latest maps SDK version (#{new_version}) is not newer than currently installed version (#{current_version})")
+    end
+
+    cocoapods()
+    git_commit(path: ["./Podfile*"], message: "Update to Mapbox Maps SDK for iOS #{new_version}")
   end
 
   desc "Increment build number based on current TestFlight build number."
@@ -99,6 +129,12 @@ platform :ios do
     build_and_submit
     github_pull_request
     github_release
+  end
+
+  desc "Bump to latest maps SDK version before releasing."
+  lane :release_bump do
+    update_maps_sdk
+    release
   end
 
   desc "Download dSYMs from iTunesConnect and upload them to Crashlytics."
