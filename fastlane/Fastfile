@@ -37,14 +37,15 @@ platform :ios do
   lane :update_maps_sdk do
     new_version = nil
     puts "Fetching latest maps SDK version from website"
-    open('https://www.mapbox.com/ios-sdk/Mapbox-iOS-SDK-symbols.json') do |file|
+    fastlane_require "open-uri"
+    open("https://www.mapbox.com/ios-sdk/Mapbox-iOS-SDK-symbols.json") { |file|
       version_json = JSON.parse(file.read)
         .collect { |v| v.first }
         .sort_by { |v| Gem::Version.new(v) }
         .reverse
       new_version = version_json.first
       puts "Latest maps SDK version on website: #{new_version}"
-    end
+    }
 
     podfile = "#{ENV['PWD']}/Podfile"
     podfile_text = File.read(podfile)
