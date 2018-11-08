@@ -56,12 +56,11 @@ platform :ios do
       updated_podfile_text = podfile_text.gsub(version_regex, "@MAPS_SDK_VERSION = '#{new_version}'")
       File.open(podfile, "w") { |f| f.write(updated_podfile_text) }
       puts "Podfile updated to Mapbox-iOS-SDK #{new_version} ✅"
+      cocoapods()
+      git_commit(path: ["./Podfile*"], message: "Update to Mapbox Maps SDK for iOS #{new_version}")
     else
-      UI.user_error!("Latest maps SDK version (#{new_version}) is not newer than currently installed version (#{current_version})")
+      UI.important("Latest maps SDK version (#{new_version}) is not newer than currently installed version (#{current_version}) — skipping update.")
     end
-
-    cocoapods()
-    git_commit(path: ["./Podfile*"], message: "Update to Mapbox Maps SDK for iOS #{new_version}")
   end
 
   desc "Increment build number based on current TestFlight build number."
