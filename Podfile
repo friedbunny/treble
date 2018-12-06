@@ -1,9 +1,9 @@
-@MAPS_SDK_VERSION = '4.7.0-alpha.3'
+@MAPS_SDK_VERSION = '4.7.0-beta.1'
 platform :ios, '9.3'
 
 target 'treble' do
-    #pod 'Mapbox-iOS-SDK', "~> #{@MAPS_SDK_VERSION}"
-    pod 'Mapbox-iOS-SDK-symbols', :podspec => "https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v#{@MAPS_SDK_VERSION}/platform/ios/Mapbox-iOS-SDK-symbols.podspec"
+    pod 'Mapbox-iOS-SDK', "~> #{@MAPS_SDK_VERSION}"
+    #pod 'Mapbox-iOS-SDK-stripped', :podspec => "https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v#{@MAPS_SDK_VERSION}/platform/ios/Mapbox-iOS-SDK-stripped.podspec"
 
     pod 'Crashlytics', '~> 3.8'
     pod 'GoogleMaps', '~> 2.0'
