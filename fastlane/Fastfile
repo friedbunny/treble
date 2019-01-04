@@ -38,7 +38,7 @@ platform :ios do
     new_version = nil
     puts "Fetching latest maps SDK version from website"
     fastlane_require "open-uri"
-    open("https://www.mapbox.com/ios-sdk/Mapbox-iOS-SDK-symbols.json") { |file|
+    open("https://www.mapbox.com/ios-sdk/Mapbox-iOS-SDK.json") { |file|
       version_json = JSON.parse(file.read)
         .collect { |v| v.first }
         .sort_by { |v| Gem::Version.new(v) }
