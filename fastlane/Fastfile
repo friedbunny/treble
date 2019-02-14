@@ -122,8 +122,8 @@ platform :ios do
 
   desc "Generate release notes."
   lane :release_notes do
-    changelog = changelog_from_git_commits(commits_count: 5, pretty: "- %s. (%cd)", date_format: "short", quiet: true)
-    "Maps SDK version: #{mapbox_sdk_version}\n\nRecent Commits\n#{changelog}"
+    #changelog = changelog_from_git_commits(commits_count: 5, pretty: "- %s. (%cd)", date_format: "short", quiet: true)
+    "Mapbox Maps SDK for iOS #{mapbox_sdk_version}."#\n\nRecent Commits\n#{changelog}"
   end
 
   desc "Bump the version and dependencies, then build and submit a new beta build to Apple TestFlight."
