@@ -84,7 +84,7 @@ platform :ios do
     cocoapods(use_bundle_exec: true)
     match(readonly: true)
     gym(scheme: "App Store", include_bitcode: true)
-    pilot(skip_waiting_for_build_processing: true)
+    pilot(changelog: release_notes, wait_for_uploaded_build: true, distribute_external: true)
   end
 
   desc "Push current branch and create a GitHub pull request."
@@ -92,7 +92,7 @@ platform :ios do
     push_to_git_remote(tags: false)
     create_pull_request(
       repo: "mapbox/treble",
-      title: "Release #{get_version_number()} (#{get_build_number()})",
+      title: "Release #{get_version_number()} (#{get_build_number()}) with Mapbox Maps SDK #{mapbox_sdk_version}",
       api_token: ENV["GITHUB_TOKEN"]
     )
   end
@@ -109,6 +109,21 @@ platform :ios do
       is_draft: true,
       api_token: ENV["GITHUB_TOKEN"]
     )
+  end
+
+  desc "Get current Mapbox Maps SDK for iOS version number from framework."
+  private_lane :mapbox_sdk_version do
+    # Get maps SDK version number, but convert it to an XML plist first.
+    mapbox_plist_path = Dir.glob("#{ENV['PWD']}/**/Mapbox.framework/Info.plist").first
+    `plutil -convert xml1 #{mapbox_plist_path}`
+    version = get_info_plist_value(path: mapbox_plist_path, key: "MGLSemanticVersionString")
+    "#{version}"
+  end
+
+  desc "Generate release notes."
+  lane :release_notes do
+    changelog = changelog_from_git_commits(commits_count: 5, pretty: "- %s. (%cd)", date_format: "short", quiet: true)
+    "Maps SDK version: #{mapbox_sdk_version}\n\nRecent Commits\n#{changelog}"
   end
 
   desc "Bump the version and dependencies, then build and submit a new beta build to Apple TestFlight."
