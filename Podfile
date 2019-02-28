@@ -1,4 +1,4 @@
-@MAPS_SDK_VERSION = '4.9.0-beta.1'
+@MAPS_SDK_VERSION = '4.9.0'
 platform :ios, '9.3'
 
 target 'treble' do
