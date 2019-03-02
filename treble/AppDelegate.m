@@ -48,7 +48,8 @@
     NSString *mapboxAPIKey = [apiKeys objectForKey:@"Mapbox API Key"];
     NSAssert(mapboxAPIKey, @"REQUIRED: Mapbox API key must be set in APIKeys.plist");
     [MGLAccountManager setAccessToken:mapboxAPIKey];
-    
+    [defaults setBool:NO forKey:@"MGLMapboxMetricsEnabled"];
+
     // Google Maps iOS SDK key
     NSString *googleAPIKey = [apiKeys objectForKey:@"Google Maps iOS API Key"];
     NSAssert(googleAPIKey, @"REQUIRED: Google Maps iOS API key must be set in APIKeys.plist");
