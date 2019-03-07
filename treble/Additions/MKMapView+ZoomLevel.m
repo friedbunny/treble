@@ -16,16 +16,13 @@
     return log2(360 * ((self.frame.size.width/256) / self.region.span.longitudeDelta));
 }
 
-//- (double)zoomLevel {
-//    double totalTilesAtMaxZoom = MKMapSizeWorld.width / 256.0;
-//    NSInteger zoomLevelAtMaxZoom = log2(totalTilesAtMaxZoom);
-//    return MAX(0, zoomLevelAtMaxZoom + log2f(self.zoomScale));
-//}
-
-- (MKZoomScale)zoomScale {
-   return self.bounds.size.width / self.visibleMapRect.size.width;
+- (void)setZoomLevel:(double)zoomLevel {
+    [self setCenterCoordinate:self.centerCoordinate zoomLevel:zoomLevel animated:false];
 }
 
+// FIXME: ignores pitch.
+// FIXME: maxes out at z20 for standard, z15 for flyover.
+// FIXME: doesn't handle flyover accurately from z0~z5
 - (void)setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(double)zoomLevel animated:(BOOL)animated {
     MKCoordinateSpan span = MKCoordinateSpanMake(0, 360/pow(2, fabs(zoomLevel)) * self.frame.size.width/256);
     [self setRegion:MKCoordinateRegionMake(centerCoordinate, span) animated:animated];

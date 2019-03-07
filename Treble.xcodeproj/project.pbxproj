@@ -14,6 +14,7 @@
 		96301E831E938087005FF0F6 /* TRBLCoordinatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96301E821E938087005FF0F6 /* TRBLCoordinatorTests.m */; };
 		96446CBB1E4E3227005E3B10 /* TRBLZoomLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96446CBA1E4E3227005E3B10 /* TRBLZoomLabelView.m */; };
 		9652C2931F08BBAA006C3F4B /* TRBLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9652C2921F08BBAA006C3F4B /* TRBLTabBarController.m */; };
+		967BBD78222D18FA005DB788 /* TRBLQuickZoomGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 967BBD77222D18FA005DB788 /* TRBLQuickZoomGestureRecognizer.m */; };
 		968181D51AF2B34900E2403B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181D41AF2B34900E2403B /* main.m */; };
 		968181D81AF2B34900E2403B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181D71AF2B34900E2403B /* AppDelegate.m */; };
 		968181DB1AF2B34900E2403B /* TRBLMapboxMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181DA1AF2B34900E2403B /* TRBLMapboxMapView.m */; };
@@ -71,6 +72,8 @@
 		96446CBA1E4E3227005E3B10 /* TRBLZoomLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLZoomLabelView.m; sourceTree = "<group>"; };
 		9652C2911F08BBAA006C3F4B /* TRBLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBLTabBarController.h; sourceTree = "<group>"; };
 		9652C2921F08BBAA006C3F4B /* TRBLTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLTabBarController.m; sourceTree = "<group>"; };
+		967BBD76222D18FA005DB788 /* TRBLQuickZoomGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRBLQuickZoomGestureRecognizer.h; sourceTree = "<group>"; };
+		967BBD77222D18FA005DB788 /* TRBLQuickZoomGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRBLQuickZoomGestureRecognizer.m; sourceTree = "<group>"; };
 		967E9D031CB8A25C0004D44E /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		968181CF1AF2B34900E2403B /* treble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = treble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		968181D31AF2B34900E2403B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -225,6 +228,8 @@
 				967E9D031CB8A25C0004D44E /* Constants.h */,
 				96E5ECF41AF833B2008350F9 /* MKMapView+ZoomLevel.h */,
 				96E5ECF51AF833B2008350F9 /* MKMapView+ZoomLevel.m */,
+				967BBD76222D18FA005DB788 /* TRBLQuickZoomGestureRecognizer.h */,
+				967BBD77222D18FA005DB788 /* TRBLQuickZoomGestureRecognizer.m */,
 				961EA9AC1B086933006D6D57 /* UITabBarController+Index.h */,
 				961EA9AD1B086933006D6D57 /* UITabBarController+Index.m */,
 				9692CA5B1B06BABD00ED8BC8 /* UITabBarController+Swipe.h */,
@@ -465,6 +470,7 @@
 				968181DB1AF2B34900E2403B /* TRBLMapboxMapView.m in Sources */,
 				968182161AF2DEBC00E2403B /* TRBLCoordinator.m in Sources */,
 				9692CA5D1B06BABD00ED8BC8 /* UITabBarController+Swipe.m in Sources */,
+				967BBD78222D18FA005DB788 /* TRBLQuickZoomGestureRecognizer.m in Sources */,
 				968181D51AF2B34900E2403B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

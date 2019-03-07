@@ -10,8 +10,7 @@
 
 @interface MKMapView (ZoomLevel)
 
-- (double)zoomLevel;
-- (MKZoomScale)zoomScale;
+@property (readwrite) double zoomLevel;
 
 - (void)setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(double)zoomLevel animated:(BOOL)animated;
 

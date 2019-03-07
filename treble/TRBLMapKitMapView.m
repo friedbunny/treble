@@ -15,6 +15,7 @@
 
 @import MapKit;
 #import "Additions/MKMapView+ZoomLevel.h"
+#import "TRBLQuickZoomGestureRecognizer.h"
 
 static const double MAPKIT_ZOOM_OFFSET = 1;
 
@@ -67,6 +68,10 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
 
     // Private API 🤐
     self.mapView.showsTrafficIncidents = YES;
+
+    TRBLQuickZoomGestureRecognizer *quickZoom = [[TRBLQuickZoomGestureRecognizer alloc] initWithMapView:self.mapView action:nil];
+    quickZoom.zoomMode = TRBLQuickZoomGestureZoomModeUpOut;
+    [self.mapView addGestureRecognizer:quickZoom];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
