@@ -22,7 +22,7 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
-    cocoapods()
+    cocoapods(use_bundle_exec: true, try_repo_update_on_error: true)
     scan
   end
 
@@ -56,7 +56,7 @@ platform :ios do
       updated_podfile_text = podfile_text.gsub(version_regex, "@MAPS_SDK_VERSION = '#{new_version}'")
       File.open(podfile, "w") { |f| f.write(updated_podfile_text) }
       puts "Podfile updated to Mapbox-iOS-SDK #{new_version} ✅"
-      cocoapods()
+      cocoapods(use_bundle_exec: true, try_repo_update_on_error: true)
       git_commit(path: ["./Podfile*"], message: "Mapbox Maps SDK for iOS #{new_version}")
     else
       UI.important("Latest maps SDK version (#{new_version}) is not newer than currently installed version (#{current_version}) — skipping update.")
@@ -81,7 +81,7 @@ platform :ios do
   desc "Build and submit a new beta build to Apple TestFlight."
   desc "Use `beta` if you want to run this manually."
   lane :build_and_submit do
-    cocoapods(use_bundle_exec: true)
+    cocoapods(use_bundle_exec: true, try_repo_update_on_error: true)
     match(readonly: true)
     gym(scheme: "App Store", include_bitcode: true)
     pilot(changelog: release_notes, wait_for_uploaded_build: true, distribute_external: true)
