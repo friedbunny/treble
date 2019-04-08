@@ -7,13 +7,13 @@ PODS:
   - GoogleMaps/Base (2.7.0)
   - GoogleMaps/Maps (2.7.0):
     - GoogleMaps/Base
-  - Mapbox-iOS-SDK (4.11.0-alpha.1)
+  - Mapbox-iOS-SDK (4.10.0-beta.3)
   - NSTimeZone-Coordinate (1.0.2)
 
 DEPENDENCIES:
   - Crashlytics (~> 3.8)
   - GoogleMaps (~> 2.0)
-  - Mapbox-iOS-SDK (~> 4.11.0-alpha.1)
+  - Mapbox-iOS-SDK (~> 4.10.0-beta.3)
   - NSTimeZone-Coordinate (~> 1.0)
 
 SPEC REPOS:
@@ -28,9 +28,9 @@ SPEC CHECKSUMS:
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
-  Mapbox-iOS-SDK: 344c3bca6d8795da7d2ce4183d05064fc600318d
+  Mapbox-iOS-SDK: e6769ffe3f65ff505695fafcf9846e14ba1a6919
   NSTimeZone-Coordinate: 984ba9c2337a5991d58f7c7525f4781b7b9609a8
 
-PODFILE CHECKSUM: a1a571723b28e89941d5ee4c88e61aa320d1daf5
+PODFILE CHECKSUM: d5de39a41ed46453fd645efe1832eb2961e92ba0
 
 COCOAPODS: 1.6.1
