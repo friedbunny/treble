@@ -11,7 +11,7 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "2.84.0"
+fastlane_version "2.120.0"
 
 default_platform :ios
 
@@ -84,7 +84,7 @@ platform :ios do
     cocoapods(use_bundle_exec: true, try_repo_update_on_error: true)
     match(readonly: true)
     gym(scheme: "App Store", include_bitcode: true)
-    pilot(changelog: release_notes, wait_for_uploaded_build: true, distribute_external: true)
+    pilot(changelog: release_notes, distribute_external: true, groups: "Mapbox Testers")
   end
 
   desc "Push current branch and create a GitHub pull request."
