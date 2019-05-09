@@ -69,18 +69,20 @@
 			</array>
 		</dict>
 	</array>
-    <key>UIApplicationShortcutItems</key>
-    <array>
-        <dict>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>Settings</string>
-            <key>UIApplicationShortcutItemType</key>
-            <string>$(PRODUCT_BUNDLE_IDENTIFIER).settings</string>
-            <key>UIApplicationShortcutItemIconFile</key>
-            <string>Quick Actions/Settings</string>
-        </dict>
-    </array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Settings</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).settings</string>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>Quick Actions/Settings</string>
+		</dict>
+	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>MGLMapboxAccountsSDKEnabled</key>
+	<true/>
 </dict>
 </plist>
