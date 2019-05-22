@@ -82,7 +82,5 @@
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
-	<key>MGLMapboxAccountsSDKEnabled</key>
-	<true/>
 </dict>
 </plist>
