@@ -21,3 +21,7 @@ static NSString * const TRBLDefaultsDebugOptionsCollisionBoxes  = @"TRBLDebugOpt
 
 // Crashlytics metadata keys
 static NSString * const TRBLCrashlyticsMetadataKeyActiveVendor  = @"activeVendor";
+
+#if __clang_major__ >= 11
+#define TRBL_IF_XCODE_11_OR_GREATER
+#endif

@@ -190,7 +190,15 @@
         [mapStyle containsString:@"night"]) {
         statusBarStyle = UIStatusBarStyleLightContent;
     } else {
+#ifdef TRBL_IF_XCODE_11_OR_GREATER
+        if (@available(iOS 13.0, *)) {
+            statusBarStyle = UIStatusBarStyleDarkContent;
+        } else {
+            statusBarStyle = UIStatusBarStyleDefault;
+        }
+#else
         statusBarStyle = UIStatusBarStyleDefault;
+#endif
     }
 
     return statusBarStyle;

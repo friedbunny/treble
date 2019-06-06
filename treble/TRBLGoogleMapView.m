@@ -128,23 +128,30 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    UIStatusBarStyle style;
-
+    UIStatusBarStyle statusBarStyle;
     switch (self.mapView.mapType) {
         case kGMSTypeNormal:
         case kGMSTypeTerrain:
         default:
-            style = UIStatusBarStyleDefault;
+#ifdef TRBL_IF_XCODE_11_OR_GREATER
+            if (@available(iOS 13.0, *)) {
+                statusBarStyle = UIStatusBarStyleDarkContent;
+            } else {
+                statusBarStyle = UIStatusBarStyleDefault;
+            }
+#else
+            statusBarStyle = UIStatusBarStyleDefault;
+#endif
             break;
 
         case kGMSTypeSatellite:
         case kGMSTypeHybrid:
         case kGMSTypeNone:
-            style = UIStatusBarStyleLightContent;
+            statusBarStyle = UIStatusBarStyleLightContent;
             break;
     }
 
-    return style;
+    return statusBarStyle;
 }
 
 - (void)statusBarTappedAction:(NSNotification*)notification {

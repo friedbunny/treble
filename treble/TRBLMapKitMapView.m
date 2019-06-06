@@ -191,25 +191,33 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
         return UIStatusBarStyleLightContent;
     }
 
-    UIStatusBarStyle style;
-
+    UIStatusBarStyle statusBarStyle;
     switch (self.mapView.mapType) {
         case MKMapTypeStandard:
+#pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpartial-availability"
         case MKMapTypeMutedStandard:
 #pragma clang diagnostic pop
-            style = UIStatusBarStyleDefault;
+#ifdef TRBL_IF_XCODE_11_OR_GREATER
+            if (@available(iOS 13.0, *)) {
+                statusBarStyle = UIStatusBarStyleDarkContent;
+            } else {
+                statusBarStyle = UIStatusBarStyleDefault;
+            }
+#else
+            statusBarStyle = UIStatusBarStyleDefault;
+#endif
             break;
 
         case MKMapTypeSatellite:
         case MKMapTypeSatelliteFlyover:
         case MKMapTypeHybrid:
         case MKMapTypeHybridFlyover:
-            style = UIStatusBarStyleLightContent;
+            statusBarStyle = UIStatusBarStyleLightContent;
             break;
     }
 
-    return style;
+    return statusBarStyle;
 }
 
 - (void)statusBarTappedAction:(__unused NSNotification*)notification {
