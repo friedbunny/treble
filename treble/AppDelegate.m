@@ -13,14 +13,15 @@
 #import <GoogleMaps/GMSServices.h>
 
 #import "Constants.h"
+#import "UIColor+Treble.h"
 #import "TRBLTabBarController.h"
 #import "TRBLMapboxMapView.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // set global app tint color to Mapbox dark navy blue
-    self.window.tintColor = [UIColor colorWithRed:39.f/255.f green:61.f/255.f blue:86.f/255.f alpha:1.f];
+    // Set global app tint color
+    self.window.tintColor = UIColor.trbl_tintColor;
     [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UIAlertController class]]] setTintColor:self.window.tintColor];
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

@@ -7,6 +7,7 @@
 //
 
 #import "TRBLStyleLabelView.h"
+#import "UIColor+Treble.h"
 
 @interface TRBLStyleLabelView()
 @property (nonatomic) NSTimer *fadeTimer;
@@ -35,8 +36,8 @@
 
     self.backgroundColor = [self.tintColor colorWithAlphaComponent:0.95];
 
+    [self setTitleColor:UIColor.trbl_primaryTextColor forState:UIControlStateNormal];
     self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-    self.titleLabel.textColor = [UIColor whiteColor];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.contentEdgeInsets = UIEdgeInsetsMake(3, 6, 3, 6);
 

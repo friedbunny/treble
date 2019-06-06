@@ -7,6 +7,7 @@
 //
 
 #import "TRBLZoomLabelView.h"
+#import "UIColor+Treble.h"
 
 @interface TRBLZoomLabelView()
 @property (nonatomic) NSTimer *fadeTimer;
@@ -35,8 +36,8 @@
 
     self.backgroundColor = [self.tintColor colorWithAlphaComponent:0.95];;
 
+    [self setTitleColor:UIColor.trbl_primaryTextColor forState:UIControlStateNormal];
     self.titleLabel.font = [UIFont monospacedDigitSystemFontOfSize:9.0 weight:UIFontWeightMedium];
-    self.titleLabel.textColor = [UIColor whiteColor];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.contentEdgeInsets = UIEdgeInsetsMake(2, 4, 2, 4);
 

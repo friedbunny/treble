@@ -14,13 +14,14 @@
 		96301E831E938087005FF0F6 /* TRBLCoordinatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96301E821E938087005FF0F6 /* TRBLCoordinatorTests.m */; };
 		96446CBB1E4E3227005E3B10 /* TRBLZoomLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96446CBA1E4E3227005E3B10 /* TRBLZoomLabelView.m */; };
 		9652C2931F08BBAA006C3F4B /* TRBLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9652C2921F08BBAA006C3F4B /* TRBLTabBarController.m */; };
+		967A5E3B22A9C6D10015CC90 /* UIColor+Treble.m in Sources */ = {isa = PBXBuildFile; fileRef = 967A5E3A22A9C6D10015CC90 /* UIColor+Treble.m */; };
 		967BBD78222D18FA005DB788 /* TRBLQuickZoomGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 967BBD77222D18FA005DB788 /* TRBLQuickZoomGestureRecognizer.m */; };
 		968181D51AF2B34900E2403B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181D41AF2B34900E2403B /* main.m */; };
 		968181D81AF2B34900E2403B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181D71AF2B34900E2403B /* AppDelegate.m */; };
 		968181DB1AF2B34900E2403B /* TRBLMapboxMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181DA1AF2B34900E2403B /* TRBLMapboxMapView.m */; };
 		968181DE1AF2B34900E2403B /* TRBLMapKitMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 968181DD1AF2B34900E2403B /* TRBLMapKitMapView.m */; };
 		968181E11AF2B34900E2403B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 968181DF1AF2B34900E2403B /* Main.storyboard */; };
-		968181E31AF2B34900E2403B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 968181E21AF2B34900E2403B /* Images.xcassets */; };
+		968181E31AF2B34900E2403B /* Treble.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 968181E21AF2B34900E2403B /* Treble.xcassets */; };
 		968181FC1AF2B7AD00E2403B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968181FB1AF2B7AD00E2403B /* MapKit.framework */; };
 		968181FF1AF2BC0200E2403B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 968181FE1AF2BC0200E2403B /* Settings.bundle */; };
 		968182161AF2DEBC00E2403B /* TRBLCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 968182151AF2DEBC00E2403B /* TRBLCoordinator.m */; };
@@ -72,6 +73,8 @@
 		96446CBA1E4E3227005E3B10 /* TRBLZoomLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLZoomLabelView.m; sourceTree = "<group>"; };
 		9652C2911F08BBAA006C3F4B /* TRBLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBLTabBarController.h; sourceTree = "<group>"; };
 		9652C2921F08BBAA006C3F4B /* TRBLTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBLTabBarController.m; sourceTree = "<group>"; };
+		967A5E3922A9C6D10015CC90 /* UIColor+Treble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Treble.h"; sourceTree = "<group>"; };
+		967A5E3A22A9C6D10015CC90 /* UIColor+Treble.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Treble.m"; sourceTree = "<group>"; };
 		967BBD76222D18FA005DB788 /* TRBLQuickZoomGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRBLQuickZoomGestureRecognizer.h; sourceTree = "<group>"; };
 		967BBD77222D18FA005DB788 /* TRBLQuickZoomGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRBLQuickZoomGestureRecognizer.m; sourceTree = "<group>"; };
 		967E9D031CB8A25C0004D44E /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -85,7 +88,7 @@
 		968181DC1AF2B34900E2403B /* TRBLMapKitMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRBLMapKitMapView.h; sourceTree = "<group>"; };
 		968181DD1AF2B34900E2403B /* TRBLMapKitMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRBLMapKitMapView.m; sourceTree = "<group>"; };
 		968181E01AF2B34900E2403B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		968181E21AF2B34900E2403B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		968181E21AF2B34900E2403B /* Treble.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Treble.xcassets; sourceTree = "<group>"; };
 		968181FB1AF2B7AD00E2403B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		968181FE1AF2BC0200E2403B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		968182141AF2DEBC00E2403B /* TRBLCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBLCoordinator.h; sourceTree = "<group>"; };
@@ -204,7 +207,7 @@
 				968181DD1AF2B34900E2403B /* TRBLMapKitMapView.m */,
 				968181DF1AF2B34900E2403B /* Main.storyboard */,
 				9600673B1C5C9366005B2606 /* Launch Screen.storyboard */,
-				968181E21AF2B34900E2403B /* Images.xcassets */,
+				968181E21AF2B34900E2403B /* Treble.xcassets */,
 				968181D21AF2B34900E2403B /* Supporting Files */,
 			);
 			path = treble;
@@ -230,6 +233,8 @@
 				96E5ECF51AF833B2008350F9 /* MKMapView+ZoomLevel.m */,
 				967BBD76222D18FA005DB788 /* TRBLQuickZoomGestureRecognizer.h */,
 				967BBD77222D18FA005DB788 /* TRBLQuickZoomGestureRecognizer.m */,
+				967A5E3922A9C6D10015CC90 /* UIColor+Treble.h */,
+				967A5E3A22A9C6D10015CC90 /* UIColor+Treble.m */,
 				961EA9AC1B086933006D6D57 /* UITabBarController+Index.h */,
 				961EA9AD1B086933006D6D57 /* UITabBarController+Index.m */,
 				9692CA5B1B06BABD00ED8BC8 /* UITabBarController+Swipe.h */,
@@ -317,6 +322,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -347,7 +353,7 @@
 				968181FF1AF2BC0200E2403B /* Settings.bundle in Resources */,
 				968181E11AF2B34900E2403B /* Main.storyboard in Resources */,
 				962593501AF541FE002A9DDC /* APIKeys.plist in Resources */,
-				968181E31AF2B34900E2403B /* Images.xcassets in Resources */,
+				968181E31AF2B34900E2403B /* Treble.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				967A5E3B22A9C6D10015CC90 /* UIColor+Treble.m in Sources */,
 				96446CBB1E4E3227005E3B10 /* TRBLZoomLabelView.m in Sources */,
 				96C1DB991E4852AD00F323A0 /* UITabBarController+Visible.m in Sources */,
 				96C6DEA71F21B2E600444A50 /* TRBLStyleLabelView.m in Sources */,
