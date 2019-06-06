@@ -1,5 +1,6 @@
 @MAPS_SDK_VERSION = '5.0.0'
-platform :ios, '9.3'
+deploymentTarget = '9.3'
+platform :ios, deploymentTarget
 
 target 'treble' do
     pod 'Mapbox-iOS-SDK', "~> #{@MAPS_SDK_VERSION}"
@@ -8,8 +9,16 @@ target 'treble' do
     pod 'Crashlytics', '~> 3.8'
     pod 'GoogleMaps', '~> 3.0'
     pod 'NSTimeZone-Coordinate', '~> 1.0'
+end
 
-    script_phase :name => "Copy bitcode symbol maps into Products directory",
-        :script => "if [ \"$ACTION\" = \"install\" ]; then mdfind -name .bcsymbolmap -onlyin \"${PODS_ROOT}\" | xargs -I{} cp -v {} \"${CONFIGURATION_BUILD_DIR}\"; fi;",
-        :execution_position => :after_compile
+# Force the pod targets into using the same deployment target as the app.
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = deploymentTarget
+      if config.name != "Debug" then
+        config.build_settings['LLVM_LTO'] = 'YES'
+      end
+    end
+  end
 end
