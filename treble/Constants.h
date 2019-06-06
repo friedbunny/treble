@@ -18,3 +18,6 @@ static NSString * const TRBLDefaultsDebugOptionsTileBoundaries  = @"TRBLDebugOpt
 static NSString * const TRBLDefaultsDebugOptionsTileInfo        = @"TRBLDebugOptionsTileInfo";
 static NSString * const TRBLDefaultsDebugOptionsTileTimestamps  = @"TRBLDebugOptionsTileTimestamps";
 static NSString * const TRBLDefaultsDebugOptionsCollisionBoxes  = @"TRBLDebugOptionsCollisionBoxes";
+
+// Crashlytics metadata keys
+static NSString * const TRBLCrashlyticsMetadataKeyActiveVendor  = @"activeVendor";

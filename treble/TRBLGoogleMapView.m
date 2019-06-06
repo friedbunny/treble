@@ -43,6 +43,7 @@ static const double GOOGLE_ZOOM_OFFSET = 1;
     [super viewDidAppear:animated];
     
     self.coordinator.delegate = self;
+    self.coordinator.activeVendor = @"google";
 
     if (self.coordinator.needsUpdateGoogle) {
         GMSCameraPosition *p = [GMSCameraPosition cameraWithLatitude:self.coordinator.centerCoordinate.latitude

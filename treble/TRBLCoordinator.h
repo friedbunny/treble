@@ -52,6 +52,8 @@ typedef NS_ENUM(NSInteger, TRBLUserTrackingMode) {
 @property (nonatomic) BOOL needsUpdateMapKit;
 @property (nonatomic) BOOL needsUpdateGoogle;
 
+@property (nonatomic) NSString *activeVendor;
+
 - (void)setNeedsUpdateFromVendor:(TRBLMapVendor)vendor;
 
 @end

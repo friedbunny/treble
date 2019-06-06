@@ -69,6 +69,7 @@
     [super viewDidAppear:animated];
     
     self.coordinator.delegate = self;
+    self.coordinator.activeVendor = @"mapbox";
 
     if (self.coordinator.needsUpdateMapbox) {
         self.mapView.zoomLevel = self.coordinator.zoomLevel;

@@ -7,6 +7,8 @@
 //
 
 #import "TRBLCoordinator.h"
+#import "Constants.h"
+@import Crashlytics;
 
 @implementation TRBLCoordinator
 
@@ -34,6 +36,12 @@
     }
     
     return self;
+}
+
+- (void)setActiveVendor:(NSString *)activeVendor {
+    if (_activeVendor == activeVendor) return;
+    _activeVendor = activeVendor;
+    [Crashlytics.sharedInstance setObjectValue:activeVendor forKey:TRBLCrashlyticsMetadataKeyActiveVendor];
 }
 
 - (void)setNeedsUpdateFromVendor:(TRBLMapVendor)vendor {

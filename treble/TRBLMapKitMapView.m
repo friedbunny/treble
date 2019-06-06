@@ -78,6 +78,7 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
     [super viewDidAppear:animated];
 
     self.coordinator.delegate = self;
+    self.coordinator.activeVendor = @"mapkit";
 
     if (self.coordinator.needsUpdateMapKit) {
         [self.mapView setCenterCoordinate:self.coordinator.centerCoordinate

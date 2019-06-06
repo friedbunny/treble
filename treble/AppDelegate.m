@@ -19,7 +19,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // set global app tint color to Mapbox turquoise
+    // set global app tint color to Mapbox dark navy blue
     self.window.tintColor = [UIColor colorWithRed:39.f/255.f green:61.f/255.f blue:86.f/255.f alpha:1.f];
     [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UIAlertController class]]] setTintColor:self.window.tintColor];
 
@@ -102,8 +102,13 @@
 #pragma mark - Crashlytics
 
 - (void)setupCrashlytics {
-    [[Crashlytics sharedInstance] setUserName:UIDevice.currentDevice.name];
-    [[Crashlytics sharedInstance] setUserIdentifier:UIDevice.currentDevice.identifierForVendor.UUIDString];
+    [Crashlytics.sharedInstance setUserName:UIDevice.currentDevice.name];
+
+    NSBundle *mapboxFrameworkBundle = [NSBundle bundleForClass:MGLMapView.class];
+    NSString *mapboxSDKVersion = [mapboxFrameworkBundle objectForInfoDictionaryKey:@"MGLSemanticVersionString"] ?: @"unknown";
+    NSString *mapboxSDKCommitHash = [mapboxFrameworkBundle objectForInfoDictionaryKey:@"MGLCommitHash"] ?: @"unknown";
+    [Crashlytics.sharedInstance setObjectValue:mapboxSDKVersion forKey:@"mapbox.sdkVersion"];
+    [Crashlytics.sharedInstance setObjectValue:mapboxSDKCommitHash forKey:@"mapbox.sdkCommitHash"];
 }
 
 @end
