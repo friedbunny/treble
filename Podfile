@@ -1,9 +1,9 @@
-@MAPS_SDK_VERSION = '5.0.0'
+@MAPS_SDK_VERSION = '5.1.0-alpha.1'
 deploymentTarget = '9.3'
 platform :ios, deploymentTarget
 
 target 'treble' do
-    pod 'Mapbox-iOS-SDK', "~> #{@MAPS_SDK_VERSION}"
+    pod 'Mapbox-iOS-SDK', "#{@MAPS_SDK_VERSION}"
     #pod 'Mapbox-iOS-SDK-stripped', :podspec => "https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v#{@MAPS_SDK_VERSION}/platform/ios/Mapbox-iOS-SDK-stripped.podspec"
 
     pod 'Crashlytics', '~> 3.8'
