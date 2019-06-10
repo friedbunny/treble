@@ -1,4 +1,4 @@
-@MAPS_SDK_VERSION = '5.1.0-alpha.1'
+@MAPS_SDK_VERSION = '5.1.0-alpha.2'
 deploymentTarget = '9.3'
 platform :ios, deploymentTarget
 
