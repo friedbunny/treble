@@ -6,5 +6,7 @@
 	<string></string>
 	<key>Google Maps iOS API Key</key>
 	<string></string>
+	<key>Crashlytics API Key</key>
+	<string></string>
 </dict>
 </plist>

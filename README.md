@@ -6,6 +6,13 @@
 
 ![Treble](assets/screenshot.gif)
 
+## Getting started
+
+1. `bundle install && bundle exec pod install`
+2. `cp treble/APIKeys.EXAMPLE.plist treble/APIKeys.plist`
+3. `xed .` to open the workspace in Xcode.
+4. Add your [Mapbox access token](https://www.mapbox.com/help/create-api-access-token/) and [Google API key](https://developers.google.com/maps/documentation/ios-sdk/get-api-key) to `APIKeys.plist`.
+
 ## Usage
 
 - Keep tapping the selected tab to switch styles.
@@ -25,7 +32,3 @@ To load a Mapbox map in Treble at a particular location, you can use this URL sc
  * `zoom`: set the map zoom level (`0` being the whole world)
  * `bearing`: set the map bearing in degrees clockwise from due north
  * `pitch`: set the map pitch (`0` looking directly overhead, `60` being maximum tilt)
-
-## Releasing
-
-Follow [this checklist](https://github.com/***REMOVED***Release-Checklist) to release new versions to TestFlight.

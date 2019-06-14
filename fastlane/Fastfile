@@ -83,8 +83,8 @@ platform :ios do
   lane :build_and_submit do
     cocoapods(use_bundle_exec: true, try_repo_update_on_error: true)
     match(readonly: true)
-    gym(scheme: "App Store", include_bitcode: true)
-    pilot(changelog: release_notes, distribute_external: true, groups: "Mapbox Testers")
+    gym(scheme: "treble", include_bitcode: true)
+    pilot(changelog: release_notes)
   end
 
   desc "Push current branch and create a GitHub pull request."
