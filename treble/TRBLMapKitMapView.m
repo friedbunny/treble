@@ -198,7 +198,7 @@ static const double MAPKIT_ZOOM_OFFSET = 1;
 #pragma clang diagnostic ignored "-Wpartial-availability"
         case MKMapTypeMutedStandard:
 #pragma clang diagnostic pop
-#ifdef TRBL_IF_XCODE_11_OR_GREATER
+#ifdef TRBL_HAS_IOS_13_SUPPORT
             if (@available(iOS 13.0, *)) {
                 statusBarStyle = UIStatusBarStyleDarkContent;
             } else {
