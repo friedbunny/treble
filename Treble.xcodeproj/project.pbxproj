@@ -300,13 +300,11 @@
 				TargetAttributes = {
 					96301E761E937F2B005FF0F6 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = ***REMOVED***;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 968181CE1AF2B34900E2403B;
 					};
 					968181CE1AF2B34900E2403B = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = ***REMOVED***;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -421,15 +419,15 @@
 				"${PODS_ROOT}/Target Support Files/Pods-treble/Pods-treble-frameworks.sh",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
-				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/B913171C-4E0C-3634-BC3B-06EF5478E15F.bcsymbolmap",
-				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/0A2E75C2-2263-3961-8F71-D8606AD18F72.bcsymbolmap",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/BC51DA5A-7468-398F-BAB2-B41A37B118D8.bcsymbolmap",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/70BD2530-C0BC-31E1-A417-9295AB31C07E.bcsymbolmap",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
-				"${BUILT_PRODUCTS_DIR}/B913171C-4E0C-3634-BC3B-06EF5478E15F.bcsymbolmap",
-				"${BUILT_PRODUCTS_DIR}/0A2E75C2-2263-3961-8F71-D8606AD18F72.bcsymbolmap",
+				"${BUILT_PRODUCTS_DIR}/BC51DA5A-7468-398F-BAB2-B41A37B118D8.bcsymbolmap",
+				"${BUILT_PRODUCTS_DIR}/70BD2530-C0BC-31E1-A417-9295AB31C07E.bcsymbolmap",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -500,7 +498,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = ***REMOVED***;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = trebleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -517,7 +515,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				DEVELOPMENT_TEAM = ***REMOVED***;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = trebleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -534,7 +532,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				DEVELOPMENT_TEAM = ***REMOVED***;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = trebleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -671,8 +669,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 100;
-				DEVELOPMENT_TEAM = ***REMOVED***;
+				CURRENT_PROJECT_VERSION = 101;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -698,8 +696,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 100;
-				DEVELOPMENT_TEAM = ***REMOVED***;
+				CURRENT_PROJECT_VERSION = 101;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -781,8 +779,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 100;
-				DEVELOPMENT_TEAM = ***REMOVED***;
+				CURRENT_PROJECT_VERSION = 101;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

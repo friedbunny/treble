@@ -30,7 +30,7 @@ platform :ios do
   lane :update_dependencies do
     puts `bundle update`
     update_fastlane()
-    git_add(path: ["./Gemfile.lock"])
+    git_add(path: ["./Gemfile.lock", "./Podfile.lock"])
   end
 
   desc "Update maps SDK to latest version, then commit changes."
